@@ -1,0 +1,14 @@
+{
+    "name": "famarry/freee-client",
+    "description": "Freee API PHP Client",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "OpenAPI\\Client\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}
+
