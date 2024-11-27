@@ -452,9 +452,9 @@ class QuotationResponseQuotation implements ModelInterface, ArrayAccess, \JsonSe
     const LINE_AMOUNT_FRACTION_ROUND       = 'round';
     const WITHHOLDING_TAX_ENTRY_METHOD_IN  = 'in';
     const WITHHOLDING_TAX_ENTRY_METHOD_OUT = 'out';
-    const PARTNER_TITLE_                   = '御中';
-    const PARTNER_TITLE_                   = '様';
-    const PARTNER_TITLE_                   = '(空白)';
+    const PARTNER_TITLE_1                  = '御中';
+    const PARTNER_TITLE_2                  = '様';
+    const PARTNER_TITLE_3                  = '(空白)';
 
     /**
      * Gets allowable values of the enum.
@@ -544,9 +544,9 @@ class QuotationResponseQuotation implements ModelInterface, ArrayAccess, \JsonSe
     public function getPartnerTitleAllowableValues()
     {
         return [
-            self::PARTNER_TITLE_,
-            self::PARTNER_TITLE_,
-            self::PARTNER_TITLE_,
+            self::PARTNER_TITLE_1,
+            self::PARTNER_TITLE_2,
+            self::PARTNER_TITLE_3,
         ];
     }
 

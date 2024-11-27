@@ -488,9 +488,9 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     const LINE_AMOUNT_FRACTION_ROUND       = 'round';
     const WITHHOLDING_TAX_ENTRY_METHOD_IN  = 'in';
     const WITHHOLDING_TAX_ENTRY_METHOD_OUT = 'out';
-    const PARTNER_TITLE_                   = '御中';
-    const PARTNER_TITLE_                   = '様';
-    const PARTNER_TITLE_                   = '(空白)';
+    const PARTNER_TITLE_1                  = '御中';
+    const PARTNER_TITLE_2                  = '様';
+    const PARTNER_TITLE_3                  = '(空白)';
 
     /**
      * Gets allowable values of the enum.
@@ -619,9 +619,9 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     public function getPartnerTitleAllowableValues()
     {
         return [
-            self::PARTNER_TITLE_,
-            self::PARTNER_TITLE_,
-            self::PARTNER_TITLE_,
+            self::PARTNER_TITLE_1,
+            self::PARTNER_TITLE_2,
+            self::PARTNER_TITLE_3,
         ];
     }
 
@@ -1254,7 +1254,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setBillingDate($billing_date)
     {
-
+        $billing_date = $billing_date->format('Y-m-d');
         if ((!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $billing_date))) {
             throw new \InvalidArgumentException("invalid value for $billing_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
         }
@@ -1283,7 +1283,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setIssueDate($issue_date)
     {
-
+        $issue_date = $issue_date->format('Y-m-d');
         if (!is_null($issue_date) && (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $issue_date))) {
             throw new \InvalidArgumentException("invalid value for $issue_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
         }
@@ -1312,7 +1312,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setPaymentDate($payment_date)
     {
-
+        $payment_date = $payment_date->format('Y-m-d');
         if (!is_null($payment_date) && (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $payment_date))) {
             throw new \InvalidArgumentException("invalid value for $payment_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
         }
@@ -1759,7 +1759,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setCreatedAt($created_at)
     {
-
+        $created_at = $created_at->format('Y-m-d H:i:s');
         if ((!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/', $created_at))) {
             throw new \InvalidArgumentException("invalid value for $created_at when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/.");
         }
