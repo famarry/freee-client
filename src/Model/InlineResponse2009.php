@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InlineResponse2009.
  *
@@ -267,6 +268,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

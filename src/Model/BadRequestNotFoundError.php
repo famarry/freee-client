@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BadRequestNotFoundError.
  *
@@ -263,6 +264,7 @@ class BadRequestNotFoundError implements ModelInterface, ArrayAccess, \JsonSeria
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QuotationUpdateParamsQuotationContents.
  *
@@ -841,6 +842,7 @@ class QuotationUpdateParamsQuotationContents implements ModelInterface, ArrayAcc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

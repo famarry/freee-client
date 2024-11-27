@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestCreateParamsRequestItems.
  *
@@ -349,6 +350,7 @@ class ApprovalRequestCreateParamsRequestItems implements ModelInterface, ArrayAc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

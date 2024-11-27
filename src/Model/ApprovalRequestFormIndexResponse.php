@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestFormIndexResponse.
  *
@@ -237,6 +238,7 @@ class ApprovalRequestFormIndexResponse implements ModelInterface, ArrayAccess, \
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

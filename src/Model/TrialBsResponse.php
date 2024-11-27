@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsResponse.
  *
@@ -300,6 +301,7 @@ class TrialBsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

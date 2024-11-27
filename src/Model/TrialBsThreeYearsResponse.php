@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsThreeYearsResponse.
  *
@@ -300,6 +301,7 @@ class TrialBsThreeYearsResponse implements ModelInterface, ArrayAccess, \JsonSer
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

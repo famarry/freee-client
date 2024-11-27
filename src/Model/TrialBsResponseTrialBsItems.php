@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsResponseTrialBsItems.
  *
@@ -424,6 +425,7 @@ class TrialBsResponseTrialBsItems implements ModelInterface, ArrayAccess, \JsonS
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

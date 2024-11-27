@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ItemsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class ItemsApi
      *
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createItem($item_params = null)
     {
-        list($response) = $this->createItemWithHttpInfo($item_params);
+        [$response] = $this->createItemWithHttpInfo($item_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class ItemsApi
      *
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createItemWithHttpInfo($item_params = null)
     {
@@ -186,7 +187,7 @@ class ItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class ItemsApi
      *
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createItemAsync($item_params = null)
     {
@@ -336,9 +337,9 @@ class ItemsApi
      *
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createItemAsyncWithHttpInfo($item_params = null)
     {
@@ -383,9 +384,9 @@ class ItemsApi
      *
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createItemRequest($item_params = null)
     {
@@ -395,9 +396,6 @@ class ItemsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -474,10 +472,10 @@ class ItemsApi
      * @param int $id         品目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyItem($id, $company_id)
     {
@@ -492,10 +490,10 @@ class ItemsApi
      * @param int $id         品目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyItemWithHttpInfo($id, $company_id)
     {
@@ -592,9 +590,9 @@ class ItemsApi
      * @param int $id         品目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyItemAsync($id, $company_id)
     {
@@ -614,9 +612,9 @@ class ItemsApi
      * @param int $id         品目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyItemAsyncWithHttpInfo($id, $company_id)
     {
@@ -652,9 +650,9 @@ class ItemsApi
      * @param int $id         品目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyItemRequest($id, $company_id)
     {
@@ -776,14 +774,14 @@ class ItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         品目ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getItem($company_id, $id)
     {
-        list($response) = $this->getItemWithHttpInfo($company_id, $id);
+        [$response] = $this->getItemWithHttpInfo($company_id, $id);
 
         return $response;
     }
@@ -796,10 +794,10 @@ class ItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         品目ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getItemWithHttpInfo($company_id, $id)
     {
@@ -840,7 +838,7 @@ class ItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -990,9 +988,9 @@ class ItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         品目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemAsync($company_id, $id)
     {
@@ -1012,9 +1010,9 @@ class ItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         品目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemAsyncWithHttpInfo($company_id, $id)
     {
@@ -1060,9 +1058,9 @@ class ItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         品目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemRequest($company_id, $id)
     {
@@ -1187,14 +1185,14 @@ class ItemsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse2006|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getItems($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getItemsWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit);
+        [$response] = $this->getItemsWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit);
 
         return $response;
     }
@@ -1210,10 +1208,10 @@ class ItemsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse2006|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getItemsWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1254,7 +1252,7 @@ class ItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2006' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1387,9 +1385,9 @@ class ItemsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemsAsync($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1412,9 +1410,9 @@ class ItemsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemsAsyncWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1463,9 +1461,9 @@ class ItemsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getItemsRequest($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1553,8 +1551,6 @@ class ItemsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1623,14 +1619,14 @@ class ItemsApi
      * @param int                              $id          品目ID (required)
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateItem($id, $item_params = null)
     {
-        list($response) = $this->updateItemWithHttpInfo($id, $item_params);
+        [$response] = $this->updateItemWithHttpInfo($id, $item_params);
 
         return $response;
     }
@@ -1643,10 +1639,10 @@ class ItemsApi
      * @param int                              $id          品目ID (required)
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateItemWithHttpInfo($id, $item_params = null)
     {
@@ -1687,7 +1683,7 @@ class ItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1817,9 +1813,9 @@ class ItemsApi
      * @param int                              $id          品目ID (required)
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateItemAsync($id, $item_params = null)
     {
@@ -1839,9 +1835,9 @@ class ItemsApi
      * @param int                              $id          品目ID (required)
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateItemAsyncWithHttpInfo($id, $item_params = null)
     {
@@ -1887,9 +1883,9 @@ class ItemsApi
      * @param int                              $id          品目ID (required)
      * @param \OpenAPI\Client\Model\ItemParams $item_params 品目の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateItemRequest($id, $item_params = null)
     {
@@ -1910,7 +1906,6 @@ class ItemsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1992,9 +1987,9 @@ class ItemsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SelectablesApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class SelectablesApi
      * @param int    $company_id 事業所ID (required)
      * @param string $includes   取得する項目(項目: account_item) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SelectablesIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getFormsSelectables($company_id, $includes = null)
     {
-        list($response) = $this->getFormsSelectablesWithHttpInfo($company_id, $includes);
+        [$response] = $this->getFormsSelectablesWithHttpInfo($company_id, $includes);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class SelectablesApi
      * @param int    $company_id 事業所ID (required)
      * @param string $includes   取得する項目(項目: account_item) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SelectablesIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getFormsSelectablesWithHttpInfo($company_id, $includes = null)
     {
@@ -188,7 +189,7 @@ class SelectablesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\SelectablesIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -318,9 +319,9 @@ class SelectablesApi
      * @param int    $company_id 事業所ID (required)
      * @param string $includes   取得する項目(項目: account_item) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFormsSelectablesAsync($company_id, $includes = null)
     {
@@ -340,9 +341,9 @@ class SelectablesApi
      * @param int    $company_id 事業所ID (required)
      * @param string $includes   取得する項目(項目: account_item) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFormsSelectablesAsyncWithHttpInfo($company_id, $includes = null)
     {
@@ -388,9 +389,9 @@ class SelectablesApi
      * @param int    $company_id 事業所ID (required)
      * @param string $includes   取得する項目(項目: account_item) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFormsSelectablesRequest($company_id, $includes = null)
     {
@@ -432,8 +433,6 @@ class SelectablesApi
                 $queryParams['includes'] = $includes;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -499,9 +498,9 @@ class SelectablesApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

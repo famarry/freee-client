@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBalanceApi
  * PHP version 7.3.
@@ -136,14 +137,14 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialBsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialBsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialBs($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialBsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
+        [$response] = $this->getTrialBsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
 
         return $response;
     }
@@ -168,10 +169,10 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialBsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialBsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialBsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -212,7 +213,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialBsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -374,9 +375,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -408,9 +409,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -468,9 +469,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -660,8 +661,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -742,14 +741,14 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialBsThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialBsThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialBsThreeYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialBsThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
+        [$response] = $this->getTrialBsThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
 
         return $response;
     }
@@ -774,10 +773,10 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialBsThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialBsThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialBsThreeYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -818,7 +817,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialBsThreeYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -980,9 +979,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsThreeYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1014,9 +1013,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsThreeYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1074,9 +1073,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsThreeYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1266,8 +1265,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1348,14 +1345,14 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialBsTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialBsTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialBsTwoYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialBsTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
+        [$response] = $this->getTrialBsTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $approval_flow_status);
 
         return $response;
     }
@@ -1380,10 +1377,10 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialBsTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialBsTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialBsTwoYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1424,7 +1421,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialBsTwoYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1586,9 +1583,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsTwoYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1620,9 +1617,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsTwoYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1680,9 +1677,9 @@ class TrialBalanceApi
      * @param string $adjustment                決算整理仕訳で絞込（決算整理仕訳のみ: only, 決算整理仕訳以外: without）。指定されない場合、決算整理仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialBsTwoYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $approval_flow_status = null)
     {
@@ -1872,8 +1869,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1955,14 +1950,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCr($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -1988,10 +1983,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2032,7 +2027,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2195,9 +2190,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2230,9 +2225,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2291,9 +2286,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2493,8 +2488,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -2576,14 +2569,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrSections($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -2609,10 +2602,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2653,7 +2646,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrSectionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2816,9 +2809,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSectionsAsync($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2851,9 +2844,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSectionsAsyncWithHttpInfo($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -2912,9 +2905,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSectionsRequest($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3116,8 +3109,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3200,14 +3191,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrSegment1Tags($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -3234,10 +3225,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3278,7 +3269,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrSegment1TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -3442,9 +3433,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment1TagsAsync($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3478,9 +3469,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment1TagsAsyncWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3540,9 +3531,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment1TagsRequest($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3758,8 +3749,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3842,14 +3831,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrSegment2Tags($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -3876,10 +3865,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -3920,7 +3909,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrSegment2TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -4084,9 +4073,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment2TagsAsync($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4120,9 +4109,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment2TagsAsyncWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4182,9 +4171,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment2TagsRequest($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4400,8 +4389,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -4484,14 +4471,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrSegment3Tags($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -4518,10 +4505,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4562,7 +4549,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrSegment3TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -4726,9 +4713,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment3TagsAsync($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4762,9 +4749,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment3TagsAsyncWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -4824,9 +4811,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrSegment3TagsRequest($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5042,8 +5029,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -5125,14 +5110,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrThreeYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -5158,10 +5143,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrThreeYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5202,7 +5187,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrThreeYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -5365,9 +5350,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrThreeYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5400,9 +5385,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrThreeYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5461,9 +5446,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrThreeYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5663,8 +5648,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -5746,14 +5729,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialCrTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialCrTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialCrTwoYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialCrTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialCrTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -5779,10 +5762,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialCrTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialCrTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialCrTwoYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -5823,7 +5806,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialCrTwoYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -5986,9 +5969,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrTwoYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6021,9 +6004,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrTwoYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6082,9 +6065,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト), 全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialCrTwoYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6284,8 +6267,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -6367,14 +6348,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPl($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -6400,10 +6381,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6444,7 +6425,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -6607,9 +6588,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6642,9 +6623,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6703,9 +6684,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -6905,8 +6886,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -6988,14 +6967,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlSections($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -7021,10 +7000,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlSectionsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlSectionsWithHttpInfo($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7065,7 +7044,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlSectionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -7228,9 +7207,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSectionsAsync($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7263,9 +7242,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSectionsAsyncWithHttpInfo($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7324,9 +7303,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSectionsRequest($company_id, $section_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7528,8 +7507,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -7612,14 +7589,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlSegment1Tags($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -7646,10 +7623,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlSegment1TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlSegment1TagsWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7690,7 +7667,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlSegment1TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -7854,9 +7831,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment1TagsAsync($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7890,9 +7867,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment1TagsAsyncWithHttpInfo($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -7952,9 +7929,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment1TagsRequest($company_id, $segment_1_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8170,8 +8147,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -8254,14 +8229,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlSegment2Tags($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -8288,10 +8263,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlSegment2TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlSegment2TagsWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8332,7 +8307,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlSegment2TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -8496,9 +8471,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment2TagsAsync($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8532,9 +8507,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment2TagsAsyncWithHttpInfo($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8594,9 +8569,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment2TagsRequest($company_id, $segment_2_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8812,8 +8787,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -8896,14 +8869,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlSegment3Tags($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -8930,10 +8903,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlSegment3TagsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlSegment3TagsWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -8974,7 +8947,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlSegment3TagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -9138,9 +9111,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment3TagsAsync($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9174,9 +9147,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment3TagsAsyncWithHttpInfo($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9236,9 +9209,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlSegment3TagsRequest($company_id, $segment_3_tag_ids, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9454,8 +9427,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -9537,14 +9508,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlThreeYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlThreeYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -9570,10 +9541,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlThreeYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlThreeYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9614,7 +9585,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlThreeYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -9777,9 +9748,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlThreeYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9812,9 +9783,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlThreeYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -9873,9 +9844,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlThreeYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -10075,8 +10046,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -10158,14 +10127,14 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\TrialPlTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\TrialPlTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getTrialPlTwoYears($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
-        list($response) = $this->getTrialPlTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
+        [$response] = $this->getTrialPlTwoYearsWithHttpInfo($company_id, $fiscal_year, $start_month, $end_month, $start_date, $end_date, $account_item_display_type, $breakdown_display_type, $partner_id, $partner_code, $item_id, $section_id, $adjustment, $cost_allocation, $approval_flow_status);
 
         return $response;
     }
@@ -10191,10 +10160,10 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\TrialPlTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\TrialPlTwoYearsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\TooManyRequestsError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrialPlTwoYearsWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -10235,7 +10204,7 @@ class TrialBalanceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TrialPlTwoYearsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -10398,9 +10367,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlTwoYearsAsync($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -10433,9 +10402,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlTwoYearsAsyncWithHttpInfo($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -10494,9 +10463,9 @@ class TrialBalanceApi
      * @param string $cost_allocation           配賦仕訳で絞込（配賦仕訳のみ：only,配賦仕訳以外：without）。指定されない場合、配賦仕訳を含む金額が返却されます。 (optional)
      * @param string $approval_flow_status      承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; プレミアムプラン、法人アドバンスプラン（および旧法人プロフェッショナルプラン）以上で指定可能です。&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTrialPlTwoYearsRequest($company_id, $fiscal_year = null, $start_month = null, $end_month = null, $start_date = null, $end_date = null, $account_item_display_type = null, $breakdown_display_type = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $adjustment = null, $cost_allocation = null, $approval_flow_status = null)
     {
@@ -10696,8 +10665,6 @@ class TrialBalanceApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -10761,9 +10728,9 @@ class TrialBalanceApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TooManyRequestsError.
  *
@@ -270,6 +271,7 @@ class TooManyRequestsError implements ModelInterface, ArrayAccess, \JsonSerializ
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

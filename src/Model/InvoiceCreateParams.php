@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InvoiceCreateParams.
  *
@@ -1374,6 +1375,7 @@ class InvoiceCreateParams implements ModelInterface, ArrayAccess, \JsonSerializa
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

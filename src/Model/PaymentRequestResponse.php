@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestResponse.
  *
@@ -237,6 +238,7 @@ class PaymentRequestResponse implements ModelInterface, ArrayAccess, \JsonSerial
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

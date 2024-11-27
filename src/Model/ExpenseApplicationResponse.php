@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationResponse.
  *
@@ -237,6 +238,7 @@ class ExpenseApplicationResponse implements ModelInterface, ArrayAccess, \JsonSe
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

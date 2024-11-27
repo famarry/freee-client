@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsResponseTrialBsPartners.
  *
@@ -424,6 +425,7 @@ class TrialBsResponseTrialBsPartners implements ModelInterface, ArrayAccess, \Js
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

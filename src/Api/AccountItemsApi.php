@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountItemsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class AccountItemsApi
      *
      * @param \OpenAPI\Client\Model\AccountItemCreateParams $account_item_create_params 勘定科目の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createAccountItem($account_item_create_params)
     {
-        list($response) = $this->createAccountItemWithHttpInfo($account_item_create_params);
+        [$response] = $this->createAccountItemWithHttpInfo($account_item_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class AccountItemsApi
      *
      * @param \OpenAPI\Client\Model\AccountItemCreateParams $account_item_create_params 勘定科目の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createAccountItemWithHttpInfo($account_item_create_params)
     {
@@ -186,7 +187,7 @@ class AccountItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\AccountItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class AccountItemsApi
      *
      * @param \OpenAPI\Client\Model\AccountItemCreateParams $account_item_create_params 勘定科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountItemAsync($account_item_create_params)
     {
@@ -336,9 +337,9 @@ class AccountItemsApi
      *
      * @param \OpenAPI\Client\Model\AccountItemCreateParams $account_item_create_params 勘定科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountItemAsyncWithHttpInfo($account_item_create_params)
     {
@@ -383,9 +384,9 @@ class AccountItemsApi
      *
      * @param \OpenAPI\Client\Model\AccountItemCreateParams $account_item_create_params 勘定科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountItemRequest($account_item_create_params)
     {
@@ -402,9 +403,6 @@ class AccountItemsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -481,10 +479,10 @@ class AccountItemsApi
      * @param int $id         id (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyAccountItem($id, $company_id)
     {
@@ -499,10 +497,10 @@ class AccountItemsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyAccountItemWithHttpInfo($id, $company_id)
     {
@@ -591,9 +589,9 @@ class AccountItemsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyAccountItemAsync($id, $company_id)
     {
@@ -613,9 +611,9 @@ class AccountItemsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyAccountItemAsyncWithHttpInfo($id, $company_id)
     {
@@ -651,9 +649,9 @@ class AccountItemsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyAccountItemRequest($id, $company_id)
     {
@@ -775,14 +773,14 @@ class AccountItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         勘定科目ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getAccountItem($company_id, $id)
     {
-        list($response) = $this->getAccountItemWithHttpInfo($company_id, $id);
+        [$response] = $this->getAccountItemWithHttpInfo($company_id, $id);
 
         return $response;
     }
@@ -795,10 +793,10 @@ class AccountItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         勘定科目ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getAccountItemWithHttpInfo($company_id, $id)
     {
@@ -839,7 +837,7 @@ class AccountItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\AccountItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -989,9 +987,9 @@ class AccountItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         勘定科目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemAsync($company_id, $id)
     {
@@ -1011,9 +1009,9 @@ class AccountItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         勘定科目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemAsyncWithHttpInfo($company_id, $id)
     {
@@ -1059,9 +1057,9 @@ class AccountItemsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         勘定科目ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemRequest($company_id, $id)
     {
@@ -1183,14 +1181,14 @@ class AccountItemsApi
      * @param int    $company_id 事業所ID (required)
      * @param string $base_date  基準日:指定した場合、勘定科目に紐づく税区分(default_tax_code)が、基準日の税率に基づいて返ります。 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\AccountItemsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getAccountItems($company_id, $base_date = null)
     {
-        list($response) = $this->getAccountItemsWithHttpInfo($company_id, $base_date);
+        [$response] = $this->getAccountItemsWithHttpInfo($company_id, $base_date);
 
         return $response;
     }
@@ -1203,10 +1201,10 @@ class AccountItemsApi
      * @param int    $company_id 事業所ID (required)
      * @param string $base_date  基準日:指定した場合、勘定科目に紐づく税区分(default_tax_code)が、基準日の税率に基づいて返ります。 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\AccountItemsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getAccountItemsWithHttpInfo($company_id, $base_date = null)
     {
@@ -1247,7 +1245,7 @@ class AccountItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\AccountItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1377,9 +1375,9 @@ class AccountItemsApi
      * @param int    $company_id 事業所ID (required)
      * @param string $base_date  基準日:指定した場合、勘定科目に紐づく税区分(default_tax_code)が、基準日の税率に基づいて返ります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemsAsync($company_id, $base_date = null)
     {
@@ -1399,9 +1397,9 @@ class AccountItemsApi
      * @param int    $company_id 事業所ID (required)
      * @param string $base_date  基準日:指定した場合、勘定科目に紐づく税区分(default_tax_code)が、基準日の税率に基づいて返ります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemsAsyncWithHttpInfo($company_id, $base_date = null)
     {
@@ -1447,9 +1445,9 @@ class AccountItemsApi
      * @param int    $company_id 事業所ID (required)
      * @param string $base_date  基準日:指定した場合、勘定科目に紐づく税区分(default_tax_code)が、基準日の税率に基づいて返ります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getAccountItemsRequest($company_id, $base_date = null)
     {
@@ -1491,8 +1489,6 @@ class AccountItemsApi
                 $queryParams['base_date'] = $base_date;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -1563,14 +1559,14 @@ class AccountItemsApi
      * @param int                                           $id                         id (required)
      * @param \OpenAPI\Client\Model\AccountItemUpdateParams $account_item_update_params 勘定科目の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateAccountItem($id, $account_item_update_params)
     {
-        list($response) = $this->updateAccountItemWithHttpInfo($id, $account_item_update_params);
+        [$response] = $this->updateAccountItemWithHttpInfo($id, $account_item_update_params);
 
         return $response;
     }
@@ -1583,10 +1579,10 @@ class AccountItemsApi
      * @param int                                           $id                         (required)
      * @param \OpenAPI\Client\Model\AccountItemUpdateParams $account_item_update_params 勘定科目の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\AccountItemResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateAccountItemWithHttpInfo($id, $account_item_update_params)
     {
@@ -1627,7 +1623,7 @@ class AccountItemsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\AccountItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1777,9 +1773,9 @@ class AccountItemsApi
      * @param int                                           $id                         (required)
      * @param \OpenAPI\Client\Model\AccountItemUpdateParams $account_item_update_params 勘定科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateAccountItemAsync($id, $account_item_update_params)
     {
@@ -1799,9 +1795,9 @@ class AccountItemsApi
      * @param int                                           $id                         (required)
      * @param \OpenAPI\Client\Model\AccountItemUpdateParams $account_item_update_params 勘定科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateAccountItemAsyncWithHttpInfo($id, $account_item_update_params)
     {
@@ -1847,9 +1843,9 @@ class AccountItemsApi
      * @param int                                           $id                         (required)
      * @param \OpenAPI\Client\Model\AccountItemUpdateParams $account_item_update_params 勘定科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateAccountItemRequest($id, $account_item_update_params)
     {
@@ -1876,7 +1872,6 @@ class AccountItemsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1958,9 +1953,9 @@ class AccountItemsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestCreateParams.
  *
@@ -499,6 +500,7 @@ class ApprovalRequestCreateParams implements ModelInterface, ArrayAccess, \JsonS
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WalletablesApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class WalletablesApi
      *
      * @param \OpenAPI\Client\Model\WalletableCreateParams $walletable_create_params 口座の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\WalletableCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createWalletable($walletable_create_params = null)
     {
-        list($response) = $this->createWalletableWithHttpInfo($walletable_create_params);
+        [$response] = $this->createWalletableWithHttpInfo($walletable_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class WalletablesApi
      *
      * @param \OpenAPI\Client\Model\WalletableCreateParams $walletable_create_params 口座の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\WalletableCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createWalletableWithHttpInfo($walletable_create_params = null)
     {
@@ -186,7 +187,7 @@ class WalletablesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\WalletableCreateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class WalletablesApi
      *
      * @param \OpenAPI\Client\Model\WalletableCreateParams $walletable_create_params 口座の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletableAsync($walletable_create_params = null)
     {
@@ -336,9 +337,9 @@ class WalletablesApi
      *
      * @param \OpenAPI\Client\Model\WalletableCreateParams $walletable_create_params 口座の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletableAsyncWithHttpInfo($walletable_create_params = null)
     {
@@ -383,9 +384,9 @@ class WalletablesApi
      *
      * @param \OpenAPI\Client\Model\WalletableCreateParams $walletable_create_params 口座の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletableRequest($walletable_create_params = null)
     {
@@ -395,9 +396,6 @@ class WalletablesApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -475,10 +473,10 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyWalletable($id, $type, $company_id)
     {
@@ -494,10 +492,10 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyWalletableWithHttpInfo($id, $type, $company_id)
     {
@@ -595,9 +593,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletableAsync($id, $type, $company_id)
     {
@@ -618,9 +616,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletableAsyncWithHttpInfo($id, $type, $company_id)
     {
@@ -657,9 +655,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletableRequest($id, $type, $company_id)
     {
@@ -796,14 +794,14 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20010|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletable($id, $type, $company_id)
     {
-        list($response) = $this->getWalletableWithHttpInfo($id, $type, $company_id);
+        [$response] = $this->getWalletableWithHttpInfo($id, $type, $company_id);
 
         return $response;
     }
@@ -817,10 +815,10 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20010|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletableWithHttpInfo($id, $type, $company_id)
     {
@@ -861,7 +859,7 @@ class WalletablesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20010' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1012,9 +1010,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletableAsync($id, $type, $company_id)
     {
@@ -1035,9 +1033,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletableAsyncWithHttpInfo($id, $type, $company_id)
     {
@@ -1084,9 +1082,9 @@ class WalletablesApi
      * @param string $type       口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param int    $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletableRequest($id, $type, $company_id)
     {
@@ -1223,14 +1221,14 @@ class WalletablesApi
      * @param bool   $with_balance 残高情報を含める (optional, default to false)
      * @param string $type         口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse2009|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletables($company_id, $with_balance = false, $type = null)
     {
-        list($response) = $this->getWalletablesWithHttpInfo($company_id, $with_balance, $type);
+        [$response] = $this->getWalletablesWithHttpInfo($company_id, $with_balance, $type);
 
         return $response;
     }
@@ -1244,10 +1242,10 @@ class WalletablesApi
      * @param bool   $with_balance 残高情報を含める (optional, default to false)
      * @param string $type         口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse2009|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletablesWithHttpInfo($company_id, $with_balance = false, $type = null)
     {
@@ -1288,7 +1286,7 @@ class WalletablesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2009' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1419,9 +1417,9 @@ class WalletablesApi
      * @param bool   $with_balance 残高情報を含める (optional, default to false)
      * @param string $type         口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletablesAsync($company_id, $with_balance = false, $type = null)
     {
@@ -1442,9 +1440,9 @@ class WalletablesApi
      * @param bool   $with_balance 残高情報を含める (optional, default to false)
      * @param string $type         口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletablesAsyncWithHttpInfo($company_id, $with_balance = false, $type = null)
     {
@@ -1491,9 +1489,9 @@ class WalletablesApi
      * @param bool   $with_balance 残高情報を含める (optional, default to false)
      * @param string $type         口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletablesRequest($company_id, $with_balance = false, $type = null)
     {
@@ -1545,8 +1543,6 @@ class WalletablesApi
                 $queryParams['type'] = $type;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -1618,14 +1614,14 @@ class WalletablesApi
      * @param string                                       $type                     口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param \OpenAPI\Client\Model\WalletableUpdateParams $walletable_update_params 口座の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20011|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateWalletable($id, $type, $walletable_update_params = null)
     {
-        list($response) = $this->updateWalletableWithHttpInfo($id, $type, $walletable_update_params);
+        [$response] = $this->updateWalletableWithHttpInfo($id, $type, $walletable_update_params);
 
         return $response;
     }
@@ -1639,10 +1635,10 @@ class WalletablesApi
      * @param string                                       $type                     口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param \OpenAPI\Client\Model\WalletableUpdateParams $walletable_update_params 口座の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20011|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateWalletableWithHttpInfo($id, $type, $walletable_update_params = null)
     {
@@ -1683,7 +1679,7 @@ class WalletablesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20011' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1834,9 +1830,9 @@ class WalletablesApi
      * @param string                                       $type                     口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param \OpenAPI\Client\Model\WalletableUpdateParams $walletable_update_params 口座の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateWalletableAsync($id, $type, $walletable_update_params = null)
     {
@@ -1857,9 +1853,9 @@ class WalletablesApi
      * @param string                                       $type                     口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param \OpenAPI\Client\Model\WalletableUpdateParams $walletable_update_params 口座の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateWalletableAsyncWithHttpInfo($id, $type, $walletable_update_params = null)
     {
@@ -1906,9 +1902,9 @@ class WalletablesApi
      * @param string                                       $type                     口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） (required)
      * @param \OpenAPI\Client\Model\WalletableUpdateParams $walletable_update_params 口座の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateWalletableRequest($id, $type, $walletable_update_params = null)
     {
@@ -1931,7 +1927,6 @@ class WalletablesApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2021,9 +2016,9 @@ class WalletablesApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

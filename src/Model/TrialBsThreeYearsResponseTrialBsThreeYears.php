@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsThreeYearsResponseTrialBsThreeYears.
  *
@@ -898,6 +899,7 @@ class TrialBsThreeYearsResponseTrialBsThreeYears implements ModelInterface, Arra
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

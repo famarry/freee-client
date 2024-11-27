@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationLineTemplatesApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class ExpenseApplicationLineTemplatesApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createExpenseApplicationLineTemplate($expense_application_line_template_params)
     {
-        list($response) = $this->createExpenseApplicationLineTemplateWithHttpInfo($expense_application_line_template_params);
+        [$response] = $this->createExpenseApplicationLineTemplateWithHttpInfo($expense_application_line_template_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class ExpenseApplicationLineTemplatesApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createExpenseApplicationLineTemplateWithHttpInfo($expense_application_line_template_params)
     {
@@ -186,7 +187,7 @@ class ExpenseApplicationLineTemplatesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class ExpenseApplicationLineTemplatesApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationLineTemplateAsync($expense_application_line_template_params)
     {
@@ -336,9 +337,9 @@ class ExpenseApplicationLineTemplatesApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationLineTemplateAsyncWithHttpInfo($expense_application_line_template_params)
     {
@@ -383,9 +384,9 @@ class ExpenseApplicationLineTemplatesApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationLineTemplateRequest($expense_application_line_template_params)
     {
@@ -402,9 +403,6 @@ class ExpenseApplicationLineTemplatesApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -481,10 +479,10 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyExpenseApplicationLineTemplate($id, $company_id)
     {
@@ -499,10 +497,10 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyExpenseApplicationLineTemplateWithHttpInfo($id, $company_id)
     {
@@ -599,9 +597,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationLineTemplateAsync($id, $company_id)
     {
@@ -621,9 +619,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationLineTemplateAsyncWithHttpInfo($id, $company_id)
     {
@@ -659,9 +657,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationLineTemplateRequest($id, $company_id)
     {
@@ -783,14 +781,14 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplicationLineTemplate($id, $company_id)
     {
-        list($response) = $this->getExpenseApplicationLineTemplateWithHttpInfo($id, $company_id);
+        [$response] = $this->getExpenseApplicationLineTemplateWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -803,10 +801,10 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplicationLineTemplateWithHttpInfo($id, $company_id)
     {
@@ -847,7 +845,7 @@ class ExpenseApplicationLineTemplatesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -997,9 +995,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplateAsync($id, $company_id)
     {
@@ -1019,9 +1017,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplateAsyncWithHttpInfo($id, $company_id)
     {
@@ -1067,9 +1065,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $id         経費科目ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplateRequest($id, $company_id)
     {
@@ -1192,14 +1190,14 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20016|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplicationLineTemplates($company_id, $offset = null, $limit = null)
     {
-        list($response) = $this->getExpenseApplicationLineTemplatesWithHttpInfo($company_id, $offset, $limit);
+        [$response] = $this->getExpenseApplicationLineTemplatesWithHttpInfo($company_id, $offset, $limit);
 
         return $response;
     }
@@ -1213,10 +1211,10 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20016|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplicationLineTemplatesWithHttpInfo($company_id, $offset = null, $limit = null)
     {
@@ -1257,7 +1255,7 @@ class ExpenseApplicationLineTemplatesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20016' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1388,9 +1386,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplatesAsync($company_id, $offset = null, $limit = null)
     {
@@ -1411,9 +1409,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplatesAsyncWithHttpInfo($company_id, $offset = null, $limit = null)
     {
@@ -1460,9 +1458,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationLineTemplatesRequest($company_id, $offset = null, $limit = null)
     {
@@ -1528,8 +1526,6 @@ class ExpenseApplicationLineTemplatesApi
                 $queryParams['limit'] = $limit;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -1600,14 +1596,14 @@ class ExpenseApplicationLineTemplatesApi
      * @param int                                                        $id                                       経費科目ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationLineTemplate($id, $expense_application_line_template_params)
     {
-        list($response) = $this->updateExpenseApplicationLineTemplateWithHttpInfo($id, $expense_application_line_template_params);
+        [$response] = $this->updateExpenseApplicationLineTemplateWithHttpInfo($id, $expense_application_line_template_params);
 
         return $response;
     }
@@ -1620,10 +1616,10 @@ class ExpenseApplicationLineTemplatesApi
      * @param int                                                        $id                                       経費科目ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationLineTemplateWithHttpInfo($id, $expense_application_line_template_params)
     {
@@ -1664,7 +1660,7 @@ class ExpenseApplicationLineTemplatesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationLineTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1814,9 +1810,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int                                                        $id                                       経費科目ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationLineTemplateAsync($id, $expense_application_line_template_params)
     {
@@ -1836,9 +1832,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int                                                        $id                                       経費科目ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationLineTemplateAsyncWithHttpInfo($id, $expense_application_line_template_params)
     {
@@ -1884,9 +1880,9 @@ class ExpenseApplicationLineTemplatesApi
      * @param int                                                        $id                                       経費科目ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationLineTemplateParams $expense_application_line_template_params 経費科目の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationLineTemplateRequest($id, $expense_application_line_template_params)
     {
@@ -1913,7 +1909,6 @@ class ExpenseApplicationLineTemplatesApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1995,9 +1990,9 @@ class ExpenseApplicationLineTemplatesApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialPlSegment3TagsResponseTrialPlSegment3TagsSegment3Tags.
  *
@@ -394,6 +395,7 @@ class TrialPlSegment3TagsResponseTrialPlSegment3TagsSegment3Tags implements Mode
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

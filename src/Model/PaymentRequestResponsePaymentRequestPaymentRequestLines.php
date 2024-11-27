@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestResponsePaymentRequestPaymentRequestLines.
  *
@@ -712,6 +713,7 @@ class PaymentRequestResponsePaymentRequestPaymentRequestLines implements ModelIn
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

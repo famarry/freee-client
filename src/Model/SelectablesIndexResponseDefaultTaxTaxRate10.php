@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SelectablesIndexResponseDefaultTaxTaxRate10.
  *
@@ -278,6 +279,7 @@ class SelectablesIndexResponseDefaultTaxTaxRate10 implements ModelInterface, Arr
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

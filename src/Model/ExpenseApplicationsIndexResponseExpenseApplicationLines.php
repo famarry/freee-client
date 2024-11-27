@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationsIndexResponseExpenseApplicationLines.
  *
@@ -357,6 +358,7 @@ class ExpenseApplicationsIndexResponseExpenseApplicationLines implements ModelIn
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ReceiptsApi
  * PHP version 7.3.
@@ -130,14 +131,14 @@ class ReceiptsApi
      * @param string         $qualified_invoice              適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） (optional)
      * @param string         $document_type                  書類の種類（receipt: 領収書、invoice: 請求書、other: その他） (optional)
      *
+     * @return \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function createReceipt($company_id, $receipt, $description = null, $receipt_metadatum_partner_name = null, $receipt_metadatum_issue_date = null, $receipt_metadatum_amount = null, $qualified_invoice = null, $document_type = null)
     {
-        list($response) = $this->createReceiptWithHttpInfo($company_id, $receipt, $description, $receipt_metadatum_partner_name, $receipt_metadatum_issue_date, $receipt_metadatum_amount, $qualified_invoice, $document_type);
+        [$response] = $this->createReceiptWithHttpInfo($company_id, $receipt, $description, $receipt_metadatum_partner_name, $receipt_metadatum_issue_date, $receipt_metadatum_amount, $qualified_invoice, $document_type);
 
         return $response;
     }
@@ -156,10 +157,10 @@ class ReceiptsApi
      * @param string         $qualified_invoice              適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） (optional)
      * @param string         $document_type                  書類の種類（receipt: 領収書、invoice: 請求書、other: その他） (optional)
      *
+     * @return array of \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReceiptWithHttpInfo($company_id, $receipt, $description = null, $receipt_metadatum_partner_name = null, $receipt_metadatum_issue_date = null, $receipt_metadatum_amount = null, $qualified_invoice = null, $document_type = null)
     {
@@ -200,7 +201,7 @@ class ReceiptsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ReceiptResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -336,9 +337,9 @@ class ReceiptsApi
      * @param string         $qualified_invoice              適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） (optional)
      * @param string         $document_type                  書類の種類（receipt: 領収書、invoice: 請求書、other: その他） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createReceiptAsync($company_id, $receipt, $description = null, $receipt_metadatum_partner_name = null, $receipt_metadatum_issue_date = null, $receipt_metadatum_amount = null, $qualified_invoice = null, $document_type = null)
     {
@@ -364,9 +365,9 @@ class ReceiptsApi
      * @param string         $qualified_invoice              適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） (optional)
      * @param string         $document_type                  書類の種類（receipt: 領収書、invoice: 請求書、other: その他） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createReceiptAsyncWithHttpInfo($company_id, $receipt, $description = null, $receipt_metadatum_partner_name = null, $receipt_metadatum_issue_date = null, $receipt_metadatum_amount = null, $qualified_invoice = null, $document_type = null)
     {
@@ -418,9 +419,9 @@ class ReceiptsApi
      * @param string         $qualified_invoice              適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） (optional)
      * @param string         $document_type                  書類の種類（receipt: 領収書、invoice: 請求書、other: その他） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createReceiptRequest($company_id, $receipt, $description = null, $receipt_metadatum_partner_name = null, $receipt_metadatum_issue_date = null, $receipt_metadatum_amount = null, $qualified_invoice = null, $document_type = null)
     {
@@ -462,8 +463,6 @@ class ReceiptsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
 
 
         // form params
@@ -575,10 +574,10 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyReceipt($id, $company_id)
     {
@@ -593,10 +592,10 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyReceiptWithHttpInfo($id, $company_id)
     {
@@ -693,9 +692,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyReceiptAsync($id, $company_id)
     {
@@ -715,9 +714,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyReceiptAsyncWithHttpInfo($id, $company_id)
     {
@@ -753,9 +752,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyReceiptRequest($id, $company_id)
     {
@@ -877,14 +876,14 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return string|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function downloadReceipt($id, $company_id)
     {
-        list($response) = $this->downloadReceiptWithHttpInfo($id, $company_id);
+        [$response] = $this->downloadReceiptWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -897,10 +896,10 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of string|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function downloadReceiptWithHttpInfo($id, $company_id)
     {
@@ -941,7 +940,7 @@ class ReceiptsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1091,9 +1090,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadReceiptAsync($id, $company_id)
     {
@@ -1113,9 +1112,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadReceiptAsyncWithHttpInfo($id, $company_id)
     {
@@ -1161,9 +1160,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadReceiptRequest($id, $company_id)
     {
@@ -1285,14 +1284,14 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getReceipt($id, $company_id)
     {
-        list($response) = $this->getReceiptWithHttpInfo($id, $company_id);
+        [$response] = $this->getReceiptWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -1305,10 +1304,10 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getReceiptWithHttpInfo($id, $company_id)
     {
@@ -1349,7 +1348,7 @@ class ReceiptsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ReceiptResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1499,9 +1498,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptAsync($id, $company_id)
     {
@@ -1521,9 +1520,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptAsyncWithHttpInfo($id, $company_id)
     {
@@ -1569,9 +1568,9 @@ class ReceiptsApi
      * @param int $id         ファイルボックス（証憑ファイル）ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptRequest($id, $company_id)
     {
@@ -1701,14 +1700,14 @@ class ReceiptsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
+     * @return \OpenAPI\Client\Model\InlineResponse20015|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\InlineResponse20015|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getReceipts($company_id, $start_date, $end_date, $user_name = null, $number = null, $comment_type = null, $comment_important = null, $category = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getReceiptsWithHttpInfo($company_id, $start_date, $end_date, $user_name, $number, $comment_type, $comment_important, $category, $offset, $limit);
+        [$response] = $this->getReceiptsWithHttpInfo($company_id, $start_date, $end_date, $user_name, $number, $comment_type, $comment_important, $category, $offset, $limit);
 
         return $response;
     }
@@ -1729,10 +1728,10 @@ class ReceiptsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\InlineResponse20015|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\InlineResponse20015|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReceiptsWithHttpInfo($company_id, $start_date, $end_date, $user_name = null, $number = null, $comment_type = null, $comment_important = null, $category = null, $offset = null, $limit = null)
     {
@@ -1773,7 +1772,7 @@ class ReceiptsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20015' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1911,9 +1910,9 @@ class ReceiptsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptsAsync($company_id, $start_date, $end_date, $user_name = null, $number = null, $comment_type = null, $comment_important = null, $category = null, $offset = null, $limit = null)
     {
@@ -1941,9 +1940,9 @@ class ReceiptsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptsAsyncWithHttpInfo($company_id, $start_date, $end_date, $user_name = null, $number = null, $comment_type = null, $comment_important = null, $category = null, $offset = null, $limit = null)
     {
@@ -1997,9 +1996,9 @@ class ReceiptsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getReceiptsRequest($company_id, $start_date, $end_date, $user_name = null, $number = null, $comment_type = null, $comment_important = null, $category = null, $offset = null, $limit = null)
     {
@@ -2153,8 +2152,6 @@ class ReceiptsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -2223,14 +2220,14 @@ class ReceiptsApi
      * @param int                                       $id                    ファイルボックス（証憑ファイル）ID (required)
      * @param \OpenAPI\Client\Model\ReceiptUpdateParams $receipt_update_params receipt_update_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateReceipt($id, $receipt_update_params)
     {
-        list($response) = $this->updateReceiptWithHttpInfo($id, $receipt_update_params);
+        [$response] = $this->updateReceiptWithHttpInfo($id, $receipt_update_params);
 
         return $response;
     }
@@ -2243,10 +2240,10 @@ class ReceiptsApi
      * @param int                                       $id                    ファイルボックス（証憑ファイル）ID (required)
      * @param \OpenAPI\Client\Model\ReceiptUpdateParams $receipt_update_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ReceiptResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateReceiptWithHttpInfo($id, $receipt_update_params)
     {
@@ -2287,7 +2284,7 @@ class ReceiptsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ReceiptResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2437,9 +2434,9 @@ class ReceiptsApi
      * @param int                                       $id                    ファイルボックス（証憑ファイル）ID (required)
      * @param \OpenAPI\Client\Model\ReceiptUpdateParams $receipt_update_params (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateReceiptAsync($id, $receipt_update_params)
     {
@@ -2459,9 +2456,9 @@ class ReceiptsApi
      * @param int                                       $id                    ファイルボックス（証憑ファイル）ID (required)
      * @param \OpenAPI\Client\Model\ReceiptUpdateParams $receipt_update_params (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateReceiptAsyncWithHttpInfo($id, $receipt_update_params)
     {
@@ -2507,9 +2504,9 @@ class ReceiptsApi
      * @param int                                       $id                    ファイルボックス（証憑ファイル）ID (required)
      * @param \OpenAPI\Client\Model\ReceiptUpdateParams $receipt_update_params (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateReceiptRequest($id, $receipt_update_params)
     {
@@ -2536,7 +2533,6 @@ class ReceiptsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2618,9 +2614,9 @@ class ReceiptsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

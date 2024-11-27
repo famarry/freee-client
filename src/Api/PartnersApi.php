@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnersApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class PartnersApi
      *
      * @param \OpenAPI\Client\Model\PartnerCreateParams $partner_create_params 取引先の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createPartner($partner_create_params)
     {
-        list($response) = $this->createPartnerWithHttpInfo($partner_create_params);
+        [$response] = $this->createPartnerWithHttpInfo($partner_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class PartnersApi
      *
      * @param \OpenAPI\Client\Model\PartnerCreateParams $partner_create_params 取引先の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createPartnerWithHttpInfo($partner_create_params)
     {
@@ -186,7 +187,7 @@ class PartnersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\PartnerResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class PartnersApi
      *
      * @param \OpenAPI\Client\Model\PartnerCreateParams $partner_create_params 取引先の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createPartnerAsync($partner_create_params)
     {
@@ -336,9 +337,9 @@ class PartnersApi
      *
      * @param \OpenAPI\Client\Model\PartnerCreateParams $partner_create_params 取引先の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createPartnerAsyncWithHttpInfo($partner_create_params)
     {
@@ -383,9 +384,9 @@ class PartnersApi
      *
      * @param \OpenAPI\Client\Model\PartnerCreateParams $partner_create_params 取引先の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createPartnerRequest($partner_create_params)
     {
@@ -402,9 +403,6 @@ class PartnersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -481,10 +479,10 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyPartner($id, $company_id)
     {
@@ -499,10 +497,10 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyPartnerWithHttpInfo($id, $company_id)
     {
@@ -599,9 +597,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyPartnerAsync($id, $company_id)
     {
@@ -621,9 +619,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyPartnerAsyncWithHttpInfo($id, $company_id)
     {
@@ -659,9 +657,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyPartnerRequest($id, $company_id)
     {
@@ -783,14 +781,14 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getPartner($id, $company_id)
     {
-        list($response) = $this->getPartnerWithHttpInfo($id, $company_id);
+        [$response] = $this->getPartnerWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -803,10 +801,10 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getPartnerWithHttpInfo($id, $company_id)
     {
@@ -847,7 +845,7 @@ class PartnersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\PartnerResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -997,9 +995,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnerAsync($id, $company_id)
     {
@@ -1019,9 +1017,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnerAsyncWithHttpInfo($id, $company_id)
     {
@@ -1067,9 +1065,9 @@ class PartnersApi
      * @param int $id         取引先ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnerRequest($id, $company_id)
     {
@@ -1195,14 +1193,14 @@ class PartnersApi
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      * @param string $keyword           検索キーワード&lt;br&gt; 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。&lt;br&gt; 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 &lt;ul&gt; &lt;li&gt;半角スペース&lt;/li&gt; &lt;li&gt;全角スペース&lt;/li&gt; &lt;li&gt;タブ&lt;/li&gt; &lt;/ul&gt; (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\PartnersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getPartners($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null, $keyword = null)
     {
-        list($response) = $this->getPartnersWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit, $keyword);
+        [$response] = $this->getPartnersWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit, $keyword);
 
         return $response;
     }
@@ -1219,10 +1217,10 @@ class PartnersApi
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      * @param string $keyword           検索キーワード&lt;br&gt; 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。&lt;br&gt; 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 &lt;ul&gt; &lt;li&gt;半角スペース&lt;/li&gt; &lt;li&gt;全角スペース&lt;/li&gt; &lt;li&gt;タブ&lt;/li&gt; &lt;/ul&gt; (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\PartnersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getPartnersWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null, $keyword = null)
     {
@@ -1263,7 +1261,7 @@ class PartnersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\PartnersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1397,9 +1395,9 @@ class PartnersApi
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      * @param string $keyword           検索キーワード&lt;br&gt; 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。&lt;br&gt; 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 &lt;ul&gt; &lt;li&gt;半角スペース&lt;/li&gt; &lt;li&gt;全角スペース&lt;/li&gt; &lt;li&gt;タブ&lt;/li&gt; &lt;/ul&gt; (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnersAsync($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null, $keyword = null)
     {
@@ -1423,9 +1421,9 @@ class PartnersApi
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      * @param string $keyword           検索キーワード&lt;br&gt; 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。&lt;br&gt; 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 &lt;ul&gt; &lt;li&gt;半角スペース&lt;/li&gt; &lt;li&gt;全角スペース&lt;/li&gt; &lt;li&gt;タブ&lt;/li&gt; &lt;/ul&gt; (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnersAsyncWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null, $keyword = null)
     {
@@ -1475,9 +1473,9 @@ class PartnersApi
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      * @param string $keyword           検索キーワード&lt;br&gt; 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。&lt;br&gt; 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 &lt;ul&gt; &lt;li&gt;半角スペース&lt;/li&gt; &lt;li&gt;全角スペース&lt;/li&gt; &lt;li&gt;タブ&lt;/li&gt; &lt;/ul&gt; (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getPartnersRequest($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null, $keyword = null)
     {
@@ -1575,8 +1573,6 @@ class PartnersApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1645,14 +1641,14 @@ class PartnersApi
      * @param int                                       $id                    取引先ID (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updatePartner($id, $partner_update_params)
     {
-        list($response) = $this->updatePartnerWithHttpInfo($id, $partner_update_params);
+        [$response] = $this->updatePartnerWithHttpInfo($id, $partner_update_params);
 
         return $response;
     }
@@ -1665,10 +1661,10 @@ class PartnersApi
      * @param int                                       $id                    取引先ID (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updatePartnerWithHttpInfo($id, $partner_update_params)
     {
@@ -1709,7 +1705,7 @@ class PartnersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\PartnerResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1859,9 +1855,9 @@ class PartnersApi
      * @param int                                       $id                    取引先ID (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerAsync($id, $partner_update_params)
     {
@@ -1881,9 +1877,9 @@ class PartnersApi
      * @param int                                       $id                    取引先ID (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerAsyncWithHttpInfo($id, $partner_update_params)
     {
@@ -1929,9 +1925,9 @@ class PartnersApi
      * @param int                                       $id                    取引先ID (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerRequest($id, $partner_update_params)
     {
@@ -1958,7 +1954,6 @@ class PartnersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2045,14 +2040,14 @@ class PartnersApi
      * @param string                                    $code                  取引先コード (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updatePartnerByCode($code, $partner_update_params)
     {
-        list($response) = $this->updatePartnerByCodeWithHttpInfo($code, $partner_update_params);
+        [$response] = $this->updatePartnerByCodeWithHttpInfo($code, $partner_update_params);
 
         return $response;
     }
@@ -2065,10 +2060,10 @@ class PartnersApi
      * @param string                                    $code                  取引先コード (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\PartnerResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updatePartnerByCodeWithHttpInfo($code, $partner_update_params)
     {
@@ -2109,7 +2104,7 @@ class PartnersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\PartnerResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2259,9 +2254,9 @@ class PartnersApi
      * @param string                                    $code                  取引先コード (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerByCodeAsync($code, $partner_update_params)
     {
@@ -2281,9 +2276,9 @@ class PartnersApi
      * @param string                                    $code                  取引先コード (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerByCodeAsyncWithHttpInfo($code, $partner_update_params)
     {
@@ -2329,9 +2324,9 @@ class PartnersApi
      * @param string                                    $code                  取引先コード (required)
      * @param \OpenAPI\Client\Model\PartnerUpdateParams $partner_update_params 取引先の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updatePartnerByCodeRequest($code, $partner_update_params)
     {
@@ -2354,7 +2349,6 @@ class PartnersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2436,9 +2430,9 @@ class PartnersApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

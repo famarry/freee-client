@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CompaniesApi
  * PHP version 7.3.
@@ -122,14 +123,14 @@ class CompaniesApi
      * 事業所一覧の取得
      *
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\CompanyIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getCompanies()
     {
-        list($response) = $this->getCompaniesWithHttpInfo();
+        [$response] = $this->getCompaniesWithHttpInfo();
 
         return $response;
     }
@@ -140,10 +141,10 @@ class CompaniesApi
      * 事業所一覧の取得
      *
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\CompanyIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getCompaniesWithHttpInfo()
     {
@@ -184,7 +185,7 @@ class CompaniesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\CompanyIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -312,9 +313,9 @@ class CompaniesApi
      * 事業所一覧の取得
      *
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompaniesAsync()
     {
@@ -332,9 +333,9 @@ class CompaniesApi
      * 事業所一覧の取得
      *
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompaniesAsyncWithHttpInfo()
     {
@@ -378,9 +379,9 @@ class CompaniesApi
      * Create request for operation 'getCompanies'.
      *
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompaniesRequest()
     {
@@ -390,9 +391,6 @@ class CompaniesApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -470,14 +468,14 @@ class CompaniesApi
      * @param bool $tags          取得情報にメモタグ一覧を含める (optional)
      * @param bool $walletables   取得情報に口座一覧を含める (optional)
      *
+     * @return \OpenAPI\Client\Model\CompanyResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\CompanyResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getCompany($id, $details = null, $account_items = null, $taxes = null, $items = null, $partners = null, $sections = null, $tags = null, $walletables = null)
     {
-        list($response) = $this->getCompanyWithHttpInfo($id, $details, $account_items, $taxes, $items, $partners, $sections, $tags, $walletables);
+        [$response] = $this->getCompanyWithHttpInfo($id, $details, $account_items, $taxes, $items, $partners, $sections, $tags, $walletables);
 
         return $response;
     }
@@ -497,10 +495,10 @@ class CompaniesApi
      * @param bool $tags          取得情報にメモタグ一覧を含める (optional)
      * @param bool $walletables   取得情報に口座一覧を含める (optional)
      *
+     * @return array of \OpenAPI\Client\Model\CompanyResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\CompanyResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCompanyWithHttpInfo($id, $details = null, $account_items = null, $taxes = null, $items = null, $partners = null, $sections = null, $tags = null, $walletables = null)
     {
@@ -541,7 +539,7 @@ class CompaniesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\CompanyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -678,9 +676,9 @@ class CompaniesApi
      * @param bool $tags          取得情報にメモタグ一覧を含める (optional)
      * @param bool $walletables   取得情報に口座一覧を含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompanyAsync($id, $details = null, $account_items = null, $taxes = null, $items = null, $partners = null, $sections = null, $tags = null, $walletables = null)
     {
@@ -707,9 +705,9 @@ class CompaniesApi
      * @param bool $tags          取得情報にメモタグ一覧を含める (optional)
      * @param bool $walletables   取得情報に口座一覧を含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompanyAsyncWithHttpInfo($id, $details = null, $account_items = null, $taxes = null, $items = null, $partners = null, $sections = null, $tags = null, $walletables = null)
     {
@@ -762,9 +760,9 @@ class CompaniesApi
      * @param bool $tags          取得情報にメモタグ一覧を含める (optional)
      * @param bool $walletables   取得情報に口座一覧を含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getCompanyRequest($id, $details = null, $account_items = null, $taxes = null, $items = null, $partners = null, $sections = null, $tags = null, $walletables = null)
     {
@@ -937,9 +935,9 @@ class CompaniesApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

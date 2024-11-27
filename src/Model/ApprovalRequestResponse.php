@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestResponse.
  *
@@ -237,6 +238,7 @@ class ApprovalRequestResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

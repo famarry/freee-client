@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestCreateParamsPaymentRequestLines.
  *
@@ -650,6 +651,7 @@ class PaymentRequestCreateParamsPaymentRequestLines implements ModelInterface, A
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TransfersApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class TransfersApi
      *
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createTransfer($transfer_params = null)
     {
-        list($response) = $this->createTransferWithHttpInfo($transfer_params);
+        [$response] = $this->createTransferWithHttpInfo($transfer_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class TransfersApi
      *
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createTransferWithHttpInfo($transfer_params = null)
     {
@@ -186,7 +187,7 @@ class TransfersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\TransferResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class TransfersApi
      *
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTransferAsync($transfer_params = null)
     {
@@ -336,9 +337,9 @@ class TransfersApi
      *
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTransferAsyncWithHttpInfo($transfer_params = null)
     {
@@ -383,9 +384,9 @@ class TransfersApi
      *
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTransferRequest($transfer_params = null)
     {
@@ -395,9 +396,6 @@ class TransfersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -474,10 +472,10 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyTransfer($id, $company_id)
     {
@@ -492,10 +490,10 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyTransferWithHttpInfo($id, $company_id)
     {
@@ -592,9 +590,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTransferAsync($id, $company_id)
     {
@@ -614,9 +612,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTransferAsyncWithHttpInfo($id, $company_id)
     {
@@ -652,9 +650,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTransferRequest($id, $company_id)
     {
@@ -776,14 +774,14 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTransfer($id, $company_id)
     {
-        list($response) = $this->getTransferWithHttpInfo($id, $company_id);
+        [$response] = $this->getTransferWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -796,10 +794,10 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTransferWithHttpInfo($id, $company_id)
     {
@@ -840,7 +838,7 @@ class TransfersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TransferResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -990,9 +988,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransferAsync($id, $company_id)
     {
@@ -1012,9 +1010,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransferAsyncWithHttpInfo($id, $company_id)
     {
@@ -1060,9 +1058,9 @@ class TransfersApi
      * @param int $id         取引(振替)ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransferRequest($id, $company_id)
     {
@@ -1187,14 +1185,14 @@ class TransfersApi
      * @param int    $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20013|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTransfers($company_id, $start_date = null, $end_date = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getTransfersWithHttpInfo($company_id, $start_date, $end_date, $offset, $limit);
+        [$response] = $this->getTransfersWithHttpInfo($company_id, $start_date, $end_date, $offset, $limit);
 
         return $response;
     }
@@ -1210,10 +1208,10 @@ class TransfersApi
      * @param int    $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20013|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTransfersWithHttpInfo($company_id, $start_date = null, $end_date = null, $offset = null, $limit = null)
     {
@@ -1254,7 +1252,7 @@ class TransfersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20013' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1387,9 +1385,9 @@ class TransfersApi
      * @param int    $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransfersAsync($company_id, $start_date = null, $end_date = null, $offset = null, $limit = null)
     {
@@ -1412,9 +1410,9 @@ class TransfersApi
      * @param int    $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransfersAsyncWithHttpInfo($company_id, $start_date = null, $end_date = null, $offset = null, $limit = null)
     {
@@ -1463,9 +1461,9 @@ class TransfersApi
      * @param int    $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransfersRequest($company_id, $start_date = null, $end_date = null, $offset = null, $limit = null)
     {
@@ -1553,8 +1551,6 @@ class TransfersApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1623,14 +1619,14 @@ class TransfersApi
      * @param int                                  $id              取引(振替)ID (required)
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateTransfer($id, $transfer_params)
     {
-        list($response) = $this->updateTransferWithHttpInfo($id, $transfer_params);
+        [$response] = $this->updateTransferWithHttpInfo($id, $transfer_params);
 
         return $response;
     }
@@ -1643,10 +1639,10 @@ class TransfersApi
      * @param int                                  $id              取引(振替)ID (required)
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TransferResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateTransferWithHttpInfo($id, $transfer_params)
     {
@@ -1687,7 +1683,7 @@ class TransfersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TransferResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1837,9 +1833,9 @@ class TransfersApi
      * @param int                                  $id              取引(振替)ID (required)
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTransferAsync($id, $transfer_params)
     {
@@ -1859,9 +1855,9 @@ class TransfersApi
      * @param int                                  $id              取引(振替)ID (required)
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTransferAsyncWithHttpInfo($id, $transfer_params)
     {
@@ -1907,9 +1903,9 @@ class TransfersApi
      * @param int                                  $id              取引(振替)ID (required)
      * @param \OpenAPI\Client\Model\TransferParams $transfer_params 取引（振替）の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTransferRequest($id, $transfer_params)
     {
@@ -1936,7 +1932,6 @@ class TransfersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2018,9 +2013,9 @@ class TransfersApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

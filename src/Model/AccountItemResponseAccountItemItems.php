@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountItemResponseAccountItemItems.
  *
@@ -278,6 +279,7 @@ class AccountItemResponseAccountItemItems implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

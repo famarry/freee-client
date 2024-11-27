@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UsersApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class UsersApi
      * @param int $company_id 事業所ID (required)
      * @param int $limit      取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse2004|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsers($company_id, $limit = null)
     {
-        list($response) = $this->getUsersWithHttpInfo($company_id, $limit);
+        [$response] = $this->getUsersWithHttpInfo($company_id, $limit);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class UsersApi
      * @param int $company_id 事業所ID (required)
      * @param int $limit      取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse2004|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsersWithHttpInfo($company_id, $limit = null)
     {
@@ -188,7 +189,7 @@ class UsersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2004' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -338,9 +339,9 @@ class UsersApi
      * @param int $company_id 事業所ID (required)
      * @param int $limit      取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersAsync($company_id, $limit = null)
     {
@@ -360,9 +361,9 @@ class UsersApi
      * @param int $company_id 事業所ID (required)
      * @param int $limit      取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersAsyncWithHttpInfo($company_id, $limit = null)
     {
@@ -408,9 +409,9 @@ class UsersApi
      * @param int $company_id 事業所ID (required)
      * @param int $limit      取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersRequest($company_id, $limit = null)
     {
@@ -459,8 +460,6 @@ class UsersApi
                 $queryParams['limit'] = $limit;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -530,14 +529,14 @@ class UsersApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse2005|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsersCapabilities($company_id)
     {
-        list($response) = $this->getUsersCapabilitiesWithHttpInfo($company_id);
+        [$response] = $this->getUsersCapabilitiesWithHttpInfo($company_id);
 
         return $response;
     }
@@ -549,10 +548,10 @@ class UsersApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse2005|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsersCapabilitiesWithHttpInfo($company_id)
     {
@@ -593,7 +592,7 @@ class UsersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2005' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -742,9 +741,9 @@ class UsersApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersCapabilitiesAsync($company_id)
     {
@@ -763,9 +762,9 @@ class UsersApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersCapabilitiesAsyncWithHttpInfo($company_id)
     {
@@ -810,9 +809,9 @@ class UsersApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersCapabilitiesRequest($company_id)
     {
@@ -844,8 +843,6 @@ class UsersApi
                 $queryParams['company_id'] = $company_id;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -916,14 +913,14 @@ class UsersApi
      * @param bool $companies 取得情報にユーザーが所属する事業所一覧を含める (optional)
      * @param bool $advisor   取得情報に事業がアドバイザー事象所の場合は事業所毎の一意なプロフィールIDを含める (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\MeResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsersMe($companies = null, $advisor = null)
     {
-        list($response) = $this->getUsersMeWithHttpInfo($companies, $advisor);
+        [$response] = $this->getUsersMeWithHttpInfo($companies, $advisor);
 
         return $response;
     }
@@ -936,10 +933,10 @@ class UsersApi
      * @param bool $companies 取得情報にユーザーが所属する事業所一覧を含める (optional)
      * @param bool $advisor   取得情報に事業がアドバイザー事象所の場合は事業所毎の一意なプロフィールIDを含める (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\MeResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getUsersMeWithHttpInfo($companies = null, $advisor = null)
     {
@@ -980,7 +977,7 @@ class UsersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\MeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1130,9 +1127,9 @@ class UsersApi
      * @param bool $companies 取得情報にユーザーが所属する事業所一覧を含める (optional)
      * @param bool $advisor   取得情報に事業がアドバイザー事象所の場合は事業所毎の一意なプロフィールIDを含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersMeAsync($companies = null, $advisor = null)
     {
@@ -1152,9 +1149,9 @@ class UsersApi
      * @param bool $companies 取得情報にユーザーが所属する事業所一覧を含める (optional)
      * @param bool $advisor   取得情報に事業がアドバイザー事象所の場合は事業所毎の一意なプロフィールIDを含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersMeAsyncWithHttpInfo($companies = null, $advisor = null)
     {
@@ -1200,9 +1197,9 @@ class UsersApi
      * @param bool $companies 取得情報にユーザーが所属する事業所一覧を含める (optional)
      * @param bool $advisor   取得情報に事業がアドバイザー事象所の場合は事業所毎の一意なプロフィールIDを含める (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getUsersMeRequest($companies = null, $advisor = null)
     {
@@ -1233,8 +1230,6 @@ class UsersApi
                 $queryParams['advisor'] = $advisor;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -1304,14 +1299,14 @@ class UsersApi
      *
      * @param \OpenAPI\Client\Model\UserParams $user_params ログインユーザーの更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\UserResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateUser($user_params = null)
     {
-        list($response) = $this->updateUserWithHttpInfo($user_params);
+        [$response] = $this->updateUserWithHttpInfo($user_params);
 
         return $response;
     }
@@ -1323,10 +1318,10 @@ class UsersApi
      *
      * @param \OpenAPI\Client\Model\UserParams $user_params ログインユーザーの更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\UserResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateUserWithHttpInfo($user_params = null)
     {
@@ -1367,7 +1362,7 @@ class UsersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\UserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1516,9 +1511,9 @@ class UsersApi
      *
      * @param \OpenAPI\Client\Model\UserParams $user_params ログインユーザーの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateUserAsync($user_params = null)
     {
@@ -1537,9 +1532,9 @@ class UsersApi
      *
      * @param \OpenAPI\Client\Model\UserParams $user_params ログインユーザーの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateUserAsyncWithHttpInfo($user_params = null)
     {
@@ -1584,9 +1579,9 @@ class UsersApi
      *
      * @param \OpenAPI\Client\Model\UserParams $user_params ログインユーザーの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateUserRequest($user_params = null)
     {
@@ -1596,9 +1591,6 @@ class UsersApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -1670,9 +1662,9 @@ class UsersApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

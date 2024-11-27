@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QuotationIndexResponseQuotationContents.
  *
@@ -1102,6 +1103,7 @@ class QuotationIndexResponseQuotationContents implements ModelInterface, ArrayAc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

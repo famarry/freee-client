@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BanksApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class BanksApi
      *
      * @param int $id 連携サービスID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\BankResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getBank($id)
     {
-        list($response) = $this->getBankWithHttpInfo($id);
+        [$response] = $this->getBankWithHttpInfo($id);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class BanksApi
      *
      * @param int $id 連携サービスID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\BankResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getBankWithHttpInfo($id)
     {
@@ -186,7 +187,7 @@ class BanksApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\BankResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -335,9 +336,9 @@ class BanksApi
      *
      * @param int $id 連携サービスID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBankAsync($id)
     {
@@ -356,9 +357,9 @@ class BanksApi
      *
      * @param int $id 連携サービスID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBankAsyncWithHttpInfo($id)
     {
@@ -403,9 +404,9 @@ class BanksApi
      *
      * @param int $id 連携サービスID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBankRequest($id)
     {
@@ -426,7 +427,6 @@ class BanksApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -508,14 +508,14 @@ class BanksApi
      * @param int    $limit  取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      * @param string $type   サービス種別 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20012|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getBanks($offset = null, $limit = null, $type = null)
     {
-        list($response) = $this->getBanksWithHttpInfo($offset, $limit, $type);
+        [$response] = $this->getBanksWithHttpInfo($offset, $limit, $type);
 
         return $response;
     }
@@ -529,10 +529,10 @@ class BanksApi
      * @param int    $limit  取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      * @param string $type   サービス種別 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20012|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getBanksWithHttpInfo($offset = null, $limit = null, $type = null)
     {
@@ -573,7 +573,7 @@ class BanksApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20012' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -704,9 +704,9 @@ class BanksApi
      * @param int    $limit  取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      * @param string $type   サービス種別 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBanksAsync($offset = null, $limit = null, $type = null)
     {
@@ -727,9 +727,9 @@ class BanksApi
      * @param int    $limit  取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      * @param string $type   サービス種別 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBanksAsyncWithHttpInfo($offset = null, $limit = null, $type = null)
     {
@@ -776,9 +776,9 @@ class BanksApi
      * @param int    $limit  取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      * @param string $type   サービス種別 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getBanksRequest($offset = null, $limit = null, $type = null)
     {
@@ -834,8 +834,6 @@ class BanksApi
                 $queryParams['type'] = $type;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -901,9 +899,9 @@ class BanksApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

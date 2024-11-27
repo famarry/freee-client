@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationsIndexResponsePurchaseLines.
  *
@@ -372,6 +373,7 @@ class ExpenseApplicationsIndexResponsePurchaseLines implements ModelInterface, A
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

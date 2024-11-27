@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountItemCreateParamsAccountItemItems.
  *
@@ -241,6 +242,7 @@ class AccountItemCreateParamsAccountItemItems implements ModelInterface, ArrayAc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

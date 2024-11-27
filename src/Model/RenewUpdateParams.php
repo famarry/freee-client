@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RenewUpdateParams.
  *
@@ -311,6 +312,7 @@ class RenewUpdateParams implements ModelInterface, ArrayAccess, \JsonSerializabl
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsResponseTrialBsSegment1Tags.
  *
@@ -424,6 +425,7 @@ class TrialBsResponseTrialBsSegment1Tags implements ModelInterface, ArrayAccess,
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

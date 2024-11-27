@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnersResponsePartners.
  *
@@ -1016,6 +1017,7 @@ class PartnersResponsePartners implements ModelInterface, ArrayAccess, \JsonSeri
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

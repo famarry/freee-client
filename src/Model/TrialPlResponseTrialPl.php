@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialPlResponseTrialPl.
  *
@@ -962,6 +963,7 @@ class TrialPlResponseTrialPl implements ModelInterface, ArrayAccess, \JsonSerial
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

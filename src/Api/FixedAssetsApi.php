@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FixedAssetsApi
  * PHP version 7.3.
@@ -126,14 +127,14 @@ class FixedAssetsApi
      * @param int    $offset      取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit       取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 200) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\FixedAssetResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getFixedAssets($company_id, $target_date, $offset = null, $limit = null)
     {
-        list($response) = $this->getFixedAssetsWithHttpInfo($company_id, $target_date, $offset, $limit);
+        [$response] = $this->getFixedAssetsWithHttpInfo($company_id, $target_date, $offset, $limit);
 
         return $response;
     }
@@ -148,10 +149,10 @@ class FixedAssetsApi
      * @param int    $offset      取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit       取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 200) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\FixedAssetResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getFixedAssetsWithHttpInfo($company_id, $target_date, $offset = null, $limit = null)
     {
@@ -192,7 +193,7 @@ class FixedAssetsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\FixedAssetResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -324,9 +325,9 @@ class FixedAssetsApi
      * @param int    $offset      取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit       取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 200) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFixedAssetsAsync($company_id, $target_date, $offset = null, $limit = null)
     {
@@ -348,9 +349,9 @@ class FixedAssetsApi
      * @param int    $offset      取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit       取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 200) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFixedAssetsAsyncWithHttpInfo($company_id, $target_date, $offset = null, $limit = null)
     {
@@ -398,9 +399,9 @@ class FixedAssetsApi
      * @param int    $offset      取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit       取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 200) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getFixedAssetsRequest($company_id, $target_date, $offset = null, $limit = null)
     {
@@ -488,8 +489,6 @@ class FixedAssetsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -553,9 +552,9 @@ class FixedAssetsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

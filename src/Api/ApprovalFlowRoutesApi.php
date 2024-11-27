@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalFlowRoutesApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class ApprovalFlowRoutesApi
      * @param int $id         経路申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalFlowRouteResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalFlowRoute($id, $company_id)
     {
-        list($response) = $this->getApprovalFlowRouteWithHttpInfo($id, $company_id);
+        [$response] = $this->getApprovalFlowRouteWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class ApprovalFlowRoutesApi
      * @param int $id         経路申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalFlowRouteResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalFlowRouteWithHttpInfo($id, $company_id)
     {
@@ -188,7 +189,7 @@ class ApprovalFlowRoutesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalFlowRouteResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -338,9 +339,9 @@ class ApprovalFlowRoutesApi
      * @param int $id         経路申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRouteAsync($id, $company_id)
     {
@@ -360,9 +361,9 @@ class ApprovalFlowRoutesApi
      * @param int $id         経路申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRouteAsyncWithHttpInfo($id, $company_id)
     {
@@ -408,9 +409,9 @@ class ApprovalFlowRoutesApi
      * @param int $id         経路申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRouteRequest($id, $company_id)
     {
@@ -534,14 +535,14 @@ class ApprovalFlowRoutesApi
      * @param string $usage            申請種別（各申請種別が使用できる申請経路に絞り込めます。例えば、ApprovalRequest を指定すると、各種申請が使用できる申請経路に絞り込めます。） * &#x60;TxnApproval&#x60; - 仕訳承認 * &#x60;ExpenseApplication&#x60; - 経費精算 * &#x60;PaymentRequest&#x60; - 支払依頼 * &#x60;ApprovalRequest&#x60; - 各種申請 * &#x60;DocApproval&#x60; - 請求書等 (見積書・納品書・請求書・発注書) (optional)
      * @param int    $request_form_id  申請フォームID request_form_id指定時はusage条件をApprovalRequestに指定してください。指定しない場合無効になります。 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalFlowRoutesIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalFlowRoutes($company_id, $included_user_id = null, $usage = null, $request_form_id = null)
     {
-        list($response) = $this->getApprovalFlowRoutesWithHttpInfo($company_id, $included_user_id, $usage, $request_form_id);
+        [$response] = $this->getApprovalFlowRoutesWithHttpInfo($company_id, $included_user_id, $usage, $request_form_id);
 
         return $response;
     }
@@ -556,10 +557,10 @@ class ApprovalFlowRoutesApi
      * @param string $usage            申請種別（各申請種別が使用できる申請経路に絞り込めます。例えば、ApprovalRequest を指定すると、各種申請が使用できる申請経路に絞り込めます。） * &#x60;TxnApproval&#x60; - 仕訳承認 * &#x60;ExpenseApplication&#x60; - 経費精算 * &#x60;PaymentRequest&#x60; - 支払依頼 * &#x60;ApprovalRequest&#x60; - 各種申請 * &#x60;DocApproval&#x60; - 請求書等 (見積書・納品書・請求書・発注書) (optional)
      * @param int    $request_form_id  申請フォームID request_form_id指定時はusage条件をApprovalRequestに指定してください。指定しない場合無効になります。 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalFlowRoutesIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalFlowRoutesWithHttpInfo($company_id, $included_user_id = null, $usage = null, $request_form_id = null)
     {
@@ -600,7 +601,7 @@ class ApprovalFlowRoutesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalFlowRoutesIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -752,9 +753,9 @@ class ApprovalFlowRoutesApi
      * @param string $usage            申請種別（各申請種別が使用できる申請経路に絞り込めます。例えば、ApprovalRequest を指定すると、各種申請が使用できる申請経路に絞り込めます。） * &#x60;TxnApproval&#x60; - 仕訳承認 * &#x60;ExpenseApplication&#x60; - 経費精算 * &#x60;PaymentRequest&#x60; - 支払依頼 * &#x60;ApprovalRequest&#x60; - 各種申請 * &#x60;DocApproval&#x60; - 請求書等 (見積書・納品書・請求書・発注書) (optional)
      * @param int    $request_form_id  申請フォームID request_form_id指定時はusage条件をApprovalRequestに指定してください。指定しない場合無効になります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRoutesAsync($company_id, $included_user_id = null, $usage = null, $request_form_id = null)
     {
@@ -776,9 +777,9 @@ class ApprovalFlowRoutesApi
      * @param string $usage            申請種別（各申請種別が使用できる申請経路に絞り込めます。例えば、ApprovalRequest を指定すると、各種申請が使用できる申請経路に絞り込めます。） * &#x60;TxnApproval&#x60; - 仕訳承認 * &#x60;ExpenseApplication&#x60; - 経費精算 * &#x60;PaymentRequest&#x60; - 支払依頼 * &#x60;ApprovalRequest&#x60; - 各種申請 * &#x60;DocApproval&#x60; - 請求書等 (見積書・納品書・請求書・発注書) (optional)
      * @param int    $request_form_id  申請フォームID request_form_id指定時はusage条件をApprovalRequestに指定してください。指定しない場合無効になります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRoutesAsyncWithHttpInfo($company_id, $included_user_id = null, $usage = null, $request_form_id = null)
     {
@@ -826,9 +827,9 @@ class ApprovalFlowRoutesApi
      * @param string $usage            申請種別（各申請種別が使用できる申請経路に絞り込めます。例えば、ApprovalRequest を指定すると、各種申請が使用できる申請経路に絞り込めます。） * &#x60;TxnApproval&#x60; - 仕訳承認 * &#x60;ExpenseApplication&#x60; - 経費精算 * &#x60;PaymentRequest&#x60; - 支払依頼 * &#x60;ApprovalRequest&#x60; - 各種申請 * &#x60;DocApproval&#x60; - 請求書等 (見積書・納品書・請求書・発注書) (optional)
      * @param int    $request_form_id  申請フォームID request_form_id指定時はusage条件をApprovalRequestに指定してください。指定しない場合無効になります。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalFlowRoutesRequest($company_id, $included_user_id = null, $usage = null, $request_form_id = null)
     {
@@ -900,8 +901,6 @@ class ApprovalFlowRoutesApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -965,9 +964,9 @@ class ApprovalFlowRoutesApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

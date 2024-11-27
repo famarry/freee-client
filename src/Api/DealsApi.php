@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class DealsApi
      *
      * @param \OpenAPI\Client\Model\DealCreateParams $deal_create_params 取引（収入・支出）の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDeal($deal_create_params = null)
     {
-        list($response) = $this->createDealWithHttpInfo($deal_create_params);
+        [$response] = $this->createDealWithHttpInfo($deal_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class DealsApi
      *
      * @param \OpenAPI\Client\Model\DealCreateParams $deal_create_params 取引（収入・支出）の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDealWithHttpInfo($deal_create_params = null)
     {
@@ -186,7 +187,7 @@ class DealsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\DealCreateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -335,9 +336,9 @@ class DealsApi
      *
      * @param \OpenAPI\Client\Model\DealCreateParams $deal_create_params 取引（収入・支出）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealAsync($deal_create_params = null)
     {
@@ -356,9 +357,9 @@ class DealsApi
      *
      * @param \OpenAPI\Client\Model\DealCreateParams $deal_create_params 取引（収入・支出）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealAsyncWithHttpInfo($deal_create_params = null)
     {
@@ -403,9 +404,9 @@ class DealsApi
      *
      * @param \OpenAPI\Client\Model\DealCreateParams $deal_create_params 取引（収入・支出）の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealRequest($deal_create_params = null)
     {
@@ -415,9 +416,6 @@ class DealsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -494,10 +492,10 @@ class DealsApi
      * @param int $id         取引ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyDeal($id, $company_id)
     {
@@ -512,10 +510,10 @@ class DealsApi
      * @param int $id         取引ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyDealWithHttpInfo($id, $company_id)
     {
@@ -612,9 +610,9 @@ class DealsApi
      * @param int $id         取引ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealAsync($id, $company_id)
     {
@@ -634,9 +632,9 @@ class DealsApi
      * @param int $id         取引ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealAsyncWithHttpInfo($id, $company_id)
     {
@@ -672,9 +670,9 @@ class DealsApi
      * @param int $id         取引ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealRequest($id, $company_id)
     {
@@ -797,14 +795,14 @@ class DealsApi
      * @param int    $id         id (required)
      * @param string $accruals   取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getDeal($company_id, $id, $accruals = null)
     {
-        list($response) = $this->getDealWithHttpInfo($company_id, $id, $accruals);
+        [$response] = $this->getDealWithHttpInfo($company_id, $id, $accruals);
 
         return $response;
     }
@@ -818,10 +816,10 @@ class DealsApi
      * @param int    $id         (required)
      * @param string $accruals   取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getDealWithHttpInfo($company_id, $id, $accruals = null)
     {
@@ -862,7 +860,7 @@ class DealsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1013,9 +1011,9 @@ class DealsApi
      * @param int    $id         (required)
      * @param string $accruals   取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealAsync($company_id, $id, $accruals = null)
     {
@@ -1036,9 +1034,9 @@ class DealsApi
      * @param int    $id         (required)
      * @param string $accruals   取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealAsyncWithHttpInfo($company_id, $id, $accruals = null)
     {
@@ -1085,9 +1083,9 @@ class DealsApi
      * @param int    $id         (required)
      * @param string $accruals   取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealRequest($company_id, $id, $accruals = null)
     {
@@ -1233,14 +1231,14 @@ class DealsApi
      * @param string $registered_from  取引登録元アプリで絞込（me: 本APIを叩くアプリ自身から登録した取引のみ） (optional)
      * @param string $accruals         取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
+     * @return \OpenAPI\Client\Model\InlineResponse2002|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\InlineResponse2002|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getDeals($company_id, $partner_id = null, $account_item_id = null, $partner_code = null, $status = null, $type = null, $start_issue_date = null, $end_issue_date = null, $start_due_date = null, $end_due_date = null, $start_renew_date = null, $end_renew_date = null, $offset = null, $limit = null, $registered_from = null, $accruals = null)
     {
-        list($response) = $this->getDealsWithHttpInfo($company_id, $partner_id, $account_item_id, $partner_code, $status, $type, $start_issue_date, $end_issue_date, $start_due_date, $end_due_date, $start_renew_date, $end_renew_date, $offset, $limit, $registered_from, $accruals);
+        [$response] = $this->getDealsWithHttpInfo($company_id, $partner_id, $account_item_id, $partner_code, $status, $type, $start_issue_date, $end_issue_date, $start_due_date, $end_due_date, $start_renew_date, $end_renew_date, $offset, $limit, $registered_from, $accruals);
 
         return $response;
     }
@@ -1267,10 +1265,10 @@ class DealsApi
      * @param string $registered_from  取引登録元アプリで絞込（me: 本APIを叩くアプリ自身から登録した取引のみ） (optional)
      * @param string $accruals         取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
+     * @return array of \OpenAPI\Client\Model\InlineResponse2002|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\InlineResponse2002|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDealsWithHttpInfo($company_id, $partner_id = null, $account_item_id = null, $partner_code = null, $status = null, $type = null, $start_issue_date = null, $end_issue_date = null, $start_due_date = null, $end_due_date = null, $start_renew_date = null, $end_renew_date = null, $offset = null, $limit = null, $registered_from = null, $accruals = null)
     {
@@ -1311,7 +1309,7 @@ class DealsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2002' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1475,9 +1473,9 @@ class DealsApi
      * @param string $registered_from  取引登録元アプリで絞込（me: 本APIを叩くアプリ自身から登録した取引のみ） (optional)
      * @param string $accruals         取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealsAsync($company_id, $partner_id = null, $account_item_id = null, $partner_code = null, $status = null, $type = null, $start_issue_date = null, $end_issue_date = null, $start_due_date = null, $end_due_date = null, $start_renew_date = null, $end_renew_date = null, $offset = null, $limit = null, $registered_from = null, $accruals = null)
     {
@@ -1511,9 +1509,9 @@ class DealsApi
      * @param string $registered_from  取引登録元アプリで絞込（me: 本APIを叩くアプリ自身から登録した取引のみ） (optional)
      * @param string $accruals         取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealsAsyncWithHttpInfo($company_id, $partner_id = null, $account_item_id = null, $partner_code = null, $status = null, $type = null, $start_issue_date = null, $end_issue_date = null, $start_due_date = null, $end_due_date = null, $start_renew_date = null, $end_renew_date = null, $offset = null, $limit = null, $registered_from = null, $accruals = null)
     {
@@ -1573,9 +1571,9 @@ class DealsApi
      * @param string $registered_from  取引登録元アプリで絞込（me: 本APIを叩くアプリ自身から登録した取引のみ） (optional)
      * @param string $accruals         取引の債権債務行の表示（without: 表示しない(デフォルト), with: 表示する） (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getDealsRequest($company_id, $partner_id = null, $account_item_id = null, $partner_code = null, $status = null, $type = null, $start_issue_date = null, $end_issue_date = null, $start_due_date = null, $end_due_date = null, $start_renew_date = null, $end_renew_date = null, $offset = null, $limit = null, $registered_from = null, $accruals = null)
     {
@@ -1781,8 +1779,6 @@ class DealsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1851,14 +1847,14 @@ class DealsApi
      * @param int                                    $id                 取引ID (required)
      * @param \OpenAPI\Client\Model\DealUpdateParams $deal_update_params 取引（収入・支出）の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDeal($id, $deal_update_params = null)
     {
-        list($response) = $this->updateDealWithHttpInfo($id, $deal_update_params);
+        [$response] = $this->updateDealWithHttpInfo($id, $deal_update_params);
 
         return $response;
     }
@@ -1871,10 +1867,10 @@ class DealsApi
      * @param int                                    $id                 取引ID (required)
      * @param \OpenAPI\Client\Model\DealUpdateParams $deal_update_params 取引（収入・支出）の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDealWithHttpInfo($id, $deal_update_params = null)
     {
@@ -1915,7 +1911,7 @@ class DealsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2065,9 +2061,9 @@ class DealsApi
      * @param int                                    $id                 取引ID (required)
      * @param \OpenAPI\Client\Model\DealUpdateParams $deal_update_params 取引（収入・支出）の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealAsync($id, $deal_update_params = null)
     {
@@ -2087,9 +2083,9 @@ class DealsApi
      * @param int                                    $id                 取引ID (required)
      * @param \OpenAPI\Client\Model\DealUpdateParams $deal_update_params 取引（収入・支出）の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealAsyncWithHttpInfo($id, $deal_update_params = null)
     {
@@ -2135,9 +2131,9 @@ class DealsApi
      * @param int                                    $id                 取引ID (required)
      * @param \OpenAPI\Client\Model\DealUpdateParams $deal_update_params 取引（収入・支出）の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealRequest($id, $deal_update_params = null)
     {
@@ -2158,7 +2154,6 @@ class DealsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2240,9 +2235,9 @@ class DealsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class ApprovalRequestsApi
      *
      * @param \OpenAPI\Client\Model\ApprovalRequestCreateParams $approval_request_create_params 各種申請の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createApprovalRequest($approval_request_create_params = null)
     {
-        list($response) = $this->createApprovalRequestWithHttpInfo($approval_request_create_params);
+        [$response] = $this->createApprovalRequestWithHttpInfo($approval_request_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class ApprovalRequestsApi
      *
      * @param \OpenAPI\Client\Model\ApprovalRequestCreateParams $approval_request_create_params 各種申請の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createApprovalRequestWithHttpInfo($approval_request_create_params = null)
     {
@@ -186,7 +187,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ApprovalRequestResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -335,9 +336,9 @@ class ApprovalRequestsApi
      *
      * @param \OpenAPI\Client\Model\ApprovalRequestCreateParams $approval_request_create_params 各種申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createApprovalRequestAsync($approval_request_create_params = null)
     {
@@ -356,9 +357,9 @@ class ApprovalRequestsApi
      *
      * @param \OpenAPI\Client\Model\ApprovalRequestCreateParams $approval_request_create_params 各種申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createApprovalRequestAsyncWithHttpInfo($approval_request_create_params = null)
     {
@@ -403,9 +404,9 @@ class ApprovalRequestsApi
      *
      * @param \OpenAPI\Client\Model\ApprovalRequestCreateParams $approval_request_create_params 各種申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createApprovalRequestRequest($approval_request_create_params = null)
     {
@@ -415,9 +416,6 @@ class ApprovalRequestsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -494,10 +492,10 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyApprovalRequest($id, $company_id)
     {
@@ -512,10 +510,10 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyApprovalRequestWithHttpInfo($id, $company_id)
     {
@@ -612,9 +610,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyApprovalRequestAsync($id, $company_id)
     {
@@ -634,9 +632,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyApprovalRequestAsyncWithHttpInfo($id, $company_id)
     {
@@ -672,9 +670,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyApprovalRequestRequest($id, $company_id)
     {
@@ -796,14 +794,14 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequest($id, $company_id)
     {
-        list($response) = $this->getApprovalRequestWithHttpInfo($id, $company_id);
+        [$response] = $this->getApprovalRequestWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -816,10 +814,10 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequestWithHttpInfo($id, $company_id)
     {
@@ -860,7 +858,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalRequestResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1010,9 +1008,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestAsync($id, $company_id)
     {
@@ -1032,9 +1030,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestAsyncWithHttpInfo($id, $company_id)
     {
@@ -1080,9 +1078,9 @@ class ApprovalRequestsApi
      * @param int $id         各種申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestRequest($id, $company_id)
     {
@@ -1204,14 +1202,14 @@ class ApprovalRequestsApi
      * @param int $id         申請フォームID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestFormResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequestForm($id, $company_id)
     {
-        list($response) = $this->getApprovalRequestFormWithHttpInfo($id, $company_id);
+        [$response] = $this->getApprovalRequestFormWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -1224,10 +1222,10 @@ class ApprovalRequestsApi
      * @param int $id         申請フォームID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestFormResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequestFormWithHttpInfo($id, $company_id)
     {
@@ -1268,7 +1266,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalRequestFormResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1418,9 +1416,9 @@ class ApprovalRequestsApi
      * @param int $id         申請フォームID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormAsync($id, $company_id)
     {
@@ -1440,9 +1438,9 @@ class ApprovalRequestsApi
      * @param int $id         申請フォームID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormAsyncWithHttpInfo($id, $company_id)
     {
@@ -1488,9 +1486,9 @@ class ApprovalRequestsApi
      * @param int $id         申請フォームID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormRequest($id, $company_id)
     {
@@ -1611,14 +1609,14 @@ class ApprovalRequestsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestFormIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequestForms($company_id)
     {
-        list($response) = $this->getApprovalRequestFormsWithHttpInfo($company_id);
+        [$response] = $this->getApprovalRequestFormsWithHttpInfo($company_id);
 
         return $response;
     }
@@ -1630,10 +1628,10 @@ class ApprovalRequestsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestFormIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getApprovalRequestFormsWithHttpInfo($company_id)
     {
@@ -1674,7 +1672,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalRequestFormIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1823,9 +1821,9 @@ class ApprovalRequestsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormsAsync($company_id)
     {
@@ -1844,9 +1842,9 @@ class ApprovalRequestsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormsAsyncWithHttpInfo($company_id)
     {
@@ -1891,9 +1889,9 @@ class ApprovalRequestsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestFormsRequest($company_id)
     {
@@ -1925,8 +1923,6 @@ class ApprovalRequestsApi
                 $queryParams['company_id'] = $company_id;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -2008,14 +2004,14 @@ class ApprovalRequestsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
+     * @return \OpenAPI\Client\Model\ApprovalRequestsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\ApprovalRequestsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getApprovalRequests($company_id, $status = null, $application_number = null, $title = null, $form_id = null, $start_application_date = null, $end_application_date = null, $applicant_id = null, $min_amount = null, $max_amount = null, $approver_id = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getApprovalRequestsWithHttpInfo($company_id, $status, $application_number, $title, $form_id, $start_application_date, $end_application_date, $applicant_id, $min_amount, $max_amount, $approver_id, $offset, $limit);
+        [$response] = $this->getApprovalRequestsWithHttpInfo($company_id, $status, $application_number, $title, $form_id, $start_application_date, $end_application_date, $applicant_id, $min_amount, $max_amount, $approver_id, $offset, $limit);
 
         return $response;
     }
@@ -2039,10 +2035,10 @@ class ApprovalRequestsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\ApprovalRequestsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\ApprovalRequestsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApprovalRequestsWithHttpInfo($company_id, $status = null, $application_number = null, $title = null, $form_id = null, $start_application_date = null, $end_application_date = null, $applicant_id = null, $min_amount = null, $max_amount = null, $approver_id = null, $offset = null, $limit = null)
     {
@@ -2083,7 +2079,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalRequestsIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2244,9 +2240,9 @@ class ApprovalRequestsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestsAsync($company_id, $status = null, $application_number = null, $title = null, $form_id = null, $start_application_date = null, $end_application_date = null, $applicant_id = null, $min_amount = null, $max_amount = null, $approver_id = null, $offset = null, $limit = null)
     {
@@ -2277,9 +2273,9 @@ class ApprovalRequestsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestsAsyncWithHttpInfo($company_id, $status = null, $application_number = null, $title = null, $form_id = null, $start_application_date = null, $end_application_date = null, $applicant_id = null, $min_amount = null, $max_amount = null, $approver_id = null, $offset = null, $limit = null)
     {
@@ -2336,9 +2332,9 @@ class ApprovalRequestsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getApprovalRequestsRequest($company_id, $status = null, $application_number = null, $title = null, $form_id = null, $start_application_date = null, $end_application_date = null, $applicant_id = null, $min_amount = null, $max_amount = null, $approver_id = null, $offset = null, $limit = null)
     {
@@ -2536,8 +2532,6 @@ class ApprovalRequestsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -2606,14 +2600,14 @@ class ApprovalRequestsApi
      * @param int                                               $id                             各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestUpdateParams $approval_request_update_params 各種申請の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateApprovalRequest($id, $approval_request_update_params)
     {
-        list($response) = $this->updateApprovalRequestWithHttpInfo($id, $approval_request_update_params);
+        [$response] = $this->updateApprovalRequestWithHttpInfo($id, $approval_request_update_params);
 
         return $response;
     }
@@ -2626,10 +2620,10 @@ class ApprovalRequestsApi
      * @param int                                               $id                             各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestUpdateParams $approval_request_update_params 各種申請の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateApprovalRequestWithHttpInfo($id, $approval_request_update_params)
     {
@@ -2670,7 +2664,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ApprovalRequestResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2820,9 +2814,9 @@ class ApprovalRequestsApi
      * @param int                                               $id                             各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestUpdateParams $approval_request_update_params 各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestAsync($id, $approval_request_update_params)
     {
@@ -2842,9 +2836,9 @@ class ApprovalRequestsApi
      * @param int                                               $id                             各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestUpdateParams $approval_request_update_params 各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestAsyncWithHttpInfo($id, $approval_request_update_params)
     {
@@ -2890,9 +2884,9 @@ class ApprovalRequestsApi
      * @param int                                               $id                             各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestUpdateParams $approval_request_update_params 各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestRequest($id, $approval_request_update_params)
     {
@@ -2919,7 +2913,6 @@ class ApprovalRequestsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -3006,14 +2999,14 @@ class ApprovalRequestsApi
      * @param int                                                     $id                                    各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestActionCreateParams $approval_request_action_create_params 各種申請の承認操作 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateApprovalRequestAction($id, $approval_request_action_create_params)
     {
-        list($response) = $this->updateApprovalRequestActionWithHttpInfo($id, $approval_request_action_create_params);
+        [$response] = $this->updateApprovalRequestActionWithHttpInfo($id, $approval_request_action_create_params);
 
         return $response;
     }
@@ -3026,10 +3019,10 @@ class ApprovalRequestsApi
      * @param int                                                     $id                                    各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestActionCreateParams $approval_request_action_create_params 各種申請の承認操作 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ApprovalRequestResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateApprovalRequestActionWithHttpInfo($id, $approval_request_action_create_params)
     {
@@ -3070,7 +3063,7 @@ class ApprovalRequestsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ApprovalRequestResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -3220,9 +3213,9 @@ class ApprovalRequestsApi
      * @param int                                                     $id                                    各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestActionCreateParams $approval_request_action_create_params 各種申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestActionAsync($id, $approval_request_action_create_params)
     {
@@ -3242,9 +3235,9 @@ class ApprovalRequestsApi
      * @param int                                                     $id                                    各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestActionCreateParams $approval_request_action_create_params 各種申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestActionAsyncWithHttpInfo($id, $approval_request_action_create_params)
     {
@@ -3290,9 +3283,9 @@ class ApprovalRequestsApi
      * @param int                                                     $id                                    各種申請ID (required)
      * @param \OpenAPI\Client\Model\ApprovalRequestActionCreateParams $approval_request_action_create_params 各種申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateApprovalRequestActionRequest($id, $approval_request_action_create_params)
     {
@@ -3319,7 +3312,6 @@ class ApprovalRequestsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -3401,9 +3393,9 @@ class ApprovalRequestsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

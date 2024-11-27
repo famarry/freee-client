@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealCreateResponseDeal.
  *
@@ -778,6 +779,7 @@ class DealCreateResponseDeal implements ModelInterface, ArrayAccess, \JsonSerial
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

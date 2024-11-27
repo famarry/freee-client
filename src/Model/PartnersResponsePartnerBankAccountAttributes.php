@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnersResponsePartnerBankAccountAttributes.
  *
@@ -543,6 +544,7 @@ class PartnersResponsePartnerBankAccountAttributes implements ModelInterface, Ar
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

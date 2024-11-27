@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationResponseExpenseApplication.
  *
@@ -1145,6 +1146,7 @@ class ExpenseApplicationResponseExpenseApplication implements ModelInterface, Ar
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

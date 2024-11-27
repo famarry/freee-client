@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestsIndexResponse.
  *
@@ -237,6 +238,7 @@ class PaymentRequestsIndexResponse implements ModelInterface, ArrayAccess, \Json
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

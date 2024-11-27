@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CompanyResponseCompanyAccountItems.
  *
@@ -349,6 +350,7 @@ class CompanyResponseCompanyAccountItems implements ModelInterface, ArrayAccess,
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

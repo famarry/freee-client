@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tax.
  *
@@ -318,6 +319,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

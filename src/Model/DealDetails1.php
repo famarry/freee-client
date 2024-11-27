@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealDetails1.
  *
@@ -679,6 +680,7 @@ class DealDetails1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

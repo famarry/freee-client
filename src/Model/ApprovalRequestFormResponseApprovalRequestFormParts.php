@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestFormResponseApprovalRequestFormParts.
  *
@@ -579,6 +580,7 @@ class ApprovalRequestFormResponseApprovalRequestFormParts implements ModelInterf
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

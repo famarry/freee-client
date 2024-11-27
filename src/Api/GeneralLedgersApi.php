@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GeneralLedgersApi
  * PHP version 7.3.
@@ -138,14 +139,14 @@ class GeneralLedgersApi
      * @param string    $segment_tag_3_name   セグメント３タグ名で絞込（未選択を指定すると、セグメント３タグが未選択で絞り込めます） (optional)
      * @param string    $approval_flow_status 承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return \OpenAPI\Client\Model\GeneralLedgersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\GeneralLedgersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError
      */
     public function getGeneralLedgers($company_id, $start_date, $end_date, $account_item_name = null, $tax_name = null, $tax_rate = null, $adjustment = null, $cost_allocation = null, $partner_name = null, $item_name = null, $section_name = null, $tag_name = null, $segment_tag_1_name = null, $segment_tag_2_name = null, $segment_tag_3_name = null, $approval_flow_status = null)
     {
-        list($response) = $this->getGeneralLedgersWithHttpInfo($company_id, $start_date, $end_date, $account_item_name, $tax_name, $tax_rate, $adjustment, $cost_allocation, $partner_name, $item_name, $section_name, $tag_name, $segment_tag_1_name, $segment_tag_2_name, $segment_tag_3_name, $approval_flow_status);
+        [$response] = $this->getGeneralLedgersWithHttpInfo($company_id, $start_date, $end_date, $account_item_name, $tax_name, $tax_rate, $adjustment, $cost_allocation, $partner_name, $item_name, $section_name, $tag_name, $segment_tag_1_name, $segment_tag_2_name, $segment_tag_3_name, $approval_flow_status);
 
         return $response;
     }
@@ -172,10 +173,10 @@ class GeneralLedgersApi
      * @param string    $segment_tag_3_name   セグメント３タグ名で絞込（未選択を指定すると、セグメント３タグが未選択で絞り込めます） (optional)
      * @param string    $approval_flow_status 承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
+     * @return array of \OpenAPI\Client\Model\GeneralLedgersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\GeneralLedgersResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGeneralLedgersWithHttpInfo($company_id, $start_date, $end_date, $account_item_name = null, $tax_name = null, $tax_rate = null, $adjustment = null, $cost_allocation = null, $partner_name = null, $item_name = null, $section_name = null, $tag_name = null, $segment_tag_1_name = null, $segment_tag_2_name = null, $segment_tag_3_name = null, $approval_flow_status = null)
     {
@@ -216,7 +217,7 @@ class GeneralLedgersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\GeneralLedgersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -380,9 +381,9 @@ class GeneralLedgersApi
      * @param string    $segment_tag_3_name   セグメント３タグ名で絞込（未選択を指定すると、セグメント３タグが未選択で絞り込めます） (optional)
      * @param string    $approval_flow_status 承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getGeneralLedgersAsync($company_id, $start_date, $end_date, $account_item_name = null, $tax_name = null, $tax_rate = null, $adjustment = null, $cost_allocation = null, $partner_name = null, $item_name = null, $section_name = null, $tag_name = null, $segment_tag_1_name = null, $segment_tag_2_name = null, $segment_tag_3_name = null, $approval_flow_status = null)
     {
@@ -416,9 +417,9 @@ class GeneralLedgersApi
      * @param string    $segment_tag_3_name   セグメント３タグ名で絞込（未選択を指定すると、セグメント３タグが未選択で絞り込めます） (optional)
      * @param string    $approval_flow_status 承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getGeneralLedgersAsyncWithHttpInfo($company_id, $start_date, $end_date, $account_item_name = null, $tax_name = null, $tax_rate = null, $adjustment = null, $cost_allocation = null, $partner_name = null, $item_name = null, $section_name = null, $tag_name = null, $segment_tag_1_name = null, $segment_tag_2_name = null, $segment_tag_3_name = null, $approval_flow_status = null)
     {
@@ -478,9 +479,9 @@ class GeneralLedgersApi
      * @param string    $segment_tag_3_name   セグメント３タグ名で絞込（未選択を指定すると、セグメント３タグが未選択で絞り込めます） (optional)
      * @param string    $approval_flow_status 承認ステータスで絞込 (未承認を除く: without_in_progress (デフォルト)、全てのステータス: all)&lt;br&gt; 事業所の設定から仕訳承認フローの利用を有効にした場合に指定可能です。 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getGeneralLedgersRequest($company_id, $start_date, $end_date, $account_item_name = null, $tax_name = null, $tax_rate = null, $adjustment = null, $cost_allocation = null, $partner_name = null, $item_name = null, $section_name = null, $tag_name = null, $segment_tag_1_name = null, $segment_tag_2_name = null, $segment_tag_3_name = null, $approval_flow_status = null)
     {
@@ -684,8 +685,6 @@ class GeneralLedgersApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -749,9 +748,9 @@ class GeneralLedgersApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

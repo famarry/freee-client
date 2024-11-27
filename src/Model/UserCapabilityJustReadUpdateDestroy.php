@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserCapabilityJustReadUpdateDestroy.
  *
@@ -293,6 +294,7 @@ class UserCapabilityJustReadUpdateDestroy implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

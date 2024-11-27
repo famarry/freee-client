@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealCreateResponseDealReceipts.
  *
@@ -586,6 +587,7 @@ class DealCreateResponseDealReceipts implements ModelInterface, ArrayAccess, \Js
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

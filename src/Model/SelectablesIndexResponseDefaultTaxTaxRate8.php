@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SelectablesIndexResponseDefaultTaxTaxRate8.
  *
@@ -278,6 +279,7 @@ class SelectablesIndexResponseDefaultTaxTaxRate8 implements ModelInterface, Arra
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

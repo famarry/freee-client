@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CompanyResponseCompanyItems.
  *
@@ -345,6 +346,7 @@ class CompanyResponseCompanyItems implements ModelInterface, ArrayAccess, \JsonS
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

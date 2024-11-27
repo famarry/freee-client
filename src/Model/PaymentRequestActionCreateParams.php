@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestActionCreateParams.
  *
@@ -446,6 +447,7 @@ class PaymentRequestActionCreateParams implements ModelInterface, ArrayAccess, \
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

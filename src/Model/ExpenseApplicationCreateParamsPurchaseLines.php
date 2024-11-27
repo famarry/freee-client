@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationCreateParamsPurchaseLines.
  *
@@ -335,6 +336,7 @@ class ExpenseApplicationCreateParamsPurchaseLines implements ModelInterface, Arr
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

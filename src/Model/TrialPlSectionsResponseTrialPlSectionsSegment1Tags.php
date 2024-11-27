@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialPlSectionsResponseTrialPlSectionsSegment1Tags.
  *
@@ -304,6 +305,7 @@ class TrialPlSectionsResponseTrialPlSectionsSegment1Tags implements ModelInterfa
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

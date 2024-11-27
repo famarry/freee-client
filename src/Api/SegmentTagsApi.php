@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SegmentTagsApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class SegmentTagsApi
      * @param int                                    $segment_id         セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。 (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SegmentTagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createSegmentTag($segment_id, $segment_tag_params)
     {
-        list($response) = $this->createSegmentTagWithHttpInfo($segment_id, $segment_tag_params);
+        [$response] = $this->createSegmentTagWithHttpInfo($segment_id, $segment_tag_params);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class SegmentTagsApi
      * @param int                                    $segment_id         セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。 (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SegmentTagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createSegmentTagWithHttpInfo($segment_id, $segment_tag_params)
     {
@@ -188,7 +189,7 @@ class SegmentTagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\SegmentTagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -318,9 +319,9 @@ class SegmentTagsApi
      * @param int                                    $segment_id         セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。 (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSegmentTagAsync($segment_id, $segment_tag_params)
     {
@@ -340,9 +341,9 @@ class SegmentTagsApi
      * @param int                                    $segment_id         セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。 (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSegmentTagAsyncWithHttpInfo($segment_id, $segment_tag_params)
     {
@@ -388,9 +389,9 @@ class SegmentTagsApi
      * @param int                                    $segment_id         セグメントID（1,2,3のいずれか） 該当プラン以外で参照した場合にはエラーとなります。 (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSegmentTagRequest($segment_id, $segment_tag_params)
     {
@@ -420,7 +421,6 @@ class SegmentTagsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -508,10 +508,10 @@ class SegmentTagsApi
      * @param int $id         セグメントタグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroySegmentsTag($segment_id, $id, $company_id)
     {
@@ -527,10 +527,10 @@ class SegmentTagsApi
      * @param int $id         セグメントタグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroySegmentsTagWithHttpInfo($segment_id, $id, $company_id)
     {
@@ -620,9 +620,9 @@ class SegmentTagsApi
      * @param int $id         セグメントタグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySegmentsTagAsync($segment_id, $id, $company_id)
     {
@@ -643,9 +643,9 @@ class SegmentTagsApi
      * @param int $id         セグメントタグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySegmentsTagAsyncWithHttpInfo($segment_id, $id, $company_id)
     {
@@ -682,9 +682,9 @@ class SegmentTagsApi
      * @param int $id         セグメントタグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySegmentsTagRequest($segment_id, $id, $company_id)
     {
@@ -829,14 +829,14 @@ class SegmentTagsApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse20017|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSegmentTags($company_id, $segment_id, $offset = null, $limit = null)
     {
-        list($response) = $this->getSegmentTagsWithHttpInfo($company_id, $segment_id, $offset, $limit);
+        [$response] = $this->getSegmentTagsWithHttpInfo($company_id, $segment_id, $offset, $limit);
 
         return $response;
     }
@@ -851,10 +851,10 @@ class SegmentTagsApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse20017|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSegmentTagsWithHttpInfo($company_id, $segment_id, $offset = null, $limit = null)
     {
@@ -895,7 +895,7 @@ class SegmentTagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20017' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1027,9 +1027,9 @@ class SegmentTagsApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSegmentTagsAsync($company_id, $segment_id, $offset = null, $limit = null)
     {
@@ -1051,9 +1051,9 @@ class SegmentTagsApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSegmentTagsAsyncWithHttpInfo($company_id, $segment_id, $offset = null, $limit = null)
     {
@@ -1101,9 +1101,9 @@ class SegmentTagsApi
      * @param int $offset     取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int $limit      取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSegmentTagsRequest($company_id, $segment_id, $offset = null, $limit = null)
     {
@@ -1263,14 +1263,14 @@ class SegmentTagsApi
      * @param int                                    $id                 セグメントタグID (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SegmentTagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateSegmentTag($segment_id, $id, $segment_tag_params)
     {
-        list($response) = $this->updateSegmentTagWithHttpInfo($segment_id, $id, $segment_tag_params);
+        [$response] = $this->updateSegmentTagWithHttpInfo($segment_id, $id, $segment_tag_params);
 
         return $response;
     }
@@ -1284,10 +1284,10 @@ class SegmentTagsApi
      * @param int                                    $id                 セグメントタグID (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SegmentTagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateSegmentTagWithHttpInfo($segment_id, $id, $segment_tag_params)
     {
@@ -1328,7 +1328,7 @@ class SegmentTagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\SegmentTagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1459,9 +1459,9 @@ class SegmentTagsApi
      * @param int                                    $id                 セグメントタグID (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSegmentTagAsync($segment_id, $id, $segment_tag_params)
     {
@@ -1482,9 +1482,9 @@ class SegmentTagsApi
      * @param int                                    $id                 セグメントタグID (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSegmentTagAsyncWithHttpInfo($segment_id, $id, $segment_tag_params)
     {
@@ -1531,9 +1531,9 @@ class SegmentTagsApi
      * @param int                                    $id                 セグメントタグID (required)
      * @param \OpenAPI\Client\Model\SegmentTagParams $segment_tag_params セグメントタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSegmentTagRequest($segment_id, $id, $segment_tag_params)
     {
@@ -1573,7 +1573,6 @@ class SegmentTagsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1663,9 +1662,9 @@ class SegmentTagsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

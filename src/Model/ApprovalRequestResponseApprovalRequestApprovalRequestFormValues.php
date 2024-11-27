@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestResponseApprovalRequestApprovalRequestFormValues.
  *
@@ -284,6 +285,7 @@ class ApprovalRequestResponseApprovalRequestApprovalRequestFormValues implements
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

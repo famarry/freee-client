@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InvoiceResponseInvoice.
  *
@@ -12,11 +13,11 @@
  */
 
 /**
- * freee会計 API.
+ * freee請求書 API.
  *
- * <hr /> <h2 id=\"start_guide\">スタートガイド</h2>  <p>freee API開発がはじめての方は<a href=\"https://developer.freee.co.jp/getting-started\">freee API スタートガイド</a>を参照してください。</p>  <hr /> <h2 id=\"specification\">お知らせ</h2>  <p> <b>インボイス制度に伴い、freee会計の帳票機能がfreee請求書に移行します。これに伴い、2023年10月にfreee会計の「請求書の作成、見積書の作成」エンドポイントは廃止、freee請求書APIに移行する予定です。詳細は<a href=\"https://developer.freee.co.jp/news/6369\" target=\"_blank\"> freee会計 APIの仕様変更（インボイス制度対応）について</a>をご確認ください。</b> </p>  <h2 id=\"specification\">仕様</h2>  <h3 id=\"api_endpoint\">APIエンドポイント</h3>  <p>https://api.freee.co.jp/ (httpsのみ)</p>  <h3 id=\"about_authorize\">認証について</h3> <p>OAuth2.0を利用します。<a href=\"https://developer.freee.co.jp/reference/#%e8%aa%8d%e8%a8%bc\" target=\"_blank\">詳細はリファレンスの認証に関する記載を参照してください。</a></p>  <h3 id=\"data_format\">データフォーマット</h3>  <p>リクエスト、レスポンスともにJSON形式をサポートしていますが、詳細は、API毎の説明欄（application/jsonなど）を確認してください。</p>  <h3 id=\"compatibility\">後方互換性ありの変更</h3>  <p>freeeでは、APIを改善していくために以下のような変更は後方互換性ありとして通知なく変更を入れることがあります。アプリケーション実装者は以下を踏まえて開発を行ってください。</p>  <ul> <li>新しいAPIリソース・エンドポイントの追加</li> <li>既存のAPIに対して必須ではない新しいリクエストパラメータの追加</li> <li>既存のAPIレスポンスに対する新しいプロパティの追加</li> <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li> <li>keyとなっているidやcodeの長さの変更（長くする）</li> <li>エラーメッセージの変更</li> </ul>  <h3 id=\"common_response_header\">共通レスポンスヘッダー</h3>  <p>すべてのAPIのレスポンスには以下のHTTPヘッダーが含まれます。</p>  <ul> <li> <p>X-Freee-Request-ID</p> <ul> <li>各リクエスト毎に発行されるID</li> </ul> </li> </ul>  <h3 id=\"common_error_response\">共通エラーレスポンス</h3>  <ul> <li> <p>ステータスコードはレスポンス内のJSONに含まれる他、HTTPヘッダにも含まれる</p> </li> <li> <p>一部のエラーレスポンスにはエラーコードが含まれます。<br>詳細は、<a href=\"https://developer.freee.co.jp/tips/faq/40x-checkpoint\">HTTPステータスコード400台エラー時のチェックポイント</a>を参照してください</p> </li> <p>type</p>  <ul> <li>status : HTTPステータスコードの説明</li>  <li>validation : エラーの詳細の説明（開発者向け）</li> </ul> </li> </ul>  <p>レスポンスの例</p>  <pre><code>  {     &quot;status_code&quot; : 400,     &quot;errors&quot; : [       {         &quot;type&quot; : &quot;status&quot;,         &quot;messages&quot; : [&quot;不正なリクエストです。&quot;]       },       {         &quot;type&quot; : &quot;validation&quot;,         &quot;messages&quot; : [&quot;Date は不正な日付フォーマットです。入力例：2019-12-17&quot;]       }     ]   }</code></pre>  </br>  <h3 id=\"api_rate_limit\">API 使用制限</h3>    <p>freeeは一定期間に過度のアクセスを検知した場合、APIアクセスをコントロールする場合があります。</p>   <p>その際のhttp status codeは403となります。制限がかかってから10分程度が過ぎると再度使用することができるようになります。</p>  <h4 id=\"reports_api_endpoint\">/reportsと/receipts/{id}/downloadエンドポイント</h4>  <p>freeeはエンドポイント毎に一定頻度以上のアクセスを検知した場合、APIアクセスをコントロールする場合があります。その際のhttp status codeは429（too many requests）となります。</p> <ul>   <li>/reports:1秒に10回まで</li>   <li>/receipts/{id}/download:1秒に3回まで</li> </ul>  <p>http status codeが429となった場合、API使用ステータスはレスポンスヘッダに付与されます。</p> <pre><code>x-ratelimit-limit:10 x-ratelimit-remaining:1 x-ratelimit-reset:2023-01-13T10:22:29+09:00 </code></pre>  <br> 各ヘッダの意味は次のとおりです。</p>  <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ヘッダ名</strong></th>       <th style=\"padding: 10px\"><strong>説明</strong></th>     </tr>     <tr><td style=\"padding: 10px\">x-ratelimit-limit</td><td style=\"padding: 10px\">使用回数の上限</td></tr>     <tr><td style=\"padding: 10px\">x-ratelimit-remaining</td><td style=\"padding: 10px\">残り使用回数</td></tr>     <tr><td style=\"padding: 10px\">x-ratelimit-reset</td><td style=\"padding: 10px\">使用回数がリセットされる時刻</td></tr>   </tbody> </table>  </br>  <h3 id=\"plan_api_rate_limit\">プランごとの API 使用制限</h3>   <table border=\"1\">     <tbody>       <tr>         <th style=\"padding: 10px\"><strong>freee会計プラン名</strong></th>         <th style=\"padding: 10px\"><strong>事業所とアプリケーション毎に、1日のAPIコール数の上限</strong></th>       </tr>       <tr>         <td style=\"padding: 10px\">法人エンタープライズプラン</td>         <td style=\"padding: 10px\">10,000</td>       </tr>       <tr>         <td style=\"padding: 10px\">法人アドバンスプラン（および旧法人プロフェッショナルプラン）</td>         <td style=\"padding: 10px\">5,000</td>       </tr>       <tr>         <td style=\"padding: 10px\">上記以外</td>         <td style=\"padding: 10px\">3,000</td>       </tr>     </tbody>   </table>  <h3 id=\"available_apis_by_plan\">プランごとの利用可能 API</h3> <p>契約プランごとにご利用可能な freee 会計 API は異なります。 freee 会計の Web 版でご利用いただける機能について、 freee 会計 API でもご利用いただけます。</p> <p>例えば法人スタータープラン、旧法人ベーシックプランをご契約いただいている場合、 Web 版では経費精算機能をご利用いただけますので、 API でも経費精算 API をご利用可能です。</p> <p>ただし以下の API は例外です。</p> <ul>   <li>総勘定元帳API：旧法人プロフェッショナルプラン、旧法人エンタープライズプラン、法人アドバンスプラン、新法人エンタープライズプランに加入している事業所のみがご利用可能です。</li>   <li>固定資産台帳API：旧法人エンタープライズプラン、新法人エンタープライズプランに加入している事業所のみがご利用可能です。</li> </ul> <p>詳しくは、<a href=\"https://support.freee.co.jp/hc/ja/articles/213726523--個人-freee会計のプランについて\" target=\"_blank\">【個人】freee会計のプランについて</a> 並びに <a href=\"https://support.freee.co.jp/hc/ja/articles/202849000--法人-freee会計のプランについて\" target=\"_blank\">【法人】freee会計のプランについて</a>をご確認ください。</p>  <h3 id=\"available_parameters_by_plan\">プランごとの利用可能パラメータ</h3> <p>ご利用可能な freee 会計 API であっても、契約プランごとに利用可能なパラメータは異なります。</p> <table border=\"1\">   <thead>     <tr>       <th>パラメータ</th>       <th>説明</th>       <th>利用可能プラン</th>     </tr>   </thead>   <tbody>     <tr>       <td>segment_1_tag</td>       <td>セグメント１タグ</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン<br />旧法人プロフェッショナルプラン</td>     </tr>     <tr>       <td>segment_2_tag</td>       <td>セグメント２タグ</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_3_tag</td>       <td>セグメント３タグ</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_1_tag_id</td>       <td>セグメント１タグID</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン<br />旧法人プロフェッショナルプラン</td>     </tr>     <tr>       <td>segment_2_tag_id</td>       <td>セグメント２タグID</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_3_tag_id</td>       <td>セグメント３タグID</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_1_tag_name</td>       <td>セグメント１タグ名</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン<br />旧法人プロフェッショナルプラン</td>     </tr>     <tr>       <td>segment_2_tag_name</td>       <td>セグメント２タグ名</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_3_tag_name</td>       <td>セグメント３タグ名</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン</td>     </tr>     <tr>       <td>segment_id</td>       <td>セグメントID（1, 2, 3 のいずれか）</td>       <td>法人アドバンスプラン<br />法人エンタープライズプラン<br />旧法人プロフェッショナルプラン<br />旧法人プロフェッショナルプランにつきましては、 1 のみ指定可能です。</td>     </tr>   </tbody> </table>  <h3 id=\"webhook\">Webhookについて</h3>  <p>詳細は<a href=\"https://developer.freee.co.jp/docs/accounting/webhook\" target=\"_blank\">会計Webhook概要</a>を参照してください。</p>  <hr /> <h2 id=\"contact\">連絡先</h2>  <p>ご不明点、ご要望等は <a href=\"https://freee.my.site.com/HelpCenter/s\">freee サポートデスクへのお問い合わせフォーム</a> からご連絡ください。</p> <hr />&copy; Since 2013 freee K.K.
+ * <p>freee請求書のAPI仕様です。</p>  <b>freee請求書APIを利用するには、freee請求書への登録が必要です。  登録は<a href=\"https://www.freee.co.jp/invoice/\" target=\"_blank\">freee請求書</a>より行ってください。</b>  </br>  <h3 id=\"about_authorize\">認証について</h3>  <p>OAuth2.0を利用します。<a href=\"https://developer.freee.co.jp/reference/#%e8%aa%8d%e8%a8%bc\" target=\"_blank\">詳細はリファレンスの認証に関する記載を参照してください。</a></p>  <h3 id=\"api_endpoint\">エンドポイント</h3>  <p>https://api.freee.co.jp/iv</p>   <h3 id=\"compatibility\">後方互換性ありの変更</h3>  <p>freeeでは、APIを改善していくために以下のような変更は後方互換性ありとして通知なく変更を入れることがあります。アプリケーション実装者は以下を踏まえて開発を行ってください。</p>  <ul> <li>新しいAPIリソース・エンドポイントの追加</li> <li>既存のAPIに対して必須ではない新しいリクエストパラメータの追加</li> <li>既存のAPIレスポンスに対する新しいプロパティの追加</li> <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li> <li>keyとなっているidやcodeの長さの変更（長くする）</li> </ul>  <h3 id=\"error_response\">エラーレスポンス</h3>  <p>APIリクエストでエラーが発生した場合は、エラー原因に応じたステータスコードおよびメッセージを返します。</p>    <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ステータスコード</strong></th>       <th style=\"padding: 10px\"><strong>原因</strong></th>     </tr>     <tr><td style=\"padding: 10px\">400</td><td style=\"padding: 10px\">リクエストパラメータが不正</td></tr>     <tr><td style=\"padding: 10px\">401</td><td style=\"padding: 10px\">アクセストークンが無効</td></tr>     <tr><td style=\"padding: 10px\">403</td><td style=\"padding: 10px\">アクセス権限がない</td></tr>     <tr><td style=\"padding: 10px\">404</td><td style=\"padding: 10px\">リソースが存在しない</td></tr>     <tr><td style=\"padding: 10px\">429</td><td style=\"padding: 10px\">リクエスト回数制限を超えた</td></tr>     <tr><td style=\"padding: 10px\">503</td><td style=\"padding: 10px\">システム内で予期しないエラーが発生</td></tr>   </tbody> </table>  <p>メッセージボディ内の <code>messages</code> にはエラー内容を説明する文字列が入ります。</p> <pre><code>  {     &quot;status_code&quot; : 400,     &quot;errors&quot; : [       {         &quot;type&quot; : &quot;bad_request&quot;,         &quot;messages&quot; : [           &quot;リクエストの形式が不正です。&quot;         ]       }     ]   }  </code></pre>  </br>  <h3 id=\"api_rate_limit\">API使用制限</h3> <p>APIリクエストは1時間で5000回を上限としています。API使用ステータスはレスポンスヘッダに付与されます。</p> <pre><code>X-Ratelimit-Limit:5000 X-Ratelimit-Remaining:4998 X-Ratelimit-Reset:2018-01-01T12:00:00.000000Z </code></pre>  <br> 各ヘッダの意味は次のとおりです。</p>   <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ヘッダ名</strong></th>       <th style=\"padding: 10px\"><strong>説明</strong></th>     </tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Limit</td><td style=\"padding: 10px\">使用回数の上限</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Remaining</td><td style=\"padding: 10px\">残り使用回数</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Reset</td><td style=\"padding: 10px\">使用回数がリセットされる時刻</td></tr>   </tbody> </table>  <p>上記に加え、freeeは一定期間に過度のアクセスを検知した場合、APIアクセスをコントロールする場合があります。<br> その際のhttp status codeは403となります。制限がかかってから10分程度が過ぎると再度使用することができるようになります。</p>  </br>  <h3 id=\"accounting_master_items\">会計マスタ項目</h3>  <p>freee請求書APIのリクエストパラメータに、会計マスタ項目（例：<a href=\"https://developer.freee.co.jp/reference/iv/reference#operations-tag-Invoices\">POST/invoices請求書の作成</a> 取引先ID）があります。会計マスタ項目の詳細は<a href=\"https://developer.freee.co.jp/guideline/master-guideline\">会計マスタガイドラインを参照ください</a>。</p>  <p>会計のマスタ項目はfreee会計APIのエンドポイントにて取得可能です（例：<a href=\"https://developer.freee.co.jp/reference/accounting/reference#operations-tag-Partners\">Partners 取引先</a>）。freee会計APIのエンドポイントの詳細は<a href=\"https://developer.freee.co.jp/reference/accounting/reference\">会計APIリファレンスを参照ください</a>。</p>  </br>
  *
- * The version of the OpenAPI document: v1.0
+ * The version of the OpenAPI document: v1
  * Generated by: https://openapi-generator.tech
  * OpenAPI Generator version: 5.4.0
  */
@@ -54,7 +55,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @var string
      */
-    protected static $openAPIModelName = 'invoiceResponse_invoice';
+    protected static $openAPIModelName = 'InvoiceResponse_invoice';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -62,53 +63,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id'                        => 'int',
-        'company_id'                => 'int',
-        'issue_date'                => 'string',
-        'partner_id'                => 'int',
-        'partner_code'              => 'string',
-        'invoice_number'            => 'string',
-        'title'                     => 'string',
-        'due_date'                  => 'string',
-        'total_amount'              => 'int',
-        'total_vat'                 => 'int',
-        'sub_total'                 => 'int',
-        'booking_date'              => 'string',
-        'description'               => 'string',
-        'invoice_status'            => 'string',
-        'payment_status'            => 'string',
-        'payment_date'              => 'string',
-        'web_published_at'          => 'string',
-        'web_downloaded_at'         => 'string',
-        'web_confirmed_at'          => 'string',
-        'mail_sent_at'              => 'string',
-        'posting_status'            => 'string',
-        'partner_name'              => 'string',
-        'partner_display_name'      => 'string',
-        'partner_title'             => 'string',
-        'partner_zipcode'           => 'string',
-        'partner_prefecture_code'   => 'int',
-        'partner_prefecture_name'   => 'string',
-        'partner_address1'          => 'string',
-        'partner_address2'          => 'string',
-        'partner_contact_info'      => 'string',
-        'company_name'              => 'string',
-        'company_zipcode'           => 'string',
-        'company_prefecture_code'   => 'int',
-        'company_prefecture_name'   => 'string',
-        'company_address1'          => 'string',
-        'company_address2'          => 'string',
-        'company_contact_info'      => 'string',
-        'payment_type'              => 'string',
-        'payment_bank_info'         => 'string',
-        'message'                   => 'string',
-        'notes'                     => 'string',
-        'invoice_layout'            => 'string',
-        'tax_entry_method'          => 'string',
-        'deal_id'                   => 'int',
-        'invoice_contents'          => '\OpenAPI\Client\Model\InvoiceResponseInvoiceInvoiceContents[]',
-        'total_amount_per_vat_rate' => '\OpenAPI\Client\Model\InvoiceIndexResponseTotalAmountPerVatRate',
-        'related_quotation_ids'     => 'int[]',
+        'id'                              => 'int',
+        'company_id'                      => 'int',
+        'invoice_number'                  => 'string',
+        'branch_no'                       => 'int',
+        'subject'                         => 'string',
+        'template_id'                     => 'int',
+        'template_name'                   => 'string',
+        'billing_date'                    => '\DateTime',
+        'issue_date'                      => '\DateTime',
+        'payment_date'                    => '\DateTime',
+        'payment_type'                    => 'string',
+        'invoice_note'                    => 'string',
+        'memo'                            => 'string',
+        'sending_status'                  => 'string',
+        'payment_status'                  => 'string',
+        'cancel_status'                   => 'string',
+        'deal_status'                     => 'string',
+        'deal_id'                         => 'int',
+        'tax_entry_method'                => 'string',
+        'tax_fraction'                    => 'string',
+        'line_amount_fraction'            => 'string',
+        'withholding_tax_entry_method'    => 'string',
+        'total_amount'                    => 'double',
+        'created_at'                      => '\DateTime',
+        'amount_withholding_tax'          => 'float',
+        'amount_including_tax'            => 'double',
+        'amount_excluding_tax'            => 'float',
+        'amount_tax'                      => 'float',
+        'amount_including_tax_10'         => 'double',
+        'amount_excluding_tax_10'         => 'double',
+        'amount_tax_10'                   => 'double',
+        'amount_including_tax_8'          => 'double',
+        'amount_excluding_tax_8'          => 'double',
+        'amount_tax_8'                    => 'double',
+        'amount_including_tax_8_reduced'  => 'double',
+        'amount_excluding_tax_8_reduced'  => 'double',
+        'amount_tax_8_reduced'            => 'double',
+        'amount_including_tax_0'          => 'double',
+        'amount_excluding_tax_0'          => 'double',
+        'amount_tax_0'                    => 'double',
+        'amount_brought_forward'          => 'double',
+        'partner_id'                      => 'int',
+        'partner_code'                    => 'string',
+        'partner_name'                    => 'string',
+        'partner_title'                   => 'string',
+        'partner_address_zipcode'         => 'string',
+        'partner_address_prefecture_code' => 'int',
+        'partner_address_street_name1'    => 'string',
+        'partner_address_street_name2'    => 'string',
+        'partner_contact_department'      => 'string',
+        'partner_contact_email_cc'        => 'string',
+        'partner_contact_email_to'        => 'string',
+        'partner_contact_name'            => 'string',
+        'partner_display_name'            => 'string',
+        'partner_bank_account'            => 'string',
+        'company_contact_name'            => 'string',
+        'company_name'                    => 'string',
+        'company_description'             => 'string',
+        'bank_account_to_transfer'        => 'string',
+        'template'                        => '\OpenAPI\Client\Model\InvoiceResponseInvoiceTemplate',
+        'lines'                           => '\OpenAPI\Client\Model\InvoiceResponseInvoiceLines[]',
     ];
 
     /**
@@ -121,53 +136,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id'                        => 'int64',
-        'company_id'                => 'int64',
-        'issue_date'                => null,
-        'partner_id'                => 'int64',
-        'partner_code'              => null,
-        'invoice_number'            => null,
-        'title'                     => null,
-        'due_date'                  => null,
-        'total_amount'              => 'int64',
-        'total_vat'                 => 'int64',
-        'sub_total'                 => 'int64',
-        'booking_date'              => null,
-        'description'               => null,
-        'invoice_status'            => null,
-        'payment_status'            => null,
-        'payment_date'              => null,
-        'web_published_at'          => null,
-        'web_downloaded_at'         => null,
-        'web_confirmed_at'          => null,
-        'mail_sent_at'              => null,
-        'posting_status'            => null,
-        'partner_name'              => null,
-        'partner_display_name'      => null,
-        'partner_title'             => null,
-        'partner_zipcode'           => null,
-        'partner_prefecture_code'   => 'int64',
-        'partner_prefecture_name'   => null,
-        'partner_address1'          => null,
-        'partner_address2'          => null,
-        'partner_contact_info'      => null,
-        'company_name'              => null,
-        'company_zipcode'           => null,
-        'company_prefecture_code'   => 'int64',
-        'company_prefecture_name'   => null,
-        'company_address1'          => null,
-        'company_address2'          => null,
-        'company_contact_info'      => null,
-        'payment_type'              => null,
-        'payment_bank_info'         => null,
-        'message'                   => null,
-        'notes'                     => null,
-        'invoice_layout'            => null,
-        'tax_entry_method'          => null,
-        'deal_id'                   => 'int64',
-        'invoice_contents'          => null,
-        'total_amount_per_vat_rate' => null,
-        'related_quotation_ids'     => 'int64',
+        'id'                              => 'int64',
+        'company_id'                      => 'int64',
+        'invoice_number'                  => null,
+        'branch_no'                       => null,
+        'subject'                         => null,
+        'template_id'                     => 'int64',
+        'template_name'                   => null,
+        'billing_date'                    => 'date',
+        'issue_date'                      => 'date',
+        'payment_date'                    => 'date',
+        'payment_type'                    => null,
+        'invoice_note'                    => null,
+        'memo'                            => null,
+        'sending_status'                  => null,
+        'payment_status'                  => null,
+        'cancel_status'                   => null,
+        'deal_status'                     => null,
+        'deal_id'                         => 'int64',
+        'tax_entry_method'                => null,
+        'tax_fraction'                    => null,
+        'line_amount_fraction'            => null,
+        'withholding_tax_entry_method'    => null,
+        'total_amount'                    => 'double',
+        'created_at'                      => 'date-time',
+        'amount_withholding_tax'          => null,
+        'amount_including_tax'            => 'double',
+        'amount_excluding_tax'            => null,
+        'amount_tax'                      => null,
+        'amount_including_tax_10'         => 'double',
+        'amount_excluding_tax_10'         => 'double',
+        'amount_tax_10'                   => 'double',
+        'amount_including_tax_8'          => 'double',
+        'amount_excluding_tax_8'          => 'double',
+        'amount_tax_8'                    => 'double',
+        'amount_including_tax_8_reduced'  => 'double',
+        'amount_excluding_tax_8_reduced'  => 'double',
+        'amount_tax_8_reduced'            => 'double',
+        'amount_including_tax_0'          => 'double',
+        'amount_excluding_tax_0'          => 'double',
+        'amount_tax_0'                    => 'double',
+        'amount_brought_forward'          => 'double',
+        'partner_id'                      => 'int64',
+        'partner_code'                    => null,
+        'partner_name'                    => null,
+        'partner_title'                   => null,
+        'partner_address_zipcode'         => null,
+        'partner_address_prefecture_code' => null,
+        'partner_address_street_name1'    => null,
+        'partner_address_street_name2'    => null,
+        'partner_contact_department'      => null,
+        'partner_contact_email_cc'        => null,
+        'partner_contact_email_to'        => null,
+        'partner_contact_name'            => null,
+        'partner_display_name'            => null,
+        'partner_bank_account'            => null,
+        'company_contact_name'            => null,
+        'company_name'                    => null,
+        'company_description'             => null,
+        'bank_account_to_transfer'        => null,
+        'template'                        => null,
+        'lines'                           => null,
     ];
 
     /**
@@ -197,53 +226,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'id'                        => 'id',
-        'company_id'                => 'company_id',
-        'issue_date'                => 'issue_date',
-        'partner_id'                => 'partner_id',
-        'partner_code'              => 'partner_code',
-        'invoice_number'            => 'invoice_number',
-        'title'                     => 'title',
-        'due_date'                  => 'due_date',
-        'total_amount'              => 'total_amount',
-        'total_vat'                 => 'total_vat',
-        'sub_total'                 => 'sub_total',
-        'booking_date'              => 'booking_date',
-        'description'               => 'description',
-        'invoice_status'            => 'invoice_status',
-        'payment_status'            => 'payment_status',
-        'payment_date'              => 'payment_date',
-        'web_published_at'          => 'web_published_at',
-        'web_downloaded_at'         => 'web_downloaded_at',
-        'web_confirmed_at'          => 'web_confirmed_at',
-        'mail_sent_at'              => 'mail_sent_at',
-        'posting_status'            => 'posting_status',
-        'partner_name'              => 'partner_name',
-        'partner_display_name'      => 'partner_display_name',
-        'partner_title'             => 'partner_title',
-        'partner_zipcode'           => 'partner_zipcode',
-        'partner_prefecture_code'   => 'partner_prefecture_code',
-        'partner_prefecture_name'   => 'partner_prefecture_name',
-        'partner_address1'          => 'partner_address1',
-        'partner_address2'          => 'partner_address2',
-        'partner_contact_info'      => 'partner_contact_info',
-        'company_name'              => 'company_name',
-        'company_zipcode'           => 'company_zipcode',
-        'company_prefecture_code'   => 'company_prefecture_code',
-        'company_prefecture_name'   => 'company_prefecture_name',
-        'company_address1'          => 'company_address1',
-        'company_address2'          => 'company_address2',
-        'company_contact_info'      => 'company_contact_info',
-        'payment_type'              => 'payment_type',
-        'payment_bank_info'         => 'payment_bank_info',
-        'message'                   => 'message',
-        'notes'                     => 'notes',
-        'invoice_layout'            => 'invoice_layout',
-        'tax_entry_method'          => 'tax_entry_method',
-        'deal_id'                   => 'deal_id',
-        'invoice_contents'          => 'invoice_contents',
-        'total_amount_per_vat_rate' => 'total_amount_per_vat_rate',
-        'related_quotation_ids'     => 'related_quotation_ids',
+        'id'                              => 'id',
+        'company_id'                      => 'company_id',
+        'invoice_number'                  => 'invoice_number',
+        'branch_no'                       => 'branch_no',
+        'subject'                         => 'subject',
+        'template_id'                     => 'template_id',
+        'template_name'                   => 'template_name',
+        'billing_date'                    => 'billing_date',
+        'issue_date'                      => 'issue_date',
+        'payment_date'                    => 'payment_date',
+        'payment_type'                    => 'payment_type',
+        'invoice_note'                    => 'invoice_note',
+        'memo'                            => 'memo',
+        'sending_status'                  => 'sending_status',
+        'payment_status'                  => 'payment_status',
+        'cancel_status'                   => 'cancel_status',
+        'deal_status'                     => 'deal_status',
+        'deal_id'                         => 'deal_id',
+        'tax_entry_method'                => 'tax_entry_method',
+        'tax_fraction'                    => 'tax_fraction',
+        'line_amount_fraction'            => 'line_amount_fraction',
+        'withholding_tax_entry_method'    => 'withholding_tax_entry_method',
+        'total_amount'                    => 'total_amount',
+        'created_at'                      => 'created_at',
+        'amount_withholding_tax'          => 'amount_withholding_tax',
+        'amount_including_tax'            => 'amount_including_tax',
+        'amount_excluding_tax'            => 'amount_excluding_tax',
+        'amount_tax'                      => 'amount_tax',
+        'amount_including_tax_10'         => 'amount_including_tax_10',
+        'amount_excluding_tax_10'         => 'amount_excluding_tax_10',
+        'amount_tax_10'                   => 'amount_tax_10',
+        'amount_including_tax_8'          => 'amount_including_tax_8',
+        'amount_excluding_tax_8'          => 'amount_excluding_tax_8',
+        'amount_tax_8'                    => 'amount_tax_8',
+        'amount_including_tax_8_reduced'  => 'amount_including_tax_8_reduced',
+        'amount_excluding_tax_8_reduced'  => 'amount_excluding_tax_8_reduced',
+        'amount_tax_8_reduced'            => 'amount_tax_8_reduced',
+        'amount_including_tax_0'          => 'amount_including_tax_0',
+        'amount_excluding_tax_0'          => 'amount_excluding_tax_0',
+        'amount_tax_0'                    => 'amount_tax_0',
+        'amount_brought_forward'          => 'amount_brought_forward',
+        'partner_id'                      => 'partner_id',
+        'partner_code'                    => 'partner_code',
+        'partner_name'                    => 'partner_name',
+        'partner_title'                   => 'partner_title',
+        'partner_address_zipcode'         => 'partner_address_zipcode',
+        'partner_address_prefecture_code' => 'partner_address_prefecture_code',
+        'partner_address_street_name1'    => 'partner_address_street_name1',
+        'partner_address_street_name2'    => 'partner_address_street_name2',
+        'partner_contact_department'      => 'partner_contact_department',
+        'partner_contact_email_cc'        => 'partner_contact_email_cc',
+        'partner_contact_email_to'        => 'partner_contact_email_to',
+        'partner_contact_name'            => 'partner_contact_name',
+        'partner_display_name'            => 'partner_display_name',
+        'partner_bank_account'            => 'partner_bank_account',
+        'company_contact_name'            => 'company_contact_name',
+        'company_name'                    => 'company_name',
+        'company_description'             => 'company_description',
+        'bank_account_to_transfer'        => 'bank_account_to_transfer',
+        'template'                        => 'template',
+        'lines'                           => 'lines',
     ];
 
     /**
@@ -252,53 +295,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'id'                        => 'setId',
-        'company_id'                => 'setCompanyId',
-        'issue_date'                => 'setIssueDate',
-        'partner_id'                => 'setPartnerId',
-        'partner_code'              => 'setPartnerCode',
-        'invoice_number'            => 'setInvoiceNumber',
-        'title'                     => 'setTitle',
-        'due_date'                  => 'setDueDate',
-        'total_amount'              => 'setTotalAmount',
-        'total_vat'                 => 'setTotalVat',
-        'sub_total'                 => 'setSubTotal',
-        'booking_date'              => 'setBookingDate',
-        'description'               => 'setDescription',
-        'invoice_status'            => 'setInvoiceStatus',
-        'payment_status'            => 'setPaymentStatus',
-        'payment_date'              => 'setPaymentDate',
-        'web_published_at'          => 'setWebPublishedAt',
-        'web_downloaded_at'         => 'setWebDownloadedAt',
-        'web_confirmed_at'          => 'setWebConfirmedAt',
-        'mail_sent_at'              => 'setMailSentAt',
-        'posting_status'            => 'setPostingStatus',
-        'partner_name'              => 'setPartnerName',
-        'partner_display_name'      => 'setPartnerDisplayName',
-        'partner_title'             => 'setPartnerTitle',
-        'partner_zipcode'           => 'setPartnerZipcode',
-        'partner_prefecture_code'   => 'setPartnerPrefectureCode',
-        'partner_prefecture_name'   => 'setPartnerPrefectureName',
-        'partner_address1'          => 'setPartnerAddress1',
-        'partner_address2'          => 'setPartnerAddress2',
-        'partner_contact_info'      => 'setPartnerContactInfo',
-        'company_name'              => 'setCompanyName',
-        'company_zipcode'           => 'setCompanyZipcode',
-        'company_prefecture_code'   => 'setCompanyPrefectureCode',
-        'company_prefecture_name'   => 'setCompanyPrefectureName',
-        'company_address1'          => 'setCompanyAddress1',
-        'company_address2'          => 'setCompanyAddress2',
-        'company_contact_info'      => 'setCompanyContactInfo',
-        'payment_type'              => 'setPaymentType',
-        'payment_bank_info'         => 'setPaymentBankInfo',
-        'message'                   => 'setMessage',
-        'notes'                     => 'setNotes',
-        'invoice_layout'            => 'setInvoiceLayout',
-        'tax_entry_method'          => 'setTaxEntryMethod',
-        'deal_id'                   => 'setDealId',
-        'invoice_contents'          => 'setInvoiceContents',
-        'total_amount_per_vat_rate' => 'setTotalAmountPerVatRate',
-        'related_quotation_ids'     => 'setRelatedQuotationIds',
+        'id'                              => 'setId',
+        'company_id'                      => 'setCompanyId',
+        'invoice_number'                  => 'setInvoiceNumber',
+        'branch_no'                       => 'setBranchNo',
+        'subject'                         => 'setSubject',
+        'template_id'                     => 'setTemplateId',
+        'template_name'                   => 'setTemplateName',
+        'billing_date'                    => 'setBillingDate',
+        'issue_date'                      => 'setIssueDate',
+        'payment_date'                    => 'setPaymentDate',
+        'payment_type'                    => 'setPaymentType',
+        'invoice_note'                    => 'setInvoiceNote',
+        'memo'                            => 'setMemo',
+        'sending_status'                  => 'setSendingStatus',
+        'payment_status'                  => 'setPaymentStatus',
+        'cancel_status'                   => 'setCancelStatus',
+        'deal_status'                     => 'setDealStatus',
+        'deal_id'                         => 'setDealId',
+        'tax_entry_method'                => 'setTaxEntryMethod',
+        'tax_fraction'                    => 'setTaxFraction',
+        'line_amount_fraction'            => 'setLineAmountFraction',
+        'withholding_tax_entry_method'    => 'setWithholdingTaxEntryMethod',
+        'total_amount'                    => 'setTotalAmount',
+        'created_at'                      => 'setCreatedAt',
+        'amount_withholding_tax'          => 'setAmountWithholdingTax',
+        'amount_including_tax'            => 'setAmountIncludingTax',
+        'amount_excluding_tax'            => 'setAmountExcludingTax',
+        'amount_tax'                      => 'setAmountTax',
+        'amount_including_tax_10'         => 'setAmountIncludingTax10',
+        'amount_excluding_tax_10'         => 'setAmountExcludingTax10',
+        'amount_tax_10'                   => 'setAmountTax10',
+        'amount_including_tax_8'          => 'setAmountIncludingTax8',
+        'amount_excluding_tax_8'          => 'setAmountExcludingTax8',
+        'amount_tax_8'                    => 'setAmountTax8',
+        'amount_including_tax_8_reduced'  => 'setAmountIncludingTax8Reduced',
+        'amount_excluding_tax_8_reduced'  => 'setAmountExcludingTax8Reduced',
+        'amount_tax_8_reduced'            => 'setAmountTax8Reduced',
+        'amount_including_tax_0'          => 'setAmountIncludingTax0',
+        'amount_excluding_tax_0'          => 'setAmountExcludingTax0',
+        'amount_tax_0'                    => 'setAmountTax0',
+        'amount_brought_forward'          => 'setAmountBroughtForward',
+        'partner_id'                      => 'setPartnerId',
+        'partner_code'                    => 'setPartnerCode',
+        'partner_name'                    => 'setPartnerName',
+        'partner_title'                   => 'setPartnerTitle',
+        'partner_address_zipcode'         => 'setPartnerAddressZipcode',
+        'partner_address_prefecture_code' => 'setPartnerAddressPrefectureCode',
+        'partner_address_street_name1'    => 'setPartnerAddressStreetName1',
+        'partner_address_street_name2'    => 'setPartnerAddressStreetName2',
+        'partner_contact_department'      => 'setPartnerContactDepartment',
+        'partner_contact_email_cc'        => 'setPartnerContactEmailCc',
+        'partner_contact_email_to'        => 'setPartnerContactEmailTo',
+        'partner_contact_name'            => 'setPartnerContactName',
+        'partner_display_name'            => 'setPartnerDisplayName',
+        'partner_bank_account'            => 'setPartnerBankAccount',
+        'company_contact_name'            => 'setCompanyContactName',
+        'company_name'                    => 'setCompanyName',
+        'company_description'             => 'setCompanyDescription',
+        'bank_account_to_transfer'        => 'setBankAccountToTransfer',
+        'template'                        => 'setTemplate',
+        'lines'                           => 'setLines',
     ];
 
     /**
@@ -307,53 +364,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'id'                        => 'getId',
-        'company_id'                => 'getCompanyId',
-        'issue_date'                => 'getIssueDate',
-        'partner_id'                => 'getPartnerId',
-        'partner_code'              => 'getPartnerCode',
-        'invoice_number'            => 'getInvoiceNumber',
-        'title'                     => 'getTitle',
-        'due_date'                  => 'getDueDate',
-        'total_amount'              => 'getTotalAmount',
-        'total_vat'                 => 'getTotalVat',
-        'sub_total'                 => 'getSubTotal',
-        'booking_date'              => 'getBookingDate',
-        'description'               => 'getDescription',
-        'invoice_status'            => 'getInvoiceStatus',
-        'payment_status'            => 'getPaymentStatus',
-        'payment_date'              => 'getPaymentDate',
-        'web_published_at'          => 'getWebPublishedAt',
-        'web_downloaded_at'         => 'getWebDownloadedAt',
-        'web_confirmed_at'          => 'getWebConfirmedAt',
-        'mail_sent_at'              => 'getMailSentAt',
-        'posting_status'            => 'getPostingStatus',
-        'partner_name'              => 'getPartnerName',
-        'partner_display_name'      => 'getPartnerDisplayName',
-        'partner_title'             => 'getPartnerTitle',
-        'partner_zipcode'           => 'getPartnerZipcode',
-        'partner_prefecture_code'   => 'getPartnerPrefectureCode',
-        'partner_prefecture_name'   => 'getPartnerPrefectureName',
-        'partner_address1'          => 'getPartnerAddress1',
-        'partner_address2'          => 'getPartnerAddress2',
-        'partner_contact_info'      => 'getPartnerContactInfo',
-        'company_name'              => 'getCompanyName',
-        'company_zipcode'           => 'getCompanyZipcode',
-        'company_prefecture_code'   => 'getCompanyPrefectureCode',
-        'company_prefecture_name'   => 'getCompanyPrefectureName',
-        'company_address1'          => 'getCompanyAddress1',
-        'company_address2'          => 'getCompanyAddress2',
-        'company_contact_info'      => 'getCompanyContactInfo',
-        'payment_type'              => 'getPaymentType',
-        'payment_bank_info'         => 'getPaymentBankInfo',
-        'message'                   => 'getMessage',
-        'notes'                     => 'getNotes',
-        'invoice_layout'            => 'getInvoiceLayout',
-        'tax_entry_method'          => 'getTaxEntryMethod',
-        'deal_id'                   => 'getDealId',
-        'invoice_contents'          => 'getInvoiceContents',
-        'total_amount_per_vat_rate' => 'getTotalAmountPerVatRate',
-        'related_quotation_ids'     => 'getRelatedQuotationIds',
+        'id'                              => 'getId',
+        'company_id'                      => 'getCompanyId',
+        'invoice_number'                  => 'getInvoiceNumber',
+        'branch_no'                       => 'getBranchNo',
+        'subject'                         => 'getSubject',
+        'template_id'                     => 'getTemplateId',
+        'template_name'                   => 'getTemplateName',
+        'billing_date'                    => 'getBillingDate',
+        'issue_date'                      => 'getIssueDate',
+        'payment_date'                    => 'getPaymentDate',
+        'payment_type'                    => 'getPaymentType',
+        'invoice_note'                    => 'getInvoiceNote',
+        'memo'                            => 'getMemo',
+        'sending_status'                  => 'getSendingStatus',
+        'payment_status'                  => 'getPaymentStatus',
+        'cancel_status'                   => 'getCancelStatus',
+        'deal_status'                     => 'getDealStatus',
+        'deal_id'                         => 'getDealId',
+        'tax_entry_method'                => 'getTaxEntryMethod',
+        'tax_fraction'                    => 'getTaxFraction',
+        'line_amount_fraction'            => 'getLineAmountFraction',
+        'withholding_tax_entry_method'    => 'getWithholdingTaxEntryMethod',
+        'total_amount'                    => 'getTotalAmount',
+        'created_at'                      => 'getCreatedAt',
+        'amount_withholding_tax'          => 'getAmountWithholdingTax',
+        'amount_including_tax'            => 'getAmountIncludingTax',
+        'amount_excluding_tax'            => 'getAmountExcludingTax',
+        'amount_tax'                      => 'getAmountTax',
+        'amount_including_tax_10'         => 'getAmountIncludingTax10',
+        'amount_excluding_tax_10'         => 'getAmountExcludingTax10',
+        'amount_tax_10'                   => 'getAmountTax10',
+        'amount_including_tax_8'          => 'getAmountIncludingTax8',
+        'amount_excluding_tax_8'          => 'getAmountExcludingTax8',
+        'amount_tax_8'                    => 'getAmountTax8',
+        'amount_including_tax_8_reduced'  => 'getAmountIncludingTax8Reduced',
+        'amount_excluding_tax_8_reduced'  => 'getAmountExcludingTax8Reduced',
+        'amount_tax_8_reduced'            => 'getAmountTax8Reduced',
+        'amount_including_tax_0'          => 'getAmountIncludingTax0',
+        'amount_excluding_tax_0'          => 'getAmountExcludingTax0',
+        'amount_tax_0'                    => 'getAmountTax0',
+        'amount_brought_forward'          => 'getAmountBroughtForward',
+        'partner_id'                      => 'getPartnerId',
+        'partner_code'                    => 'getPartnerCode',
+        'partner_name'                    => 'getPartnerName',
+        'partner_title'                   => 'getPartnerTitle',
+        'partner_address_zipcode'         => 'getPartnerAddressZipcode',
+        'partner_address_prefecture_code' => 'getPartnerAddressPrefectureCode',
+        'partner_address_street_name1'    => 'getPartnerAddressStreetName1',
+        'partner_address_street_name2'    => 'getPartnerAddressStreetName2',
+        'partner_contact_department'      => 'getPartnerContactDepartment',
+        'partner_contact_email_cc'        => 'getPartnerContactEmailCc',
+        'partner_contact_email_to'        => 'getPartnerContactEmailTo',
+        'partner_contact_name'            => 'getPartnerContactName',
+        'partner_display_name'            => 'getPartnerDisplayName',
+        'partner_bank_account'            => 'getPartnerBankAccount',
+        'company_contact_name'            => 'getCompanyContactName',
+        'company_name'                    => 'getCompanyName',
+        'company_description'             => 'getCompanyDescription',
+        'bank_account_to_transfer'        => 'getBankAccountToTransfer',
+        'template'                        => 'getTemplate',
+        'lines'                           => 'getLines',
     ];
 
     /**
@@ -397,55 +468,53 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    const INVOICE_STATUS_DRAFT                            = 'draft';
-    const INVOICE_STATUS_APPLYING                         = 'applying';
-    const INVOICE_STATUS_REMANDED                         = 'remanded';
-    const INVOICE_STATUS_REJECTED                         = 'rejected';
-    const INVOICE_STATUS_APPROVED                         = 'approved';
-    const INVOICE_STATUS_SUBMITTED                        = 'submitted';
-    const INVOICE_STATUS_UNSUBMITTED                      = 'unsubmitted';
-    const PAYMENT_STATUS_EMPTY                            = '';
-    const PAYMENT_STATUS_UNSETTLED                        = 'unsettled';
-    const PAYMENT_STATUS_SETTLED                          = 'settled';
-    const POSTING_STATUS_EMPTY                            = '';
-    const POSTING_STATUS_UNREQUESTED                      = 'unrequested';
-    const POSTING_STATUS_PREVIEW_REGISTERED               = 'preview_registered';
-    const POSTING_STATUS_PREVIEW_FAILED                   = 'preview_failed';
-    const POSTING_STATUS_ORDERED                          = 'ordered';
-    const POSTING_STATUS_ORDER_FAILED                     = 'order_failed';
-    const POSTING_STATUS_PRINTING                         = 'printing';
-    const POSTING_STATUS_CANCELED                         = 'canceled';
-    const POSTING_STATUS_POSTED                           = 'posted';
-    const PAYMENT_TYPE_EMPTY                              = '';
-    const PAYMENT_TYPE_TRANSFER                           = 'transfer';
-    const PAYMENT_TYPE_DIRECT_DEBIT                       = 'direct_debit';
-    const INVOICE_LAYOUT_DEFAULT_CLASSIC                  = 'default_classic';
-    const INVOICE_LAYOUT_STANDARD_CLASSIC                 = 'standard_classic';
-    const INVOICE_LAYOUT_ENVELOPE_CLASSIC                 = 'envelope_classic';
-    const INVOICE_LAYOUT_CARRIED_FORWARD_STANDARD_CLASSIC = 'carried_forward_standard_classic';
-    const INVOICE_LAYOUT_CARRIED_FORWARD_ENVELOPE_CLASSIC = 'carried_forward_envelope_classic';
-    const INVOICE_LAYOUT_DEFAULT_MODERN                   = 'default_modern';
-    const INVOICE_LAYOUT_STANDARD_MODERN                  = 'standard_modern';
-    const INVOICE_LAYOUT_ENVELOPE_MODERN                  = 'envelope_modern';
-    const TAX_ENTRY_METHOD_EMPTY                          = '';
-    const TAX_ENTRY_METHOD_INCLUSIVE                      = 'inclusive';
-    const TAX_ENTRY_METHOD_EXCLUSIVE                      = 'exclusive';
+    const PAYMENT_TYPE_TRANSFER            = 'transfer';
+    const PAYMENT_TYPE_DIRECT_DEBIT        = 'direct_debit';
+    const SENDING_STATUS_SENT              = 'sent';
+    const SENDING_STATUS_UNSENT            = 'unsent';
+    const PAYMENT_STATUS_SETTLED           = 'settled';
+    const PAYMENT_STATUS_UNSETTLED         = 'unsettled';
+    const CANCEL_STATUS_CANCELED           = 'canceled';
+    const CANCEL_STATUS_UNCANCELED         = 'uncanceled';
+    const DEAL_STATUS_REGISTERED           = 'registered';
+    const DEAL_STATUS_UNREGISTERED         = 'unregistered';
+    const TAX_ENTRY_METHOD_IN              = 'in';
+    const TAX_ENTRY_METHOD_OUT             = 'out';
+    const TAX_FRACTION_OMIT                = 'omit';
+    const TAX_FRACTION_ROUND_UP            = 'round_up';
+    const TAX_FRACTION_ROUND               = 'round';
+    const LINE_AMOUNT_FRACTION_OMIT        = 'omit';
+    const LINE_AMOUNT_FRACTION_ROUND_UP    = 'round_up';
+    const LINE_AMOUNT_FRACTION_ROUND       = 'round';
+    const WITHHOLDING_TAX_ENTRY_METHOD_IN  = 'in';
+    const WITHHOLDING_TAX_ENTRY_METHOD_OUT = 'out';
+    const PARTNER_TITLE_                   = '御中';
+    const PARTNER_TITLE_                   = '様';
+    const PARTNER_TITLE_                   = '(空白)';
 
     /**
      * Gets allowable values of the enum.
      *
      * @return string[]
      */
-    public function getInvoiceStatusAllowableValues()
+    public function getPaymentTypeAllowableValues()
     {
         return [
-            self::INVOICE_STATUS_DRAFT,
-            self::INVOICE_STATUS_APPLYING,
-            self::INVOICE_STATUS_REMANDED,
-            self::INVOICE_STATUS_REJECTED,
-            self::INVOICE_STATUS_APPROVED,
-            self::INVOICE_STATUS_SUBMITTED,
-            self::INVOICE_STATUS_UNSUBMITTED,
+            self::PAYMENT_TYPE_TRANSFER,
+            self::PAYMENT_TYPE_DIRECT_DEBIT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getSendingStatusAllowableValues()
+    {
+        return [
+            self::SENDING_STATUS_SENT,
+            self::SENDING_STATUS_UNSENT,
         ];
     }
 
@@ -457,9 +526,8 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     public function getPaymentStatusAllowableValues()
     {
         return [
-            self::PAYMENT_STATUS_EMPTY,
-            self::PAYMENT_STATUS_UNSETTLED,
             self::PAYMENT_STATUS_SETTLED,
+            self::PAYMENT_STATUS_UNSETTLED,
         ];
     }
 
@@ -468,18 +536,11 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getPostingStatusAllowableValues()
+    public function getCancelStatusAllowableValues()
     {
         return [
-            self::POSTING_STATUS_EMPTY,
-            self::POSTING_STATUS_UNREQUESTED,
-            self::POSTING_STATUS_PREVIEW_REGISTERED,
-            self::POSTING_STATUS_PREVIEW_FAILED,
-            self::POSTING_STATUS_ORDERED,
-            self::POSTING_STATUS_ORDER_FAILED,
-            self::POSTING_STATUS_PRINTING,
-            self::POSTING_STATUS_CANCELED,
-            self::POSTING_STATUS_POSTED,
+            self::CANCEL_STATUS_CANCELED,
+            self::CANCEL_STATUS_UNCANCELED,
         ];
     }
 
@@ -488,31 +549,11 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getPaymentTypeAllowableValues()
+    public function getDealStatusAllowableValues()
     {
         return [
-            self::PAYMENT_TYPE_EMPTY,
-            self::PAYMENT_TYPE_TRANSFER,
-            self::PAYMENT_TYPE_DIRECT_DEBIT,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getInvoiceLayoutAllowableValues()
-    {
-        return [
-            self::INVOICE_LAYOUT_DEFAULT_CLASSIC,
-            self::INVOICE_LAYOUT_STANDARD_CLASSIC,
-            self::INVOICE_LAYOUT_ENVELOPE_CLASSIC,
-            self::INVOICE_LAYOUT_CARRIED_FORWARD_STANDARD_CLASSIC,
-            self::INVOICE_LAYOUT_CARRIED_FORWARD_ENVELOPE_CLASSIC,
-            self::INVOICE_LAYOUT_DEFAULT_MODERN,
-            self::INVOICE_LAYOUT_STANDARD_MODERN,
-            self::INVOICE_LAYOUT_ENVELOPE_MODERN,
+            self::DEAL_STATUS_REGISTERED,
+            self::DEAL_STATUS_UNREGISTERED,
         ];
     }
 
@@ -524,9 +565,63 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     public function getTaxEntryMethodAllowableValues()
     {
         return [
-            self::TAX_ENTRY_METHOD_EMPTY,
-            self::TAX_ENTRY_METHOD_INCLUSIVE,
-            self::TAX_ENTRY_METHOD_EXCLUSIVE,
+            self::TAX_ENTRY_METHOD_IN,
+            self::TAX_ENTRY_METHOD_OUT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getTaxFractionAllowableValues()
+    {
+        return [
+            self::TAX_FRACTION_OMIT,
+            self::TAX_FRACTION_ROUND_UP,
+            self::TAX_FRACTION_ROUND,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getLineAmountFractionAllowableValues()
+    {
+        return [
+            self::LINE_AMOUNT_FRACTION_OMIT,
+            self::LINE_AMOUNT_FRACTION_ROUND_UP,
+            self::LINE_AMOUNT_FRACTION_ROUND,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getWithholdingTaxEntryMethodAllowableValues()
+    {
+        return [
+            self::WITHHOLDING_TAX_ENTRY_METHOD_IN,
+            self::WITHHOLDING_TAX_ENTRY_METHOD_OUT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getPartnerTitleAllowableValues()
+    {
+        return [
+            self::PARTNER_TITLE_,
+            self::PARTNER_TITLE_,
+            self::PARTNER_TITLE_,
         ];
     }
 
@@ -545,53 +640,67 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['id']                        = $data['id'] ?? null;
-        $this->container['company_id']                = $data['company_id'] ?? null;
-        $this->container['issue_date']                = $data['issue_date'] ?? null;
-        $this->container['partner_id']                = $data['partner_id'] ?? null;
-        $this->container['partner_code']              = $data['partner_code'] ?? null;
-        $this->container['invoice_number']            = $data['invoice_number'] ?? null;
-        $this->container['title']                     = $data['title'] ?? null;
-        $this->container['due_date']                  = $data['due_date'] ?? null;
-        $this->container['total_amount']              = $data['total_amount'] ?? null;
-        $this->container['total_vat']                 = $data['total_vat'] ?? null;
-        $this->container['sub_total']                 = $data['sub_total'] ?? null;
-        $this->container['booking_date']              = $data['booking_date'] ?? null;
-        $this->container['description']               = $data['description'] ?? null;
-        $this->container['invoice_status']            = $data['invoice_status'] ?? null;
-        $this->container['payment_status']            = $data['payment_status'] ?? null;
-        $this->container['payment_date']              = $data['payment_date'] ?? null;
-        $this->container['web_published_at']          = $data['web_published_at'] ?? null;
-        $this->container['web_downloaded_at']         = $data['web_downloaded_at'] ?? null;
-        $this->container['web_confirmed_at']          = $data['web_confirmed_at'] ?? null;
-        $this->container['mail_sent_at']              = $data['mail_sent_at'] ?? null;
-        $this->container['posting_status']            = $data['posting_status'] ?? null;
-        $this->container['partner_name']              = $data['partner_name'] ?? null;
-        $this->container['partner_display_name']      = $data['partner_display_name'] ?? null;
-        $this->container['partner_title']             = $data['partner_title'] ?? null;
-        $this->container['partner_zipcode']           = $data['partner_zipcode'] ?? null;
-        $this->container['partner_prefecture_code']   = $data['partner_prefecture_code'] ?? null;
-        $this->container['partner_prefecture_name']   = $data['partner_prefecture_name'] ?? null;
-        $this->container['partner_address1']          = $data['partner_address1'] ?? null;
-        $this->container['partner_address2']          = $data['partner_address2'] ?? null;
-        $this->container['partner_contact_info']      = $data['partner_contact_info'] ?? null;
-        $this->container['company_name']              = $data['company_name'] ?? null;
-        $this->container['company_zipcode']           = $data['company_zipcode'] ?? null;
-        $this->container['company_prefecture_code']   = $data['company_prefecture_code'] ?? null;
-        $this->container['company_prefecture_name']   = $data['company_prefecture_name'] ?? null;
-        $this->container['company_address1']          = $data['company_address1'] ?? null;
-        $this->container['company_address2']          = $data['company_address2'] ?? null;
-        $this->container['company_contact_info']      = $data['company_contact_info'] ?? null;
-        $this->container['payment_type']              = $data['payment_type'] ?? null;
-        $this->container['payment_bank_info']         = $data['payment_bank_info'] ?? null;
-        $this->container['message']                   = $data['message'] ?? null;
-        $this->container['notes']                     = $data['notes'] ?? null;
-        $this->container['invoice_layout']            = $data['invoice_layout'] ?? null;
-        $this->container['tax_entry_method']          = $data['tax_entry_method'] ?? null;
-        $this->container['deal_id']                   = $data['deal_id'] ?? null;
-        $this->container['invoice_contents']          = $data['invoice_contents'] ?? null;
-        $this->container['total_amount_per_vat_rate'] = $data['total_amount_per_vat_rate'] ?? null;
-        $this->container['related_quotation_ids']     = $data['related_quotation_ids'] ?? null;
+        $this->container['id']                              = $data['id'] ?? null;
+        $this->container['company_id']                      = $data['company_id'] ?? null;
+        $this->container['invoice_number']                  = $data['invoice_number'] ?? null;
+        $this->container['branch_no']                       = $data['branch_no'] ?? null;
+        $this->container['subject']                         = $data['subject'] ?? null;
+        $this->container['template_id']                     = $data['template_id'] ?? null;
+        $this->container['template_name']                   = $data['template_name'] ?? null;
+        $this->container['billing_date']                    = $data['billing_date'] ?? null;
+        $this->container['issue_date']                      = $data['issue_date'] ?? null;
+        $this->container['payment_date']                    = $data['payment_date'] ?? null;
+        $this->container['payment_type']                    = $data['payment_type'] ?? null;
+        $this->container['invoice_note']                    = $data['invoice_note'] ?? null;
+        $this->container['memo']                            = $data['memo'] ?? null;
+        $this->container['sending_status']                  = $data['sending_status'] ?? null;
+        $this->container['payment_status']                  = $data['payment_status'] ?? null;
+        $this->container['cancel_status']                   = $data['cancel_status'] ?? null;
+        $this->container['deal_status']                     = $data['deal_status'] ?? null;
+        $this->container['deal_id']                         = $data['deal_id'] ?? null;
+        $this->container['tax_entry_method']                = $data['tax_entry_method'] ?? null;
+        $this->container['tax_fraction']                    = $data['tax_fraction'] ?? null;
+        $this->container['line_amount_fraction']            = $data['line_amount_fraction'] ?? null;
+        $this->container['withholding_tax_entry_method']    = $data['withholding_tax_entry_method'] ?? null;
+        $this->container['total_amount']                    = $data['total_amount'] ?? null;
+        $this->container['created_at']                      = $data['created_at'] ?? null;
+        $this->container['amount_withholding_tax']          = $data['amount_withholding_tax'] ?? null;
+        $this->container['amount_including_tax']            = $data['amount_including_tax'] ?? null;
+        $this->container['amount_excluding_tax']            = $data['amount_excluding_tax'] ?? null;
+        $this->container['amount_tax']                      = $data['amount_tax'] ?? null;
+        $this->container['amount_including_tax_10']         = $data['amount_including_tax_10'] ?? null;
+        $this->container['amount_excluding_tax_10']         = $data['amount_excluding_tax_10'] ?? null;
+        $this->container['amount_tax_10']                   = $data['amount_tax_10'] ?? null;
+        $this->container['amount_including_tax_8']          = $data['amount_including_tax_8'] ?? null;
+        $this->container['amount_excluding_tax_8']          = $data['amount_excluding_tax_8'] ?? null;
+        $this->container['amount_tax_8']                    = $data['amount_tax_8'] ?? null;
+        $this->container['amount_including_tax_8_reduced']  = $data['amount_including_tax_8_reduced'] ?? null;
+        $this->container['amount_excluding_tax_8_reduced']  = $data['amount_excluding_tax_8_reduced'] ?? null;
+        $this->container['amount_tax_8_reduced']            = $data['amount_tax_8_reduced'] ?? null;
+        $this->container['amount_including_tax_0']          = $data['amount_including_tax_0'] ?? null;
+        $this->container['amount_excluding_tax_0']          = $data['amount_excluding_tax_0'] ?? null;
+        $this->container['amount_tax_0']                    = $data['amount_tax_0'] ?? null;
+        $this->container['amount_brought_forward']          = $data['amount_brought_forward'] ?? null;
+        $this->container['partner_id']                      = $data['partner_id'] ?? null;
+        $this->container['partner_code']                    = $data['partner_code'] ?? null;
+        $this->container['partner_name']                    = $data['partner_name'] ?? null;
+        $this->container['partner_title']                   = $data['partner_title'] ?? null;
+        $this->container['partner_address_zipcode']         = $data['partner_address_zipcode'] ?? null;
+        $this->container['partner_address_prefecture_code'] = $data['partner_address_prefecture_code'] ?? null;
+        $this->container['partner_address_street_name1']    = $data['partner_address_street_name1'] ?? null;
+        $this->container['partner_address_street_name2']    = $data['partner_address_street_name2'] ?? null;
+        $this->container['partner_contact_department']      = $data['partner_contact_department'] ?? null;
+        $this->container['partner_contact_email_cc']        = $data['partner_contact_email_cc'] ?? null;
+        $this->container['partner_contact_email_to']        = $data['partner_contact_email_to'] ?? null;
+        $this->container['partner_contact_name']            = $data['partner_contact_name'] ?? null;
+        $this->container['partner_display_name']            = $data['partner_display_name'] ?? null;
+        $this->container['partner_bank_account']            = $data['partner_bank_account'] ?? null;
+        $this->container['company_contact_name']            = $data['company_contact_name'] ?? null;
+        $this->container['company_name']                    = $data['company_name'] ?? null;
+        $this->container['company_description']             = $data['company_description'] ?? null;
+        $this->container['bank_account_to_transfer']        = $data['bank_account_to_transfer'] ?? null;
+        $this->container['template']                        = $data['template'] ?? null;
+        $this->container['lines']                           = $data['lines'] ?? null;
     }
 
     /**
@@ -606,6 +715,10 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if (($this->container['id'] > 9223372036854775807)) {
+            $invalidProperties[] = "invalid value for 'id', must be smaller than or equal to 9223372036854775807.";
+        }
+
         if (($this->container['id'] < 1)) {
             $invalidProperties[] = "invalid value for 'id', must be bigger than or equal to 1.";
         }
@@ -613,77 +726,63 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['company_id'] === null) {
             $invalidProperties[] = "'company_id' can't be null";
         }
-        if ($this->container['issue_date'] === null) {
-            $invalidProperties[] = "'issue_date' can't be null";
+        if (($this->container['company_id'] > 9223372036854775807)) {
+            $invalidProperties[] = "invalid value for 'company_id', must be smaller than or equal to 9223372036854775807.";
         }
-        if ($this->container['partner_id'] === null) {
-            $invalidProperties[] = "'partner_id' can't be null";
-        }
-        if (($this->container['partner_id'] < 1)) {
-            $invalidProperties[] = "invalid value for 'partner_id', must be bigger than or equal to 1.";
+
+        if (($this->container['company_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'company_id', must be bigger than or equal to 1.";
         }
 
         if ($this->container['invoice_number'] === null) {
             $invalidProperties[] = "'invoice_number' can't be null";
         }
-        if ($this->container['total_amount'] === null) {
-            $invalidProperties[] = "'total_amount' can't be null";
-        }
-        if ($this->container['invoice_status'] === null) {
-            $invalidProperties[] = "'invoice_status' can't be null";
-        }
-        $allowedValues = $this->getInvoiceStatusAllowableValues();
-        if (!is_null($this->container['invoice_status']) && !in_array($this->container['invoice_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'invoice_status', must be one of '%s'",
-                $this->container['invoice_status'],
-                implode("', '", $allowedValues)
-            );
+        if ((mb_strlen($this->container['invoice_number']) > 255)) {
+            $invalidProperties[] = "invalid value for 'invoice_number', the character length must be smaller than or equal to 255.";
         }
 
-        $allowedValues = $this->getPaymentStatusAllowableValues();
-        if (!is_null($this->container['payment_status']) && !in_array($this->container['payment_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'payment_status', must be one of '%s'",
-                $this->container['payment_status'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['branch_no']) && ($this->container['branch_no'] > 2147483647)) {
+            $invalidProperties[] = "invalid value for 'branch_no', must be smaller than or equal to 2147483647.";
         }
 
-        if ($this->container['posting_status'] === null) {
-            $invalidProperties[] = "'posting_status' can't be null";
-        }
-        $allowedValues = $this->getPostingStatusAllowableValues();
-        if (!is_null($this->container['posting_status']) && !in_array($this->container['posting_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'posting_status', must be one of '%s'",
-                $this->container['posting_status'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['branch_no']) && ($this->container['branch_no'] < 0)) {
+            $invalidProperties[] = "invalid value for 'branch_no', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['partner_prefecture_code']) && ($this->container['partner_prefecture_code'] > 46)) {
-            $invalidProperties[] = "invalid value for 'partner_prefecture_code', must be smaller than or equal to 46.";
+        if ($this->container['subject'] === null) {
+            $invalidProperties[] = "'subject' can't be null";
+        }
+        if ((mb_strlen($this->container['subject']) > 255)) {
+            $invalidProperties[] = "invalid value for 'subject', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['partner_prefecture_code']) && ($this->container['partner_prefecture_code'] < -1)) {
-            $invalidProperties[] = "invalid value for 'partner_prefecture_code', must be bigger than or equal to -1.";
+        if (!is_null($this->container['template_id']) && ($this->container['template_id'] > 9223372036854775807)) {
+            $invalidProperties[] = "invalid value for 'template_id', must be smaller than or equal to 9223372036854775807.";
         }
 
-        if ($this->container['company_name'] === null) {
-            $invalidProperties[] = "'company_name' can't be null";
-        }
-        if (!is_null($this->container['company_prefecture_code']) && ($this->container['company_prefecture_code'] > 46)) {
-            $invalidProperties[] = "invalid value for 'company_prefecture_code', must be smaller than or equal to 46.";
+        if (!is_null($this->container['template_id']) && ($this->container['template_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'template_id', must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['company_prefecture_code']) && ($this->container['company_prefecture_code'] < -1)) {
-            $invalidProperties[] = "invalid value for 'company_prefecture_code', must be bigger than or equal to -1.";
+        if (!is_null($this->container['template_name']) && (mb_strlen($this->container['template_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'template_name', the character length must be smaller than or equal to 255.";
         }
 
-        if ($this->container['payment_type'] === null) {
-            $invalidProperties[] = "'payment_type' can't be null";
+        if ($this->container['billing_date'] === null) {
+            $invalidProperties[] = "'billing_date' can't be null";
         }
+        if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $this->container['billing_date'])) {
+            $invalidProperties[] = "invalid value for 'billing_date', must be conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.";
+        }
+
+        if (!is_null($this->container['issue_date']) && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $this->container['issue_date'])) {
+            $invalidProperties[] = "invalid value for 'issue_date', must be conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.";
+        }
+
+        if (!is_null($this->container['payment_date']) && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $this->container['payment_date'])) {
+            $invalidProperties[] = "invalid value for 'payment_date', must be conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.";
+        }
+
         $allowedValues = $this->getPaymentTypeAllowableValues();
         if (!is_null($this->container['payment_type']) && !in_array($this->container['payment_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -693,21 +792,76 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
-        if ($this->container['invoice_layout'] === null) {
-            $invalidProperties[] = "'invoice_layout' can't be null";
+        if ($this->container['invoice_note'] === null) {
+            $invalidProperties[] = "'invoice_note' can't be null";
         }
-        $allowedValues = $this->getInvoiceLayoutAllowableValues();
-        if (!is_null($this->container['invoice_layout']) && !in_array($this->container['invoice_layout'], $allowedValues, true)) {
+        if ((mb_strlen($this->container['invoice_note']) > 4000)) {
+            $invalidProperties[] = "invalid value for 'invoice_note', the character length must be smaller than or equal to 4000.";
+        }
+
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ((mb_strlen($this->container['memo']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'memo', the character length must be smaller than or equal to 2000.";
+        }
+
+        if ($this->container['sending_status'] === null) {
+            $invalidProperties[] = "'sending_status' can't be null";
+        }
+        $allowedValues = $this->getSendingStatusAllowableValues();
+        if (!is_null($this->container['sending_status']) && !in_array($this->container['sending_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'invoice_layout', must be one of '%s'",
-                $this->container['invoice_layout'],
+                "invalid value '%s' for 'sending_status', must be one of '%s'",
+                $this->container['sending_status'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['tax_entry_method'] === null) {
-            $invalidProperties[] = "'tax_entry_method' can't be null";
+        if ($this->container['payment_status'] === null) {
+            $invalidProperties[] = "'payment_status' can't be null";
         }
+        $allowedValues = $this->getPaymentStatusAllowableValues();
+        if (!is_null($this->container['payment_status']) && !in_array($this->container['payment_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payment_status', must be one of '%s'",
+                $this->container['payment_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['cancel_status'] === null) {
+            $invalidProperties[] = "'cancel_status' can't be null";
+        }
+        $allowedValues = $this->getCancelStatusAllowableValues();
+        if (!is_null($this->container['cancel_status']) && !in_array($this->container['cancel_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'cancel_status', must be one of '%s'",
+                $this->container['cancel_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['deal_status'] === null) {
+            $invalidProperties[] = "'deal_status' can't be null";
+        }
+        $allowedValues = $this->getDealStatusAllowableValues();
+        if (!is_null($this->container['deal_status']) && !in_array($this->container['deal_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'deal_status', must be one of '%s'",
+                $this->container['deal_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['deal_id']) && ($this->container['deal_id'] > 9223372036854775807)) {
+            $invalidProperties[] = "invalid value for 'deal_id', must be smaller than or equal to 9223372036854775807.";
+        }
+
+        if (!is_null($this->container['deal_id']) && ($this->container['deal_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'deal_id', must be bigger than or equal to 1.";
+        }
+
         $allowedValues = $this->getTaxEntryMethodAllowableValues();
         if (!is_null($this->container['tax_entry_method']) && !in_array($this->container['tax_entry_method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -717,12 +871,141 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
-        if (!is_null($this->container['deal_id']) && ($this->container['deal_id'] < 1)) {
-            $invalidProperties[] = "invalid value for 'deal_id', must be bigger than or equal to 1.";
+        $allowedValues = $this->getTaxFractionAllowableValues();
+        if (!is_null($this->container['tax_fraction']) && !in_array($this->container['tax_fraction'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tax_fraction', must be one of '%s'",
+                $this->container['tax_fraction'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if ($this->container['total_amount_per_vat_rate'] === null) {
-            $invalidProperties[] = "'total_amount_per_vat_rate' can't be null";
+        $allowedValues = $this->getLineAmountFractionAllowableValues();
+        if (!is_null($this->container['line_amount_fraction']) && !in_array($this->container['line_amount_fraction'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'line_amount_fraction', must be one of '%s'",
+                $this->container['line_amount_fraction'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getWithholdingTaxEntryMethodAllowableValues();
+        if (!is_null($this->container['withholding_tax_entry_method']) && !in_array($this->container['withholding_tax_entry_method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'withholding_tax_entry_method', must be one of '%s'",
+                $this->container['withholding_tax_entry_method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['total_amount'] === null) {
+            $invalidProperties[] = "'total_amount' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/', $this->container['created_at'])) {
+            $invalidProperties[] = "invalid value for 'created_at', must be conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/.";
+        }
+
+        if ($this->container['amount_including_tax'] === null) {
+            $invalidProperties[] = "'amount_including_tax' can't be null";
+        }
+        if ($this->container['amount_excluding_tax'] === null) {
+            $invalidProperties[] = "'amount_excluding_tax' can't be null";
+        }
+        if ($this->container['amount_tax'] === null) {
+            $invalidProperties[] = "'amount_tax' can't be null";
+        }
+        if ($this->container['amount_brought_forward'] === null) {
+            $invalidProperties[] = "'amount_brought_forward' can't be null";
+        }
+        if (($this->container['amount_brought_forward'] > 999999999999)) {
+            $invalidProperties[] = "invalid value for 'amount_brought_forward', must be smaller than or equal to 999999999999.";
+        }
+
+        if (($this->container['amount_brought_forward'] < -999999999999)) {
+            $invalidProperties[] = "invalid value for 'amount_brought_forward', must be bigger than or equal to -999999999999.";
+        }
+
+        if ($this->container['partner_id'] === null) {
+            $invalidProperties[] = "'partner_id' can't be null";
+        }
+        if (($this->container['partner_id'] > 9223372036854775807)) {
+            $invalidProperties[] = "invalid value for 'partner_id', must be smaller than or equal to 9223372036854775807.";
+        }
+
+        if (($this->container['partner_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'partner_id', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['partner_name']) && (mb_strlen($this->container['partner_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_name', the character length must be smaller than or equal to 255.";
+        }
+
+        $allowedValues = $this->getPartnerTitleAllowableValues();
+        if (!is_null($this->container['partner_title']) && !in_array($this->container['partner_title'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'partner_title', must be one of '%s'",
+                $this->container['partner_title'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['partner_address_zipcode']) && (mb_strlen($this->container['partner_address_zipcode']) > 10)) {
+            $invalidProperties[] = "invalid value for 'partner_address_zipcode', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['partner_address_prefecture_code']) && ($this->container['partner_address_prefecture_code'] > 46)) {
+            $invalidProperties[] = "invalid value for 'partner_address_prefecture_code', must be smaller than or equal to 46.";
+        }
+
+        if (!is_null($this->container['partner_address_prefecture_code']) && ($this->container['partner_address_prefecture_code'] < -1)) {
+            $invalidProperties[] = "invalid value for 'partner_address_prefecture_code', must be bigger than or equal to -1.";
+        }
+
+        if (!is_null($this->container['partner_address_street_name1']) && (mb_strlen($this->container['partner_address_street_name1']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_address_street_name1', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_address_street_name2']) && (mb_strlen($this->container['partner_address_street_name2']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_address_street_name2', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_contact_department']) && (mb_strlen($this->container['partner_contact_department']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_contact_department', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_contact_email_cc']) && (mb_strlen($this->container['partner_contact_email_cc']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_contact_email_cc', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_contact_email_to']) && (mb_strlen($this->container['partner_contact_email_to']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_contact_email_to', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_contact_name']) && (mb_strlen($this->container['partner_contact_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_contact_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_display_name']) && (mb_strlen($this->container['partner_display_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_display_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['partner_bank_account']) && (mb_strlen($this->container['partner_bank_account']) > 255)) {
+            $invalidProperties[] = "invalid value for 'partner_bank_account', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['company_contact_name']) && (mb_strlen($this->container['company_contact_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'company_contact_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['company_name']) && (mb_strlen($this->container['company_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'company_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if ($this->container['lines'] === null) {
+            $invalidProperties[] = "'lines' can't be null";
         }
 
         return $invalidProperties;
@@ -759,6 +1042,10 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setId($id)
     {
+
+        if (($id > 9223372036854775807)) {
+            throw new \InvalidArgumentException('invalid value for $id when calling InvoiceResponseInvoice., must be smaller than or equal to 9223372036854775807.');
+        }
         if (($id < 1)) {
             throw new \InvalidArgumentException('invalid value for $id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
         }
@@ -787,7 +1074,192 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setCompanyId($company_id)
     {
+
+        if (($company_id > 9223372036854775807)) {
+            throw new \InvalidArgumentException('invalid value for $company_id when calling InvoiceResponseInvoice., must be smaller than or equal to 9223372036854775807.');
+        }
+        if (($company_id < 1)) {
+            throw new \InvalidArgumentException('invalid value for $company_id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
+        }
+
         $this->container['company_id'] = $company_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_number.
+     *
+     * @return string
+     */
+    public function getInvoiceNumber()
+    {
+        return $this->container['invoice_number'];
+    }
+
+    /**
+     * Sets invoice_number.
+     *
+     * @param string $invoice_number 請求書番号
+     *
+     * @return self
+     */
+    public function setInvoiceNumber($invoice_number)
+    {
+        if ((mb_strlen($invoice_number) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $invoice_number when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['invoice_number'] = $invoice_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets branch_no.
+     *
+     * @return int|null
+     */
+    public function getBranchNo()
+    {
+        return $this->container['branch_no'];
+    }
+
+    /**
+     * Sets branch_no.
+     *
+     * @param int|null $branch_no 枝番
+     *
+     * @return self
+     */
+    public function setBranchNo($branch_no)
+    {
+
+        if (!is_null($branch_no) && ($branch_no > 2147483647)) {
+            throw new \InvalidArgumentException('invalid value for $branch_no when calling InvoiceResponseInvoice., must be smaller than or equal to 2147483647.');
+        }
+        if (!is_null($branch_no) && ($branch_no < 0)) {
+            throw new \InvalidArgumentException('invalid value for $branch_no when calling InvoiceResponseInvoice., must be bigger than or equal to 0.');
+        }
+
+        $this->container['branch_no'] = $branch_no;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject.
+     *
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /**
+     * Sets subject.
+     *
+     * @param string $subject 件名
+     *
+     * @return self
+     */
+    public function setSubject($subject)
+    {
+        if ((mb_strlen($subject) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $subject when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id.
+     *
+     * @return int|null
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id.
+     *
+     * @param int|null $template_id 帳票テンプレートID
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+
+        if (!is_null($template_id) && ($template_id > 9223372036854775807)) {
+            throw new \InvalidArgumentException('invalid value for $template_id when calling InvoiceResponseInvoice., must be smaller than or equal to 9223372036854775807.');
+        }
+        if (!is_null($template_id) && ($template_id < 1)) {
+            throw new \InvalidArgumentException('invalid value for $template_id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
+        }
+
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_name.
+     *
+     * @return string|null
+     */
+    public function getTemplateName()
+    {
+        return $this->container['template_name'];
+    }
+
+    /**
+     * Sets template_name.
+     *
+     * @param string|null $template_name 帳票テンプレート名
+     *
+     * @return self
+     */
+    public function setTemplateName($template_name)
+    {
+        if (!is_null($template_name) && (mb_strlen($template_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $template_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['template_name'] = $template_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_date.
+     *
+     * @return \DateTime
+     */
+    public function getBillingDate()
+    {
+        return $this->container['billing_date'];
+    }
+
+    /**
+     * Sets billing_date.
+     *
+     * @param \DateTime $billing_date 請求日
+     *
+     * @return self
+     */
+    public function setBillingDate($billing_date)
+    {
+
+        if ((!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $billing_date))) {
+            throw new \InvalidArgumentException("invalid value for $billing_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
+        }
+
+        $this->container['billing_date'] = $billing_date;
 
         return $this;
     }
@@ -795,7 +1267,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets issue_date.
      *
-     * @return string
+     * @return \DateTime|null
      */
     public function getIssueDate()
     {
@@ -805,13 +1277,910 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets issue_date.
      *
-     * @param string $issue_date 請求日 (yyyy-mm-dd)
+     * @param \DateTime|null $issue_date 発生日
      *
      * @return self
      */
     public function setIssueDate($issue_date)
     {
+
+        if (!is_null($issue_date) && (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $issue_date))) {
+            throw new \InvalidArgumentException("invalid value for $issue_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
+        }
+
         $this->container['issue_date'] = $issue_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_date.
+     *
+     * @return \DateTime|null
+     */
+    public function getPaymentDate()
+    {
+        return $this->container['payment_date'];
+    }
+
+    /**
+     * Sets payment_date.
+     *
+     * @param \DateTime|null $payment_date 期日 - payment_typeがtransferの場合、入金期日に該当します。 - payment_typeがdirect_debitの場合、振替日に該当します。
+     *
+     * @return self
+     */
+    public function setPaymentDate($payment_date)
+    {
+
+        if (!is_null($payment_date) && (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $payment_date))) {
+            throw new \InvalidArgumentException("invalid value for $payment_date when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
+        }
+
+        $this->container['payment_date'] = $payment_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_type.
+     *
+     * @return string|null
+     */
+    public function getPaymentType()
+    {
+        return $this->container['payment_type'];
+    }
+
+    /**
+     * Sets payment_type.
+     *
+     * @param string|null $payment_type 入金方法 (振込: transfer, 振替: direct_debit)
+     *
+     * @return self
+     */
+    public function setPaymentType($payment_type)
+    {
+        $allowedValues = $this->getPaymentTypeAllowableValues();
+        if (!is_null($payment_type) && !in_array($payment_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_type', must be one of '%s'",
+                    $payment_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_type'] = $payment_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_note.
+     *
+     * @return string
+     */
+    public function getInvoiceNote()
+    {
+        return $this->container['invoice_note'];
+    }
+
+    /**
+     * Sets invoice_note.
+     *
+     * @param string $invoice_note 備考
+     *
+     * @return self
+     */
+    public function setInvoiceNote($invoice_note)
+    {
+        if ((mb_strlen($invoice_note) > 4000)) {
+            throw new \InvalidArgumentException('invalid length for $invoice_note when calling InvoiceResponseInvoice., must be smaller than or equal to 4000.');
+        }
+
+        $this->container['invoice_note'] = $invoice_note;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo.
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo.
+     *
+     * @param string $memo 社内メモ
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if ((mb_strlen($memo) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $memo when calling InvoiceResponseInvoice., must be smaller than or equal to 2000.');
+        }
+
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets sending_status.
+     *
+     * @return string
+     */
+    public function getSendingStatus()
+    {
+        return $this->container['sending_status'];
+    }
+
+    /**
+     * Sets sending_status.
+     *
+     * @param string $sending_status 送付ステータス（sent: 送付済み、 unsent: 送付待ち）
+     *
+     * @return self
+     */
+    public function setSendingStatus($sending_status)
+    {
+        $allowedValues = $this->getSendingStatusAllowableValues();
+        if (!in_array($sending_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sending_status', must be one of '%s'",
+                    $sending_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sending_status'] = $sending_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_status.
+     *
+     * @return string
+     */
+    public function getPaymentStatus()
+    {
+        return $this->container['payment_status'];
+    }
+
+    /**
+     * Sets payment_status.
+     *
+     * @param string $payment_status 入金ステータス（unsettled: 入金待ち, settled: 入金済み）
+     *
+     * @return self
+     */
+    public function setPaymentStatus($payment_status)
+    {
+        $allowedValues = $this->getPaymentStatusAllowableValues();
+        if (!in_array($payment_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_status', must be one of '%s'",
+                    $payment_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_status'] = $payment_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancel_status.
+     *
+     * @return string
+     */
+    public function getCancelStatus()
+    {
+        return $this->container['cancel_status'];
+    }
+
+    /**
+     * Sets cancel_status.
+     *
+     * @param string $cancel_status 取消済み（canceled: 該当する、 uncanceled: 該当しない）
+     *
+     * @return self
+     */
+    public function setCancelStatus($cancel_status)
+    {
+        $allowedValues = $this->getCancelStatusAllowableValues();
+        if (!in_array($cancel_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'cancel_status', must be one of '%s'",
+                    $cancel_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['cancel_status'] = $cancel_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets deal_status.
+     *
+     * @return string
+     */
+    public function getDealStatus()
+    {
+        return $this->container['deal_status'];
+    }
+
+    /**
+     * Sets deal_status.
+     *
+     * @param string $deal_status 取引ステータス（registered: 登録済み、 unregistered: 登録待ち）
+     *
+     * @return self
+     */
+    public function setDealStatus($deal_status)
+    {
+        $allowedValues = $this->getDealStatusAllowableValues();
+        if (!in_array($deal_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'deal_status', must be one of '%s'",
+                    $deal_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['deal_status'] = $deal_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets deal_id.
+     *
+     * @return int|null
+     */
+    public function getDealId()
+    {
+        return $this->container['deal_id'];
+    }
+
+    /**
+     * Sets deal_id.
+     *
+     * @param int|null $deal_id 取引ID （deal_statusがunregisteredの場合、nullになります。）
+     *
+     * @return self
+     */
+    public function setDealId($deal_id)
+    {
+
+        if (!is_null($deal_id) && ($deal_id > 9223372036854775807)) {
+            throw new \InvalidArgumentException('invalid value for $deal_id when calling InvoiceResponseInvoice., must be smaller than or equal to 9223372036854775807.');
+        }
+        if (!is_null($deal_id) && ($deal_id < 1)) {
+            throw new \InvalidArgumentException('invalid value for $deal_id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
+        }
+
+        $this->container['deal_id'] = $deal_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_entry_method.
+     *
+     * @return string|null
+     */
+    public function getTaxEntryMethod()
+    {
+        return $this->container['tax_entry_method'];
+    }
+
+    /**
+     * Sets tax_entry_method.
+     *
+     * @param string|null $tax_entry_method 消費税の内税・外税区分（in: 税込表示（内税）、out: 税別表示（外税））
+     *
+     * @return self
+     */
+    public function setTaxEntryMethod($tax_entry_method)
+    {
+        $allowedValues = $this->getTaxEntryMethodAllowableValues();
+        if (!is_null($tax_entry_method) && !in_array($tax_entry_method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tax_entry_method', must be one of '%s'",
+                    $tax_entry_method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tax_entry_method'] = $tax_entry_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_fraction.
+     *
+     * @return string|null
+     */
+    public function getTaxFraction()
+    {
+        return $this->container['tax_fraction'];
+    }
+
+    /**
+     * Sets tax_fraction.
+     *
+     * @param string|null $tax_fraction 消費税端数の計算方法（omit: 切り捨て、round_up: 切り上げ、round: 四捨五入）
+     *
+     * @return self
+     */
+    public function setTaxFraction($tax_fraction)
+    {
+        $allowedValues = $this->getTaxFractionAllowableValues();
+        if (!is_null($tax_fraction) && !in_array($tax_fraction, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tax_fraction', must be one of '%s'",
+                    $tax_fraction,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tax_fraction'] = $tax_fraction;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_amount_fraction.
+     *
+     * @return string|null
+     */
+    public function getLineAmountFraction()
+    {
+        return $this->container['line_amount_fraction'];
+    }
+
+    /**
+     * Sets line_amount_fraction.
+     *
+     * @param string|null $line_amount_fraction 金額端数の計算方法（omit: 切り捨て、round_up: 切り上げ、round: 四捨五入）
+     *
+     * @return self
+     */
+    public function setLineAmountFraction($line_amount_fraction)
+    {
+        $allowedValues = $this->getLineAmountFractionAllowableValues();
+        if (!is_null($line_amount_fraction) && !in_array($line_amount_fraction, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'line_amount_fraction', must be one of '%s'",
+                    $line_amount_fraction,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['line_amount_fraction'] = $line_amount_fraction;
+
+        return $this;
+    }
+
+    /**
+     * Gets withholding_tax_entry_method.
+     *
+     * @return string|null
+     */
+    public function getWithholdingTaxEntryMethod()
+    {
+        return $this->container['withholding_tax_entry_method'];
+    }
+
+    /**
+     * Sets withholding_tax_entry_method.
+     *
+     * @param string|null $withholding_tax_entry_method 源泉徴収の計算方法（in: 税込み価格で計算、out: 税別価格で計算）
+     *
+     * @return self
+     */
+    public function setWithholdingTaxEntryMethod($withholding_tax_entry_method)
+    {
+        $allowedValues = $this->getWithholdingTaxEntryMethodAllowableValues();
+        if (!is_null($withholding_tax_entry_method) && !in_array($withholding_tax_entry_method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'withholding_tax_entry_method', must be one of '%s'",
+                    $withholding_tax_entry_method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['withholding_tax_entry_method'] = $withholding_tax_entry_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_amount.
+     *
+     * @return float
+     */
+    public function getTotalAmount()
+    {
+        return $this->container['total_amount'];
+    }
+
+    /**
+     * Sets total_amount.
+     *
+     * @param float $total_amount 合計金額
+     *
+     * @return self
+     */
+    public function setTotalAmount($total_amount)
+    {
+        $this->container['total_amount'] = $total_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at.
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at.
+     *
+     * @param \DateTime $created_at 作成日時
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+
+        if ((!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/', $created_at))) {
+            throw new \InvalidArgumentException("invalid value for $created_at when calling InvoiceResponseInvoice., must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}(:[0-9]{2})?$/.");
+        }
+
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_withholding_tax.
+     *
+     * @return float|null
+     */
+    public function getAmountWithholdingTax()
+    {
+        return $this->container['amount_withholding_tax'];
+    }
+
+    /**
+     * Sets amount_withholding_tax.
+     *
+     * @param float|null $amount_withholding_tax 源泉所得税
+     *
+     * @return self
+     */
+    public function setAmountWithholdingTax($amount_withholding_tax)
+    {
+        $this->container['amount_withholding_tax'] = $amount_withholding_tax;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_including_tax.
+     *
+     * @return float
+     */
+    public function getAmountIncludingTax()
+    {
+        return $this->container['amount_including_tax'];
+    }
+
+    /**
+     * Sets amount_including_tax.
+     *
+     * @param float $amount_including_tax 税込金額
+     *
+     * @return self
+     */
+    public function setAmountIncludingTax($amount_including_tax)
+    {
+        $this->container['amount_including_tax'] = $amount_including_tax;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_excluding_tax.
+     *
+     * @return float
+     */
+    public function getAmountExcludingTax()
+    {
+        return $this->container['amount_excluding_tax'];
+    }
+
+    /**
+     * Sets amount_excluding_tax.
+     *
+     * @param float $amount_excluding_tax 小計（税別）
+     *
+     * @return self
+     */
+    public function setAmountExcludingTax($amount_excluding_tax)
+    {
+        $this->container['amount_excluding_tax'] = $amount_excluding_tax;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_tax.
+     *
+     * @return float
+     */
+    public function getAmountTax()
+    {
+        return $this->container['amount_tax'];
+    }
+
+    /**
+     * Sets amount_tax.
+     *
+     * @param float $amount_tax 消費税額
+     *
+     * @return self
+     */
+    public function setAmountTax($amount_tax)
+    {
+        $this->container['amount_tax'] = $amount_tax;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_including_tax_10.
+     *
+     * @return float|null
+     */
+    public function getAmountIncludingTax10()
+    {
+        return $this->container['amount_including_tax_10'];
+    }
+
+    /**
+     * Sets amount_including_tax_10.
+     *
+     * @param float|null $amount_including_tax_10 10%対象 税込
+     *
+     * @return self
+     */
+    public function setAmountIncludingTax10($amount_including_tax_10)
+    {
+        $this->container['amount_including_tax_10'] = $amount_including_tax_10;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_excluding_tax_10.
+     *
+     * @return float|null
+     */
+    public function getAmountExcludingTax10()
+    {
+        return $this->container['amount_excluding_tax_10'];
+    }
+
+    /**
+     * Sets amount_excluding_tax_10.
+     *
+     * @param float|null $amount_excluding_tax_10 10%対象 税抜
+     *
+     * @return self
+     */
+    public function setAmountExcludingTax10($amount_excluding_tax_10)
+    {
+        $this->container['amount_excluding_tax_10'] = $amount_excluding_tax_10;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_tax_10.
+     *
+     * @return float|null
+     */
+    public function getAmountTax10()
+    {
+        return $this->container['amount_tax_10'];
+    }
+
+    /**
+     * Sets amount_tax_10.
+     *
+     * @param float|null $amount_tax_10 10%対象 消費税
+     *
+     * @return self
+     */
+    public function setAmountTax10($amount_tax_10)
+    {
+        $this->container['amount_tax_10'] = $amount_tax_10;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_including_tax_8.
+     *
+     * @return float|null
+     */
+    public function getAmountIncludingTax8()
+    {
+        return $this->container['amount_including_tax_8'];
+    }
+
+    /**
+     * Sets amount_including_tax_8.
+     *
+     * @param float|null $amount_including_tax_8 8%対象 税込
+     *
+     * @return self
+     */
+    public function setAmountIncludingTax8($amount_including_tax_8)
+    {
+        $this->container['amount_including_tax_8'] = $amount_including_tax_8;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_excluding_tax_8.
+     *
+     * @return float|null
+     */
+    public function getAmountExcludingTax8()
+    {
+        return $this->container['amount_excluding_tax_8'];
+    }
+
+    /**
+     * Sets amount_excluding_tax_8.
+     *
+     * @param float|null $amount_excluding_tax_8 8%対象 税抜
+     *
+     * @return self
+     */
+    public function setAmountExcludingTax8($amount_excluding_tax_8)
+    {
+        $this->container['amount_excluding_tax_8'] = $amount_excluding_tax_8;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_tax_8.
+     *
+     * @return float|null
+     */
+    public function getAmountTax8()
+    {
+        return $this->container['amount_tax_8'];
+    }
+
+    /**
+     * Sets amount_tax_8.
+     *
+     * @param float|null $amount_tax_8 8%対象 消費税
+     *
+     * @return self
+     */
+    public function setAmountTax8($amount_tax_8)
+    {
+        $this->container['amount_tax_8'] = $amount_tax_8;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_including_tax_8_reduced.
+     *
+     * @return float|null
+     */
+    public function getAmountIncludingTax8Reduced()
+    {
+        return $this->container['amount_including_tax_8_reduced'];
+    }
+
+    /**
+     * Sets amount_including_tax_8_reduced.
+     *
+     * @param float|null $amount_including_tax_8_reduced 軽減税率8%対象 税込
+     *
+     * @return self
+     */
+    public function setAmountIncludingTax8Reduced($amount_including_tax_8_reduced)
+    {
+        $this->container['amount_including_tax_8_reduced'] = $amount_including_tax_8_reduced;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_excluding_tax_8_reduced.
+     *
+     * @return float|null
+     */
+    public function getAmountExcludingTax8Reduced()
+    {
+        return $this->container['amount_excluding_tax_8_reduced'];
+    }
+
+    /**
+     * Sets amount_excluding_tax_8_reduced.
+     *
+     * @param float|null $amount_excluding_tax_8_reduced 軽減税率8%対象 税抜
+     *
+     * @return self
+     */
+    public function setAmountExcludingTax8Reduced($amount_excluding_tax_8_reduced)
+    {
+        $this->container['amount_excluding_tax_8_reduced'] = $amount_excluding_tax_8_reduced;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_tax_8_reduced.
+     *
+     * @return float|null
+     */
+    public function getAmountTax8Reduced()
+    {
+        return $this->container['amount_tax_8_reduced'];
+    }
+
+    /**
+     * Sets amount_tax_8_reduced.
+     *
+     * @param float|null $amount_tax_8_reduced 軽減税率8%対象 消費税
+     *
+     * @return self
+     */
+    public function setAmountTax8Reduced($amount_tax_8_reduced)
+    {
+        $this->container['amount_tax_8_reduced'] = $amount_tax_8_reduced;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_including_tax_0.
+     *
+     * @return float|null
+     */
+    public function getAmountIncludingTax0()
+    {
+        return $this->container['amount_including_tax_0'];
+    }
+
+    /**
+     * Sets amount_including_tax_0.
+     *
+     * @param float|null $amount_including_tax_0 0%対象 税込
+     *
+     * @return self
+     */
+    public function setAmountIncludingTax0($amount_including_tax_0)
+    {
+        $this->container['amount_including_tax_0'] = $amount_including_tax_0;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_excluding_tax_0.
+     *
+     * @return float|null
+     */
+    public function getAmountExcludingTax0()
+    {
+        return $this->container['amount_excluding_tax_0'];
+    }
+
+    /**
+     * Sets amount_excluding_tax_0.
+     *
+     * @param float|null $amount_excluding_tax_0 0%対象 税抜
+     *
+     * @return self
+     */
+    public function setAmountExcludingTax0($amount_excluding_tax_0)
+    {
+        $this->container['amount_excluding_tax_0'] = $amount_excluding_tax_0;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_tax_0.
+     *
+     * @return float|null
+     */
+    public function getAmountTax0()
+    {
+        return $this->container['amount_tax_0'];
+    }
+
+    /**
+     * Sets amount_tax_0.
+     *
+     * @param float|null $amount_tax_0 0%対象 消費税
+     *
+     * @return self
+     */
+    public function setAmountTax0($amount_tax_0)
+    {
+        $this->container['amount_tax_0'] = $amount_tax_0;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_brought_forward.
+     *
+     * @return float
+     */
+    public function getAmountBroughtForward()
+    {
+        return $this->container['amount_brought_forward'];
+    }
+
+    /**
+     * Sets amount_brought_forward.
+     *
+     * @param float $amount_brought_forward 繰越金額
+     *
+     * @return self
+     */
+    public function setAmountBroughtForward($amount_brought_forward)
+    {
+
+        if (($amount_brought_forward > 999999999999)) {
+            throw new \InvalidArgumentException('invalid value for $amount_brought_forward when calling InvoiceResponseInvoice., must be smaller than or equal to 999999999999.');
+        }
+        if (($amount_brought_forward < -999999999999)) {
+            throw new \InvalidArgumentException('invalid value for $amount_brought_forward when calling InvoiceResponseInvoice., must be bigger than or equal to -999999999999.');
+        }
+
+        $this->container['amount_brought_forward'] = $amount_brought_forward;
 
         return $this;
     }
@@ -835,6 +2204,10 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setPartnerId($partner_id)
     {
+
+        if (($partner_id > 9223372036854775807)) {
+            throw new \InvalidArgumentException('invalid value for $partner_id when calling InvoiceResponseInvoice., must be smaller than or equal to 9223372036854775807.');
+        }
         if (($partner_id < 1)) {
             throw new \InvalidArgumentException('invalid value for $partner_id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
         }
@@ -869,420 +2242,6 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets invoice_number.
-     *
-     * @return string
-     */
-    public function getInvoiceNumber()
-    {
-        return $this->container['invoice_number'];
-    }
-
-    /**
-     * Sets invoice_number.
-     *
-     * @param string $invoice_number 請求書番号
-     *
-     * @return self
-     */
-    public function setInvoiceNumber($invoice_number)
-    {
-        $this->container['invoice_number'] = $invoice_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets title.
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title.
-     *
-     * @param string|null $title タイトル
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets due_date.
-     *
-     * @return string|null
-     */
-    public function getDueDate()
-    {
-        return $this->container['due_date'];
-    }
-
-    /**
-     * Sets due_date.
-     *
-     * @param string|null $due_date 期日 (yyyy-mm-dd)
-     *
-     * @return self
-     */
-    public function setDueDate($due_date)
-    {
-        $this->container['due_date'] = $due_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_amount.
-     *
-     * @return int
-     */
-    public function getTotalAmount()
-    {
-        return $this->container['total_amount'];
-    }
-
-    /**
-     * Sets total_amount.
-     *
-     * @param int $total_amount 合計金額
-     *
-     * @return self
-     */
-    public function setTotalAmount($total_amount)
-    {
-        $this->container['total_amount'] = $total_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_vat.
-     *
-     * @return int|null
-     */
-    public function getTotalVat()
-    {
-        return $this->container['total_vat'];
-    }
-
-    /**
-     * Sets total_vat.
-     *
-     * @param int|null $total_vat 消費税
-     *
-     * @return self
-     */
-    public function setTotalVat($total_vat)
-    {
-        $this->container['total_vat'] = $total_vat;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_total.
-     *
-     * @return int|null
-     */
-    public function getSubTotal()
-    {
-        return $this->container['sub_total'];
-    }
-
-    /**
-     * Sets sub_total.
-     *
-     * @param int|null $sub_total 小計
-     *
-     * @return self
-     */
-    public function setSubTotal($sub_total)
-    {
-        $this->container['sub_total'] = $sub_total;
-
-        return $this;
-    }
-
-    /**
-     * Gets booking_date.
-     *
-     * @return string|null
-     */
-    public function getBookingDate()
-    {
-        return $this->container['booking_date'];
-    }
-
-    /**
-     * Sets booking_date.
-     *
-     * @param string|null $booking_date 売上計上日
-     *
-     * @return self
-     */
-    public function setBookingDate($booking_date)
-    {
-        $this->container['booking_date'] = $booking_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets description.
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description.
-     *
-     * @param string|null $description 概要
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_status.
-     *
-     * @return string
-     */
-    public function getInvoiceStatus()
-    {
-        return $this->container['invoice_status'];
-    }
-
-    /**
-     * Sets invoice_status.
-     *
-     * @param string $invoice_status 請求書ステータス  (draft: 下書き, applying: 申請中, remanded: 差し戻し, rejected: 却下, approved: 承認済み, submitted: 送付済み, unsubmitted: 請求書の承認フローが無効の場合のみ、unsubmitted（送付待ち）の値をとります)
-     *
-     * @return self
-     */
-    public function setInvoiceStatus($invoice_status)
-    {
-        $allowedValues = $this->getInvoiceStatusAllowableValues();
-        if (!in_array($invoice_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'invoice_status', must be one of '%s'",
-                    $invoice_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['invoice_status'] = $invoice_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_status.
-     *
-     * @return string|null
-     */
-    public function getPaymentStatus()
-    {
-        return $this->container['payment_status'];
-    }
-
-    /**
-     * Sets payment_status.
-     *
-     * @param string|null $payment_status 入金ステータス  (unsettled: 入金待ち, settled: 入金済み)
-     *
-     * @return self
-     */
-    public function setPaymentStatus($payment_status)
-    {
-        $allowedValues = $this->getPaymentStatusAllowableValues();
-        if (!is_null($payment_status) && !in_array($payment_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_status', must be one of '%s'",
-                    $payment_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['payment_status'] = $payment_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_date.
-     *
-     * @return string|null
-     */
-    public function getPaymentDate()
-    {
-        return $this->container['payment_date'];
-    }
-
-    /**
-     * Sets payment_date.
-     *
-     * @param string|null $payment_date 入金日
-     *
-     * @return self
-     */
-    public function setPaymentDate($payment_date)
-    {
-        $this->container['payment_date'] = $payment_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets web_published_at.
-     *
-     * @return string|null
-     */
-    public function getWebPublishedAt()
-    {
-        return $this->container['web_published_at'];
-    }
-
-    /**
-     * Sets web_published_at.
-     *
-     * @param string|null $web_published_at Web共有日時(最新)
-     *
-     * @return self
-     */
-    public function setWebPublishedAt($web_published_at)
-    {
-        $this->container['web_published_at'] = $web_published_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets web_downloaded_at.
-     *
-     * @return string|null
-     */
-    public function getWebDownloadedAt()
-    {
-        return $this->container['web_downloaded_at'];
-    }
-
-    /**
-     * Sets web_downloaded_at.
-     *
-     * @param string|null $web_downloaded_at Web共有ダウンロード日時(最新)
-     *
-     * @return self
-     */
-    public function setWebDownloadedAt($web_downloaded_at)
-    {
-        $this->container['web_downloaded_at'] = $web_downloaded_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets web_confirmed_at.
-     *
-     * @return string|null
-     */
-    public function getWebConfirmedAt()
-    {
-        return $this->container['web_confirmed_at'];
-    }
-
-    /**
-     * Sets web_confirmed_at.
-     *
-     * @param string|null $web_confirmed_at Web共有取引先確認日時(最新)
-     *
-     * @return self
-     */
-    public function setWebConfirmedAt($web_confirmed_at)
-    {
-        $this->container['web_confirmed_at'] = $web_confirmed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets mail_sent_at.
-     *
-     * @return string|null
-     */
-    public function getMailSentAt()
-    {
-        return $this->container['mail_sent_at'];
-    }
-
-    /**
-     * Sets mail_sent_at.
-     *
-     * @param string|null $mail_sent_at メール送信日時(最新)
-     *
-     * @return self
-     */
-    public function setMailSentAt($mail_sent_at)
-    {
-        $this->container['mail_sent_at'] = $mail_sent_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets posting_status.
-     *
-     * @return string
-     */
-    public function getPostingStatus()
-    {
-        return $this->container['posting_status'];
-    }
-
-    /**
-     * Sets posting_status.
-     *
-     * @param string $posting_status 郵送ステータス(unrequested: リクエスト前, preview_registered: プレビュー登録, preview_failed: プレビュー登録失敗, ordered: 注文中, order_failed: 注文失敗, printing: 印刷中, canceled: キャンセル, posted: 投函済み)
-     *
-     * @return self
-     */
-    public function setPostingStatus($posting_status)
-    {
-        $allowedValues = $this->getPostingStatusAllowableValues();
-        if (!in_array($posting_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'posting_status', must be one of '%s'",
-                    $posting_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['posting_status'] = $posting_status;
-
-        return $this;
-    }
-
-    /**
      * Gets partner_name.
      *
      * @return string|null
@@ -1295,37 +2254,17 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets partner_name.
      *
-     * @param string|null $partner_name 取引先名
+     * @param string|null $partner_name 取引先名 - partner_nameに空文字が戻る場合は、対象レコードをweb画面から更新するか、freee請求書APIから更新すると解消されます。
      *
      * @return self
      */
     public function setPartnerName($partner_name)
     {
+        if (!is_null($partner_name) && (mb_strlen($partner_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
         $this->container['partner_name'] = $partner_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets partner_display_name.
-     *
-     * @return string|null
-     */
-    public function getPartnerDisplayName()
-    {
-        return $this->container['partner_display_name'];
-    }
-
-    /**
-     * Sets partner_display_name.
-     *
-     * @param string|null $partner_display_name 請求書に表示する取引先名
-     *
-     * @return self
-     */
-    public function setPartnerDisplayName($partner_display_name)
-    {
-        $this->container['partner_display_name'] = $partner_display_name;
 
         return $this;
     }
@@ -1349,158 +2288,329 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function setPartnerTitle($partner_title)
     {
+        $allowedValues = $this->getPartnerTitleAllowableValues();
+        if (!is_null($partner_title) && !in_array($partner_title, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'partner_title', must be one of '%s'",
+                    $partner_title,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['partner_title'] = $partner_title;
 
         return $this;
     }
 
     /**
-     * Gets partner_zipcode.
+     * Gets partner_address_zipcode.
      *
      * @return string|null
      */
-    public function getPartnerZipcode()
+    public function getPartnerAddressZipcode()
     {
-        return $this->container['partner_zipcode'];
+        return $this->container['partner_address_zipcode'];
     }
 
     /**
-     * Sets partner_zipcode.
+     * Sets partner_address_zipcode.
      *
-     * @param string|null $partner_zipcode 郵便番号
+     * @param string|null $partner_address_zipcode 郵便番号
      *
      * @return self
      */
-    public function setPartnerZipcode($partner_zipcode)
+    public function setPartnerAddressZipcode($partner_address_zipcode)
     {
-        $this->container['partner_zipcode'] = $partner_zipcode;
+        if (!is_null($partner_address_zipcode) && (mb_strlen($partner_address_zipcode) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $partner_address_zipcode when calling InvoiceResponseInvoice., must be smaller than or equal to 10.');
+        }
+
+        $this->container['partner_address_zipcode'] = $partner_address_zipcode;
 
         return $this;
     }
 
     /**
-     * Gets partner_prefecture_code.
+     * Gets partner_address_prefecture_code.
      *
      * @return int|null
      */
-    public function getPartnerPrefectureCode()
+    public function getPartnerAddressPrefectureCode()
     {
-        return $this->container['partner_prefecture_code'];
+        return $this->container['partner_address_prefecture_code'];
     }
 
     /**
-     * Sets partner_prefecture_code.
+     * Sets partner_address_prefecture_code.
      *
-     * @param int|null $partner_prefecture_code 都道府県コード（-1: 設定しない、0:北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄
+     * @param int|null $partner_address_prefecture_code 都道府県コード（-1: 設定しない、0: 北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄）
      *
      * @return self
      */
-    public function setPartnerPrefectureCode($partner_prefecture_code)
+    public function setPartnerAddressPrefectureCode($partner_address_prefecture_code)
     {
-        if (!is_null($partner_prefecture_code) && ($partner_prefecture_code > 46)) {
-            throw new \InvalidArgumentException('invalid value for $partner_prefecture_code when calling InvoiceResponseInvoice., must be smaller than or equal to 46.');
+
+        if (!is_null($partner_address_prefecture_code) && ($partner_address_prefecture_code > 46)) {
+            throw new \InvalidArgumentException('invalid value for $partner_address_prefecture_code when calling InvoiceResponseInvoice., must be smaller than or equal to 46.');
         }
-        if (!is_null($partner_prefecture_code) && ($partner_prefecture_code < -1)) {
-            throw new \InvalidArgumentException('invalid value for $partner_prefecture_code when calling InvoiceResponseInvoice., must be bigger than or equal to -1.');
+        if (!is_null($partner_address_prefecture_code) && ($partner_address_prefecture_code < -1)) {
+            throw new \InvalidArgumentException('invalid value for $partner_address_prefecture_code when calling InvoiceResponseInvoice., must be bigger than or equal to -1.');
         }
 
-        $this->container['partner_prefecture_code'] = $partner_prefecture_code;
+        $this->container['partner_address_prefecture_code'] = $partner_address_prefecture_code;
 
         return $this;
     }
 
     /**
-     * Gets partner_prefecture_name.
+     * Gets partner_address_street_name1.
      *
      * @return string|null
      */
-    public function getPartnerPrefectureName()
+    public function getPartnerAddressStreetName1()
     {
-        return $this->container['partner_prefecture_name'];
+        return $this->container['partner_address_street_name1'];
     }
 
     /**
-     * Sets partner_prefecture_name.
+     * Sets partner_address_street_name1.
      *
-     * @param string|null $partner_prefecture_name 都道府県
+     * @param string|null $partner_address_street_name1 取引先 市区町村・番地
      *
      * @return self
      */
-    public function setPartnerPrefectureName($partner_prefecture_name)
+    public function setPartnerAddressStreetName1($partner_address_street_name1)
     {
-        $this->container['partner_prefecture_name'] = $partner_prefecture_name;
+        if (!is_null($partner_address_street_name1) && (mb_strlen($partner_address_street_name1) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_address_street_name1 when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_address_street_name1'] = $partner_address_street_name1;
 
         return $this;
     }
 
     /**
-     * Gets partner_address1.
+     * Gets partner_address_street_name2.
      *
      * @return string|null
      */
-    public function getPartnerAddress1()
+    public function getPartnerAddressStreetName2()
     {
-        return $this->container['partner_address1'];
+        return $this->container['partner_address_street_name2'];
     }
 
     /**
-     * Sets partner_address1.
+     * Sets partner_address_street_name2.
      *
-     * @param string|null $partner_address1 市区町村・番地
+     * @param string|null $partner_address_street_name2 取引先 建物名・部屋番号など
      *
      * @return self
      */
-    public function setPartnerAddress1($partner_address1)
+    public function setPartnerAddressStreetName2($partner_address_street_name2)
     {
-        $this->container['partner_address1'] = $partner_address1;
+        if (!is_null($partner_address_street_name2) && (mb_strlen($partner_address_street_name2) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_address_street_name2 when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_address_street_name2'] = $partner_address_street_name2;
 
         return $this;
     }
 
     /**
-     * Gets partner_address2.
+     * Gets partner_contact_department.
      *
      * @return string|null
      */
-    public function getPartnerAddress2()
+    public function getPartnerContactDepartment()
     {
-        return $this->container['partner_address2'];
+        return $this->container['partner_contact_department'];
     }
 
     /**
-     * Sets partner_address2.
+     * Sets partner_contact_department.
      *
-     * @param string|null $partner_address2 建物名・部屋番号など
+     * @param string|null $partner_contact_department 取引先部署
      *
      * @return self
      */
-    public function setPartnerAddress2($partner_address2)
+    public function setPartnerContactDepartment($partner_contact_department)
     {
-        $this->container['partner_address2'] = $partner_address2;
+        if (!is_null($partner_contact_department) && (mb_strlen($partner_contact_department) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_contact_department when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_contact_department'] = $partner_contact_department;
 
         return $this;
     }
 
     /**
-     * Gets partner_contact_info.
+     * Gets partner_contact_email_cc.
      *
      * @return string|null
      */
-    public function getPartnerContactInfo()
+    public function getPartnerContactEmailCc()
     {
-        return $this->container['partner_contact_info'];
+        return $this->container['partner_contact_email_cc'];
     }
 
     /**
-     * Sets partner_contact_info.
+     * Sets partner_contact_email_cc.
      *
-     * @param string|null $partner_contact_info 取引先担当者名
+     * @param string|null $partner_contact_email_cc 取引先担当者メールアドレス（CC）
      *
      * @return self
      */
-    public function setPartnerContactInfo($partner_contact_info)
+    public function setPartnerContactEmailCc($partner_contact_email_cc)
     {
-        $this->container['partner_contact_info'] = $partner_contact_info;
+        if (!is_null($partner_contact_email_cc) && (mb_strlen($partner_contact_email_cc) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_contact_email_cc when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_contact_email_cc'] = $partner_contact_email_cc;
+
+        return $this;
+    }
+
+    /**
+     * Gets partner_contact_email_to.
+     *
+     * @return string|null
+     */
+    public function getPartnerContactEmailTo()
+    {
+        return $this->container['partner_contact_email_to'];
+    }
+
+    /**
+     * Sets partner_contact_email_to.
+     *
+     * @param string|null $partner_contact_email_to 取引先担当者メールアドレス（TO）
+     *
+     * @return self
+     */
+    public function setPartnerContactEmailTo($partner_contact_email_to)
+    {
+        if (!is_null($partner_contact_email_to) && (mb_strlen($partner_contact_email_to) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_contact_email_to when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_contact_email_to'] = $partner_contact_email_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets partner_contact_name.
+     *
+     * @return string|null
+     */
+    public function getPartnerContactName()
+    {
+        return $this->container['partner_contact_name'];
+    }
+
+    /**
+     * Sets partner_contact_name.
+     *
+     * @param string|null $partner_contact_name 取引先担当者名
+     *
+     * @return self
+     */
+    public function setPartnerContactName($partner_contact_name)
+    {
+        if (!is_null($partner_contact_name) && (mb_strlen($partner_contact_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_contact_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_contact_name'] = $partner_contact_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets partner_display_name.
+     *
+     * @return string|null
+     */
+    public function getPartnerDisplayName()
+    {
+        return $this->container['partner_display_name'];
+    }
+
+    /**
+     * Sets partner_display_name.
+     *
+     * @param string|null $partner_display_name 取引先宛名 - 帳票の宛名に利用されます。
+     *
+     * @return self
+     */
+    public function setPartnerDisplayName($partner_display_name)
+    {
+        if (!is_null($partner_display_name) && (mb_strlen($partner_display_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_display_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_display_name'] = $partner_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets partner_bank_account.
+     *
+     * @return string|null
+     */
+    public function getPartnerBankAccount()
+    {
+        return $this->container['partner_bank_account'];
+    }
+
+    /**
+     * Sets partner_bank_account.
+     *
+     * @param string|null $partner_bank_account 取引先口座
+     *
+     * @return self
+     */
+    public function setPartnerBankAccount($partner_bank_account)
+    {
+        if (!is_null($partner_bank_account) && (mb_strlen($partner_bank_account) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $partner_bank_account when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['partner_bank_account'] = $partner_bank_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_contact_name.
+     *
+     * @return string|null
+     */
+    public function getCompanyContactName()
+    {
+        return $this->container['company_contact_name'];
+    }
+
+    /**
+     * Sets company_contact_name.
+     *
+     * @param string|null $company_contact_name 自社担当者名
+     *
+     * @return self
+     */
+    public function setCompanyContactName($company_contact_name)
+    {
+        if (!is_null($company_contact_name) && (mb_strlen($company_contact_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $company_contact_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
+        $this->container['company_contact_name'] = $company_contact_name;
 
         return $this;
     }
@@ -1508,7 +2618,7 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets company_name.
      *
-     * @return string
+     * @return string|null
      */
     public function getCompanyName()
     {
@@ -1518,441 +2628,117 @@ class InvoiceResponseInvoice implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets company_name.
      *
-     * @param string $company_name 事業所名
+     * @param string|null $company_name 自社名
      *
      * @return self
      */
     public function setCompanyName($company_name)
     {
+        if (!is_null($company_name) && (mb_strlen($company_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $company_name when calling InvoiceResponseInvoice., must be smaller than or equal to 255.');
+        }
+
         $this->container['company_name'] = $company_name;
 
         return $this;
     }
 
     /**
-     * Gets company_zipcode.
+     * Gets company_description.
      *
      * @return string|null
      */
-    public function getCompanyZipcode()
+    public function getCompanyDescription()
     {
-        return $this->container['company_zipcode'];
+        return $this->container['company_description'];
     }
 
     /**
-     * Sets company_zipcode.
+     * Sets company_description.
      *
-     * @param string|null $company_zipcode 郵便番号
+     * @param string|null $company_description 自社情報
      *
      * @return self
      */
-    public function setCompanyZipcode($company_zipcode)
+    public function setCompanyDescription($company_description)
     {
-        $this->container['company_zipcode'] = $company_zipcode;
+        $this->container['company_description'] = $company_description;
 
         return $this;
     }
 
     /**
-     * Gets company_prefecture_code.
-     *
-     * @return int|null
-     */
-    public function getCompanyPrefectureCode()
-    {
-        return $this->container['company_prefecture_code'];
-    }
-
-    /**
-     * Sets company_prefecture_code.
-     *
-     * @param int|null $company_prefecture_code 都道府県コード（-1: 設定しない、0:北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄
-     *
-     * @return self
-     */
-    public function setCompanyPrefectureCode($company_prefecture_code)
-    {
-        if (!is_null($company_prefecture_code) && ($company_prefecture_code > 46)) {
-            throw new \InvalidArgumentException('invalid value for $company_prefecture_code when calling InvoiceResponseInvoice., must be smaller than or equal to 46.');
-        }
-        if (!is_null($company_prefecture_code) && ($company_prefecture_code < -1)) {
-            throw new \InvalidArgumentException('invalid value for $company_prefecture_code when calling InvoiceResponseInvoice., must be bigger than or equal to -1.');
-        }
-
-        $this->container['company_prefecture_code'] = $company_prefecture_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets company_prefecture_name.
+     * Gets bank_account_to_transfer.
      *
      * @return string|null
      */
-    public function getCompanyPrefectureName()
+    public function getBankAccountToTransfer()
     {
-        return $this->container['company_prefecture_name'];
+        return $this->container['bank_account_to_transfer'];
     }
 
     /**
-     * Sets company_prefecture_name.
+     * Sets bank_account_to_transfer.
      *
-     * @param string|null $company_prefecture_name 都道府県
+     * @param string|null $bank_account_to_transfer 振込先
      *
      * @return self
      */
-    public function setCompanyPrefectureName($company_prefecture_name)
+    public function setBankAccountToTransfer($bank_account_to_transfer)
     {
-        $this->container['company_prefecture_name'] = $company_prefecture_name;
+        $this->container['bank_account_to_transfer'] = $bank_account_to_transfer;
 
         return $this;
     }
 
     /**
-     * Gets company_address1.
+     * Gets template.
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\InvoiceResponseInvoiceTemplate|null
      */
-    public function getCompanyAddress1()
+    public function getTemplate()
     {
-        return $this->container['company_address1'];
+        return $this->container['template'];
     }
 
     /**
-     * Sets company_address1.
+     * Sets template.
      *
-     * @param string|null $company_address1 市区町村・番地
+     * @param \OpenAPI\Client\Model\InvoiceResponseInvoiceTemplate|null $template template
      *
      * @return self
      */
-    public function setCompanyAddress1($company_address1)
+    public function setTemplate($template)
     {
-        $this->container['company_address1'] = $company_address1;
+        $this->container['template'] = $template;
 
         return $this;
     }
 
     /**
-     * Gets company_address2.
+     * Gets lines.
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\InvoiceResponseInvoiceLines[]
      */
-    public function getCompanyAddress2()
+    public function getLines()
     {
-        return $this->container['company_address2'];
+        return $this->container['lines'];
     }
 
     /**
-     * Sets company_address2.
+     * Sets lines.
      *
-     * @param string|null $company_address2 建物名・部屋番号など
+     * @param \OpenAPI\Client\Model\InvoiceResponseInvoiceLines[] $lines 請求書の明細行
      *
      * @return self
      */
-    public function setCompanyAddress2($company_address2)
+    public function setLines($lines)
     {
-        $this->container['company_address2'] = $company_address2;
+        $this->container['lines'] = $lines;
 
         return $this;
     }
 
-    /**
-     * Gets company_contact_info.
-     *
-     * @return string|null
-     */
-    public function getCompanyContactInfo()
-    {
-        return $this->container['company_contact_info'];
-    }
-
-    /**
-     * Sets company_contact_info.
-     *
-     * @param string|null $company_contact_info 事業所担当者名
-     *
-     * @return self
-     */
-    public function setCompanyContactInfo($company_contact_info)
-    {
-        $this->container['company_contact_info'] = $company_contact_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_type.
-     *
-     * @return string
-     */
-    public function getPaymentType()
-    {
-        return $this->container['payment_type'];
-    }
-
-    /**
-     * Sets payment_type.
-     *
-     * @param string $payment_type 支払方法 (振込: transfer, 引き落とし: direct_debit)
-     *
-     * @return self
-     */
-    public function setPaymentType($payment_type)
-    {
-        $allowedValues = $this->getPaymentTypeAllowableValues();
-        if (!in_array($payment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_type', must be one of '%s'",
-                    $payment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['payment_type'] = $payment_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_bank_info.
-     *
-     * @return string|null
-     */
-    public function getPaymentBankInfo()
-    {
-        return $this->container['payment_bank_info'];
-    }
-
-    /**
-     * Sets payment_bank_info.
-     *
-     * @param string|null $payment_bank_info 支払口座
-     *
-     * @return self
-     */
-    public function setPaymentBankInfo($payment_bank_info)
-    {
-        $this->container['payment_bank_info'] = $payment_bank_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param string|null $message メッセージ
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets notes.
-     *
-     * @return string|null
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes.
-     *
-     * @param string|null $notes 備考
-     *
-     * @return self
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_layout.
-     *
-     * @return string
-     */
-    public function getInvoiceLayout()
-    {
-        return $this->container['invoice_layout'];
-    }
-
-    /**
-     * Sets invoice_layout.
-     *
-     * @param string $invoice_layout 請求書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `carried_forward_standard_classic` - レイアウト３（繰越金額欄あり）/クラシック  * `carried_forward_envelope_classic` - 封筒２（繰越金額欄あり）/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン
-     *
-     * @return self
-     */
-    public function setInvoiceLayout($invoice_layout)
-    {
-        $allowedValues = $this->getInvoiceLayoutAllowableValues();
-        if (!in_array($invoice_layout, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'invoice_layout', must be one of '%s'",
-                    $invoice_layout,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['invoice_layout'] = $invoice_layout;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax_entry_method.
-     *
-     * @return string
-     */
-    public function getTaxEntryMethod()
-    {
-        return $this->container['tax_entry_method'];
-    }
-
-    /**
-     * Sets tax_entry_method.
-     *
-     * @param string $tax_entry_method 請求書の消費税計算方法(inclusive: 内税, exclusive: 外税)
-     *
-     * @return self
-     */
-    public function setTaxEntryMethod($tax_entry_method)
-    {
-        $allowedValues = $this->getTaxEntryMethodAllowableValues();
-        if (!in_array($tax_entry_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_entry_method', must be one of '%s'",
-                    $tax_entry_method,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['tax_entry_method'] = $tax_entry_method;
-
-        return $this;
-    }
-
-    /**
-     * Gets deal_id.
-     *
-     * @return int|null
-     */
-    public function getDealId()
-    {
-        return $this->container['deal_id'];
-    }
-
-    /**
-     * Sets deal_id.
-     *
-     * @param int|null $deal_id 取引ID (invoice_statusがsubmitted, unsubmittedの時IDが表示されます)
-     *
-     * @return self
-     */
-    public function setDealId($deal_id)
-    {
-        if (!is_null($deal_id) && ($deal_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $deal_id when calling InvoiceResponseInvoice., must be bigger than or equal to 1.');
-        }
-
-        $this->container['deal_id'] = $deal_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_contents.
-     *
-     * @return \OpenAPI\Client\Model\InvoiceResponseInvoiceInvoiceContents[]|null
-     */
-    public function getInvoiceContents()
-    {
-        return $this->container['invoice_contents'];
-    }
-
-    /**
-     * Sets invoice_contents.
-     *
-     * @param \OpenAPI\Client\Model\InvoiceResponseInvoiceInvoiceContents[]|null $invoice_contents 請求内容
-     *
-     * @return self
-     */
-    public function setInvoiceContents($invoice_contents)
-    {
-        $this->container['invoice_contents'] = $invoice_contents;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_amount_per_vat_rate.
-     *
-     * @return \OpenAPI\Client\Model\InvoiceIndexResponseTotalAmountPerVatRate
-     */
-    public function getTotalAmountPerVatRate()
-    {
-        return $this->container['total_amount_per_vat_rate'];
-    }
-
-    /**
-     * Sets total_amount_per_vat_rate.
-     *
-     * @param \OpenAPI\Client\Model\InvoiceIndexResponseTotalAmountPerVatRate $total_amount_per_vat_rate total_amount_per_vat_rate
-     *
-     * @return self
-     */
-    public function setTotalAmountPerVatRate($total_amount_per_vat_rate)
-    {
-        $this->container['total_amount_per_vat_rate'] = $total_amount_per_vat_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets related_quotation_ids.
-     *
-     * @return int[]|null
-     */
-    public function getRelatedQuotationIds()
-    {
-        return $this->container['related_quotation_ids'];
-    }
-
-    /**
-     * Sets related_quotation_ids.
-     *
-     * @param int[]|null $related_quotation_ids 関連する見積書ID(配列)<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br>
-     *
-     * @return self
-     */
-    public function setRelatedQuotationIds($related_quotation_ids)
-    {
-        $this->container['related_quotation_ids'] = $related_quotation_ids;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

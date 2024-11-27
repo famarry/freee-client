@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InlineResponse2002Meta.
  *
@@ -244,6 +245,7 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

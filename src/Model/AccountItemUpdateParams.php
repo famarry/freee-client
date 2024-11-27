@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountItemUpdateParams.
  *
@@ -278,6 +279,7 @@ class AccountItemUpdateParams implements ModelInterface, ArrayAccess, \JsonSeria
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

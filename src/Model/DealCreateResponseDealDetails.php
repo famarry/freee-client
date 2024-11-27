@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealCreateResponseDealDetails.
  *
@@ -731,6 +732,7 @@ class DealCreateResponseDealDetails implements ModelInterface, ArrayAccess, \Jso
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

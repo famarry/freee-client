@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SelectablesIndexResponseDefaultTaxTaxRateR8Exempt80.
  *
@@ -278,6 +279,7 @@ class SelectablesIndexResponseDefaultTaxTaxRateR8Exempt80 implements ModelInterf
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

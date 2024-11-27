@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealUser.
  *
@@ -300,6 +301,7 @@ class DealUser implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

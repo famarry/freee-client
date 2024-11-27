@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ManualJournalsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class ManualJournalsApi
      *
      * @param \OpenAPI\Client\Model\ManualJournalCreateParams $manual_journal_create_params 振替伝票の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createManualJournal($manual_journal_create_params = null)
     {
-        list($response) = $this->createManualJournalWithHttpInfo($manual_journal_create_params);
+        [$response] = $this->createManualJournalWithHttpInfo($manual_journal_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class ManualJournalsApi
      *
      * @param \OpenAPI\Client\Model\ManualJournalCreateParams $manual_journal_create_params 振替伝票の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError|\OpenAPI\Client\Model\ServiceUnavailableError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createManualJournalWithHttpInfo($manual_journal_create_params = null)
     {
@@ -186,7 +187,7 @@ class ManualJournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ManualJournalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -335,9 +336,9 @@ class ManualJournalsApi
      *
      * @param \OpenAPI\Client\Model\ManualJournalCreateParams $manual_journal_create_params 振替伝票の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createManualJournalAsync($manual_journal_create_params = null)
     {
@@ -356,9 +357,9 @@ class ManualJournalsApi
      *
      * @param \OpenAPI\Client\Model\ManualJournalCreateParams $manual_journal_create_params 振替伝票の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createManualJournalAsyncWithHttpInfo($manual_journal_create_params = null)
     {
@@ -403,9 +404,9 @@ class ManualJournalsApi
      *
      * @param \OpenAPI\Client\Model\ManualJournalCreateParams $manual_journal_create_params 振替伝票の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createManualJournalRequest($manual_journal_create_params = null)
     {
@@ -415,9 +416,6 @@ class ManualJournalsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -494,10 +492,10 @@ class ManualJournalsApi
      * @param int $id         id (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyManualJournal($id, $company_id)
     {
@@ -512,10 +510,10 @@ class ManualJournalsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyManualJournalWithHttpInfo($id, $company_id)
     {
@@ -612,9 +610,9 @@ class ManualJournalsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyManualJournalAsync($id, $company_id)
     {
@@ -634,9 +632,9 @@ class ManualJournalsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyManualJournalAsyncWithHttpInfo($id, $company_id)
     {
@@ -672,9 +670,9 @@ class ManualJournalsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyManualJournalRequest($id, $company_id)
     {
@@ -796,14 +794,14 @@ class ManualJournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getManualJournal($company_id, $id)
     {
-        list($response) = $this->getManualJournalWithHttpInfo($company_id, $id);
+        [$response] = $this->getManualJournalWithHttpInfo($company_id, $id);
 
         return $response;
     }
@@ -816,10 +814,10 @@ class ManualJournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getManualJournalWithHttpInfo($company_id, $id)
     {
@@ -860,7 +858,7 @@ class ManualJournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ManualJournalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1010,9 +1008,9 @@ class ManualJournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalAsync($company_id, $id)
     {
@@ -1032,9 +1030,9 @@ class ManualJournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalAsyncWithHttpInfo($company_id, $id)
     {
@@ -1080,9 +1078,9 @@ class ManualJournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalRequest($company_id, $id)
     {
@@ -1222,14 +1220,14 @@ class ManualJournalsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
+     * @return \OpenAPI\Client\Model\InlineResponse2003|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\InlineResponse2003|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getManualJournals($company_id, $start_issue_date = null, $end_issue_date = null, $entry_side = null, $account_item_id = null, $min_amount = null, $max_amount = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $segment_1_tag_id = null, $segment_2_tag_id = null, $segment_3_tag_id = null, $comment_status = null, $comment_important = null, $adjustment = null, $txn_number = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getManualJournalsWithHttpInfo($company_id, $start_issue_date, $end_issue_date, $entry_side, $account_item_id, $min_amount, $max_amount, $partner_id, $partner_code, $item_id, $section_id, $segment_1_tag_id, $segment_2_tag_id, $segment_3_tag_id, $comment_status, $comment_important, $adjustment, $txn_number, $offset, $limit);
+        [$response] = $this->getManualJournalsWithHttpInfo($company_id, $start_issue_date, $end_issue_date, $entry_side, $account_item_id, $min_amount, $max_amount, $partner_id, $partner_code, $item_id, $section_id, $segment_1_tag_id, $segment_2_tag_id, $segment_3_tag_id, $comment_status, $comment_important, $adjustment, $txn_number, $offset, $limit);
 
         return $response;
     }
@@ -1260,10 +1258,10 @@ class ManualJournalsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\InlineResponse2003|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\InlineResponse2003|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getManualJournalsWithHttpInfo($company_id, $start_issue_date = null, $end_issue_date = null, $entry_side = null, $account_item_id = null, $min_amount = null, $max_amount = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $segment_1_tag_id = null, $segment_2_tag_id = null, $segment_3_tag_id = null, $comment_status = null, $comment_important = null, $adjustment = null, $txn_number = null, $offset = null, $limit = null)
     {
@@ -1304,7 +1302,7 @@ class ManualJournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2003' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1452,9 +1450,9 @@ class ManualJournalsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalsAsync($company_id, $start_issue_date = null, $end_issue_date = null, $entry_side = null, $account_item_id = null, $min_amount = null, $max_amount = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $segment_1_tag_id = null, $segment_2_tag_id = null, $segment_3_tag_id = null, $comment_status = null, $comment_important = null, $adjustment = null, $txn_number = null, $offset = null, $limit = null)
     {
@@ -1492,9 +1490,9 @@ class ManualJournalsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalsAsyncWithHttpInfo($company_id, $start_issue_date = null, $end_issue_date = null, $entry_side = null, $account_item_id = null, $min_amount = null, $max_amount = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $segment_1_tag_id = null, $segment_2_tag_id = null, $segment_3_tag_id = null, $comment_status = null, $comment_important = null, $adjustment = null, $txn_number = null, $offset = null, $limit = null)
     {
@@ -1558,9 +1556,9 @@ class ManualJournalsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getManualJournalsRequest($company_id, $start_issue_date = null, $end_issue_date = null, $entry_side = null, $account_item_id = null, $min_amount = null, $max_amount = null, $partner_id = null, $partner_code = null, $item_id = null, $section_id = null, $segment_1_tag_id = null, $segment_2_tag_id = null, $segment_3_tag_id = null, $comment_status = null, $comment_important = null, $adjustment = null, $txn_number = null, $offset = null, $limit = null)
     {
@@ -1840,8 +1838,6 @@ class ManualJournalsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1910,14 +1906,14 @@ class ManualJournalsApi
      * @param int                                             $id                           id (required)
      * @param \OpenAPI\Client\Model\ManualJournalUpdateParams $manual_journal_update_params 振替伝票の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateManualJournal($id, $manual_journal_update_params = null)
     {
-        list($response) = $this->updateManualJournalWithHttpInfo($id, $manual_journal_update_params);
+        [$response] = $this->updateManualJournalWithHttpInfo($id, $manual_journal_update_params);
 
         return $response;
     }
@@ -1930,10 +1926,10 @@ class ManualJournalsApi
      * @param int                                             $id                           (required)
      * @param \OpenAPI\Client\Model\ManualJournalUpdateParams $manual_journal_update_params 振替伝票の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ManualJournalResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateManualJournalWithHttpInfo($id, $manual_journal_update_params = null)
     {
@@ -1974,7 +1970,7 @@ class ManualJournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ManualJournalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2124,9 +2120,9 @@ class ManualJournalsApi
      * @param int                                             $id                           (required)
      * @param \OpenAPI\Client\Model\ManualJournalUpdateParams $manual_journal_update_params 振替伝票の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateManualJournalAsync($id, $manual_journal_update_params = null)
     {
@@ -2146,9 +2142,9 @@ class ManualJournalsApi
      * @param int                                             $id                           (required)
      * @param \OpenAPI\Client\Model\ManualJournalUpdateParams $manual_journal_update_params 振替伝票の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateManualJournalAsyncWithHttpInfo($id, $manual_journal_update_params = null)
     {
@@ -2194,9 +2190,9 @@ class ManualJournalsApi
      * @param int                                             $id                           (required)
      * @param \OpenAPI\Client\Model\ManualJournalUpdateParams $manual_journal_update_params 振替伝票の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateManualJournalRequest($id, $manual_journal_update_params = null)
     {
@@ -2217,7 +2213,6 @@ class ManualJournalsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2299,9 +2294,9 @@ class ManualJournalsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

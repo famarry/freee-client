@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JournalStatusResponseJournals.
  *
@@ -714,6 +715,7 @@ class JournalStatusResponseJournals implements ModelInterface, ArrayAccess, \Jso
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

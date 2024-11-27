@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationLineTemplateResponse.
  *
@@ -237,6 +238,7 @@ class ExpenseApplicationLineTemplateResponse implements ModelInterface, ArrayAcc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

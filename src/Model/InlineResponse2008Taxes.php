@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InlineResponse2008Taxes.
  *
@@ -438,6 +439,7 @@ class InlineResponse2008Taxes implements ModelInterface, ArrayAccess, \JsonSeria
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

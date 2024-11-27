@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationResponseExpenseApplicationApprovalFlowLogs.
  *
@@ -353,6 +354,7 @@ class ExpenseApplicationResponseExpenseApplicationApprovalFlowLogs implements Mo
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

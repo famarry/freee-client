@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GeneralLedgersResponseGeneralLedgers.
  *
@@ -383,6 +384,7 @@ class GeneralLedgersResponseGeneralLedgers implements ModelInterface, ArrayAcces
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

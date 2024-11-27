@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CompanyResponse.
  *
@@ -237,6 +238,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

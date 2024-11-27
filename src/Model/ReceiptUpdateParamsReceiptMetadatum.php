@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ReceiptUpdateParamsReceiptMetadatum.
  *
@@ -316,6 +317,7 @@ class ReceiptUpdateParamsReceiptMetadatum implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

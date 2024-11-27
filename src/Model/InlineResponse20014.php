@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InlineResponse20014.
  *
@@ -237,6 +238,7 @@ class InlineResponse20014 implements ModelInterface, ArrayAccess, \JsonSerializa
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DealCreateParamsDetails.
  *
@@ -620,6 +621,7 @@ class DealCreateParamsDetails implements ModelInterface, ArrayAccess, \JsonSeria
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

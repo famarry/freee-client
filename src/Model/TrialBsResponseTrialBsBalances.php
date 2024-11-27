@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsResponseTrialBsBalances.
  *
@@ -751,6 +752,7 @@ class TrialBsResponseTrialBsBalances implements ModelInterface, ArrayAccess, \Js
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

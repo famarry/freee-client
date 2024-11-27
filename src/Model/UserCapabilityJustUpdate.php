@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserCapabilityJustUpdate.
  *
@@ -233,6 +234,7 @@ class UserCapabilityJustUpdate implements ModelInterface, ArrayAccess, \JsonSeri
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationResponseExpenseApplicationComments.
  *
@@ -311,6 +312,7 @@ class ExpenseApplicationResponseExpenseApplicationComments implements ModelInter
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

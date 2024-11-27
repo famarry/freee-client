@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JournalsResponseJournalsUpToDateReasons.
  *
@@ -304,6 +305,7 @@ class JournalsResponseJournalsUpToDateReasons implements ModelInterface, ArrayAc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

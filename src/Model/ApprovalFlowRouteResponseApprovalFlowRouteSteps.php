@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalFlowRouteResponseApprovalFlowRouteSteps.
  *
@@ -392,6 +393,7 @@ class ApprovalFlowRouteResponseApprovalFlowRouteSteps implements ModelInterface,
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserCapabilityJustReadUpdate.
  *
@@ -263,6 +264,7 @@ class UserCapabilityJustReadUpdate implements ModelInterface, ArrayAccess, \Json
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

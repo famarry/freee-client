@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserParams.
  *
@@ -393,6 +394,7 @@ class UserParams implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

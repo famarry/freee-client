@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SelectablesIndexResponseAccountCategories.
  *
@@ -467,6 +468,7 @@ class SelectablesIndexResponseAccountCategories implements ModelInterface, Array
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

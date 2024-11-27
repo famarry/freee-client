@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RenewsApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class RenewsApi
      * @param int                                     $id                  取引ID (required)
      * @param \OpenAPI\Client\Model\RenewCreateParams $renew_create_params 取引（収入・支出）の+更新の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDealRenew($id, $renew_create_params)
     {
-        list($response) = $this->createDealRenewWithHttpInfo($id, $renew_create_params);
+        [$response] = $this->createDealRenewWithHttpInfo($id, $renew_create_params);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class RenewsApi
      * @param int                                     $id                  取引ID (required)
      * @param \OpenAPI\Client\Model\RenewCreateParams $renew_create_params 取引（収入・支出）の+更新の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDealRenewWithHttpInfo($id, $renew_create_params)
     {
@@ -188,7 +189,7 @@ class RenewsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -318,9 +319,9 @@ class RenewsApi
      * @param int                                     $id                  取引ID (required)
      * @param \OpenAPI\Client\Model\RenewCreateParams $renew_create_params 取引（収入・支出）の+更新の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealRenewAsync($id, $renew_create_params)
     {
@@ -340,9 +341,9 @@ class RenewsApi
      * @param int                                     $id                  取引ID (required)
      * @param \OpenAPI\Client\Model\RenewCreateParams $renew_create_params 取引（収入・支出）の+更新の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealRenewAsyncWithHttpInfo($id, $renew_create_params)
     {
@@ -388,9 +389,9 @@ class RenewsApi
      * @param int                                     $id                  取引ID (required)
      * @param \OpenAPI\Client\Model\RenewCreateParams $renew_create_params 取引（収入・支出）の+更新の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealRenewRequest($id, $renew_create_params)
     {
@@ -413,7 +414,6 @@ class RenewsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -501,14 +501,14 @@ class RenewsApi
      * @param int $renew_id   +更新ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function deleteDealRenew($id, $renew_id, $company_id)
     {
-        list($response) = $this->deleteDealRenewWithHttpInfo($id, $renew_id, $company_id);
+        [$response] = $this->deleteDealRenewWithHttpInfo($id, $renew_id, $company_id);
 
         return $response;
     }
@@ -522,10 +522,10 @@ class RenewsApi
      * @param int $renew_id   +更新ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function deleteDealRenewWithHttpInfo($id, $renew_id, $company_id)
     {
@@ -566,7 +566,7 @@ class RenewsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -697,9 +697,9 @@ class RenewsApi
      * @param int $renew_id   +更新ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function deleteDealRenewAsync($id, $renew_id, $company_id)
     {
@@ -720,9 +720,9 @@ class RenewsApi
      * @param int $renew_id   +更新ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function deleteDealRenewAsyncWithHttpInfo($id, $renew_id, $company_id)
     {
@@ -769,9 +769,9 @@ class RenewsApi
      * @param int $renew_id   +更新ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function deleteDealRenewRequest($id, $renew_id, $company_id)
     {
@@ -912,14 +912,14 @@ class RenewsApi
      * @param int                                     $renew_id            +更新ID (required)
      * @param \OpenAPI\Client\Model\RenewUpdateParams $renew_update_params 取引（収入・支出）の+更新の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDealRenew($id, $renew_id, $renew_update_params)
     {
-        list($response) = $this->updateDealRenewWithHttpInfo($id, $renew_id, $renew_update_params);
+        [$response] = $this->updateDealRenewWithHttpInfo($id, $renew_id, $renew_update_params);
 
         return $response;
     }
@@ -933,10 +933,10 @@ class RenewsApi
      * @param int                                     $renew_id            +更新ID (required)
      * @param \OpenAPI\Client\Model\RenewUpdateParams $renew_update_params 取引（収入・支出）の+更新の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDealRenewWithHttpInfo($id, $renew_id, $renew_update_params)
     {
@@ -977,7 +977,7 @@ class RenewsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1108,9 +1108,9 @@ class RenewsApi
      * @param int                                     $renew_id            +更新ID (required)
      * @param \OpenAPI\Client\Model\RenewUpdateParams $renew_update_params 取引（収入・支出）の+更新の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealRenewAsync($id, $renew_id, $renew_update_params)
     {
@@ -1131,9 +1131,9 @@ class RenewsApi
      * @param int                                     $renew_id            +更新ID (required)
      * @param \OpenAPI\Client\Model\RenewUpdateParams $renew_update_params 取引（収入・支出）の+更新の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealRenewAsyncWithHttpInfo($id, $renew_id, $renew_update_params)
     {
@@ -1180,9 +1180,9 @@ class RenewsApi
      * @param int                                     $renew_id            +更新ID (required)
      * @param \OpenAPI\Client\Model\RenewUpdateParams $renew_update_params 取引（収入・支出）の+更新の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealRenewRequest($id, $renew_id, $renew_update_params)
     {
@@ -1219,7 +1219,6 @@ class RenewsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1309,9 +1308,9 @@ class RenewsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

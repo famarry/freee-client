@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SectionsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class SectionsApi
      *
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createSection($section_params = null)
     {
-        list($response) = $this->createSectionWithHttpInfo($section_params);
+        [$response] = $this->createSectionWithHttpInfo($section_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class SectionsApi
      *
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createSectionWithHttpInfo($section_params = null)
     {
@@ -186,7 +187,7 @@ class SectionsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\SectionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class SectionsApi
      *
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSectionAsync($section_params = null)
     {
@@ -336,9 +337,9 @@ class SectionsApi
      *
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSectionAsyncWithHttpInfo($section_params = null)
     {
@@ -383,9 +384,9 @@ class SectionsApi
      *
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createSectionRequest($section_params = null)
     {
@@ -395,9 +396,6 @@ class SectionsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -474,10 +472,10 @@ class SectionsApi
      * @param int $id         id (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroySection($id, $company_id)
     {
@@ -492,10 +490,10 @@ class SectionsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroySectionWithHttpInfo($id, $company_id)
     {
@@ -584,9 +582,9 @@ class SectionsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySectionAsync($id, $company_id)
     {
@@ -606,9 +604,9 @@ class SectionsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySectionAsyncWithHttpInfo($id, $company_id)
     {
@@ -644,9 +642,9 @@ class SectionsApi
      * @param int $id         (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroySectionRequest($id, $company_id)
     {
@@ -768,14 +766,14 @@ class SectionsApi
      * @param int $id         部門ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSection($id, $company_id)
     {
-        list($response) = $this->getSectionWithHttpInfo($id, $company_id);
+        [$response] = $this->getSectionWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -788,10 +786,10 @@ class SectionsApi
      * @param int $id         部門ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSectionWithHttpInfo($id, $company_id)
     {
@@ -832,7 +830,7 @@ class SectionsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\SectionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -982,9 +980,9 @@ class SectionsApi
      * @param int $id         部門ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionAsync($id, $company_id)
     {
@@ -1004,9 +1002,9 @@ class SectionsApi
      * @param int $id         部門ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionAsyncWithHttpInfo($id, $company_id)
     {
@@ -1052,9 +1050,9 @@ class SectionsApi
      * @param int $id         部門ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionRequest($id, $company_id)
     {
@@ -1175,14 +1173,14 @@ class SectionsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse2001|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSections($company_id)
     {
-        list($response) = $this->getSectionsWithHttpInfo($company_id);
+        [$response] = $this->getSectionsWithHttpInfo($company_id);
 
         return $response;
     }
@@ -1194,10 +1192,10 @@ class SectionsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse2001|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getSectionsWithHttpInfo($company_id)
     {
@@ -1238,7 +1236,7 @@ class SectionsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse2001' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1367,9 +1365,9 @@ class SectionsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionsAsync($company_id)
     {
@@ -1388,9 +1386,9 @@ class SectionsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionsAsyncWithHttpInfo($company_id)
     {
@@ -1435,9 +1433,9 @@ class SectionsApi
      *
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getSectionsRequest($company_id)
     {
@@ -1469,8 +1467,6 @@ class SectionsApi
                 $queryParams['company_id'] = $company_id;
             }
         }
-
-
 
 
         if ($multipart) {
@@ -1541,14 +1537,14 @@ class SectionsApi
      * @param int                                 $id             id (required)
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateSection($id, $section_params = null)
     {
-        list($response) = $this->updateSectionWithHttpInfo($id, $section_params);
+        [$response] = $this->updateSectionWithHttpInfo($id, $section_params);
 
         return $response;
     }
@@ -1561,10 +1557,10 @@ class SectionsApi
      * @param int                                 $id             (required)
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\SectionResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateSectionWithHttpInfo($id, $section_params = null)
     {
@@ -1605,7 +1601,7 @@ class SectionsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\SectionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1735,9 +1731,9 @@ class SectionsApi
      * @param int                                 $id             (required)
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSectionAsync($id, $section_params = null)
     {
@@ -1757,9 +1753,9 @@ class SectionsApi
      * @param int                                 $id             (required)
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSectionAsyncWithHttpInfo($id, $section_params = null)
     {
@@ -1805,9 +1801,9 @@ class SectionsApi
      * @param int                                 $id             (required)
      * @param \OpenAPI\Client\Model\SectionParams $section_params 部門の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateSectionRequest($id, $section_params = null)
     {
@@ -1828,7 +1824,6 @@ class SectionsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1910,9 +1905,9 @@ class SectionsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

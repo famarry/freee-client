@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountGroupsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class AccountGroupsApi
      *
      * @param \OpenAPI\Client\Model\AccountGroupCreateParams $account_group_create_params 決算書表示名の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\AccountGroupCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createAccountGroup($account_group_create_params)
     {
-        list($response) = $this->createAccountGroupWithHttpInfo($account_group_create_params);
+        [$response] = $this->createAccountGroupWithHttpInfo($account_group_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class AccountGroupsApi
      *
      * @param \OpenAPI\Client\Model\AccountGroupCreateParams $account_group_create_params 決算書表示名の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\AccountGroupCreateResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createAccountGroupWithHttpInfo($account_group_create_params)
     {
@@ -186,7 +187,7 @@ class AccountGroupsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\AccountGroupCreateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -335,9 +336,9 @@ class AccountGroupsApi
      *
      * @param \OpenAPI\Client\Model\AccountGroupCreateParams $account_group_create_params 決算書表示名の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountGroupAsync($account_group_create_params)
     {
@@ -356,9 +357,9 @@ class AccountGroupsApi
      *
      * @param \OpenAPI\Client\Model\AccountGroupCreateParams $account_group_create_params 決算書表示名の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountGroupAsyncWithHttpInfo($account_group_create_params)
     {
@@ -403,9 +404,9 @@ class AccountGroupsApi
      *
      * @param \OpenAPI\Client\Model\AccountGroupCreateParams $account_group_create_params 決算書表示名の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createAccountGroupRequest($account_group_create_params)
     {
@@ -422,9 +423,6 @@ class AccountGroupsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -496,9 +494,9 @@ class AccountGroupsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MeResponseUser.
  *
@@ -458,6 +459,7 @@ class MeResponseUser implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

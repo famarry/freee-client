@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ManualJournalDetails.
  *
@@ -1078,6 +1079,7 @@ class ManualJournalDetails implements ModelInterface, ArrayAccess, \JsonSerializ
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

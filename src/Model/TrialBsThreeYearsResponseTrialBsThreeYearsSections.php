@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialBsThreeYearsResponseTrialBsThreeYearsSections.
  *
@@ -394,6 +395,7 @@ class TrialBsThreeYearsResponseTrialBsThreeYearsSections implements ModelInterfa
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

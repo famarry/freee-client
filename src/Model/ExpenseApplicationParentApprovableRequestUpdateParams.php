@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationParentApprovableRequestUpdateParams.
  *
@@ -285,6 +286,7 @@ class ExpenseApplicationParentApprovableRequestUpdateParams implements ModelInte
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

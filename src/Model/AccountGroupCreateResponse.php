@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountGroupCreateResponse.
  *
@@ -237,6 +238,7 @@ class AccountGroupCreateResponse implements ModelInterface, ArrayAccess, \JsonSe
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

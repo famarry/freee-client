@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TagsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class TagsApi
      *
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createTag($tag_params)
     {
-        list($response) = $this->createTagWithHttpInfo($tag_params);
+        [$response] = $this->createTagWithHttpInfo($tag_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class TagsApi
      *
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createTagWithHttpInfo($tag_params)
     {
@@ -186,7 +187,7 @@ class TagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\TagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class TagsApi
      *
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTagAsync($tag_params)
     {
@@ -336,9 +337,9 @@ class TagsApi
      *
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTagAsyncWithHttpInfo($tag_params)
     {
@@ -383,9 +384,9 @@ class TagsApi
      *
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createTagRequest($tag_params)
     {
@@ -402,9 +403,6 @@ class TagsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -481,10 +479,10 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyTag($id, $company_id)
     {
@@ -499,10 +497,10 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyTagWithHttpInfo($id, $company_id)
     {
@@ -599,9 +597,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTagAsync($id, $company_id)
     {
@@ -621,9 +619,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTagAsyncWithHttpInfo($id, $company_id)
     {
@@ -659,9 +657,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyTagRequest($id, $company_id)
     {
@@ -783,14 +781,14 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTag($id, $company_id)
     {
-        list($response) = $this->getTagWithHttpInfo($id, $company_id);
+        [$response] = $this->getTagWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -803,10 +801,10 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTagWithHttpInfo($id, $company_id)
     {
@@ -847,7 +845,7 @@ class TagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -997,9 +995,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagAsync($id, $company_id)
     {
@@ -1019,9 +1017,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagAsyncWithHttpInfo($id, $company_id)
     {
@@ -1067,9 +1065,9 @@ class TagsApi
      * @param int $id         タグID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagRequest($id, $company_id)
     {
@@ -1194,14 +1192,14 @@ class TagsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\InlineResponse200|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTags($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getTagsWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit);
+        [$response] = $this->getTagsWithHttpInfo($company_id, $start_update_date, $end_update_date, $offset, $limit);
 
         return $response;
     }
@@ -1217,10 +1215,10 @@ class TagsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\InlineResponse200|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getTagsWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1261,7 +1259,7 @@ class TagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1394,9 +1392,9 @@ class TagsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagsAsync($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1419,9 +1417,9 @@ class TagsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagsAsyncWithHttpInfo($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1470,9 +1468,9 @@ class TagsApi
      * @param int    $offset            取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit             取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTagsRequest($company_id, $start_update_date = null, $end_update_date = null, $offset = null, $limit = null)
     {
@@ -1560,8 +1558,6 @@ class TagsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1630,14 +1626,14 @@ class TagsApi
      * @param int                             $id         メモタグID (required)
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateTag($id, $tag_params = null)
     {
-        list($response) = $this->updateTagWithHttpInfo($id, $tag_params);
+        [$response] = $this->updateTagWithHttpInfo($id, $tag_params);
 
         return $response;
     }
@@ -1650,10 +1646,10 @@ class TagsApi
      * @param int                             $id         メモタグID (required)
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\TagResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateTagWithHttpInfo($id, $tag_params = null)
     {
@@ -1694,7 +1690,7 @@ class TagsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\TagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1844,9 +1840,9 @@ class TagsApi
      * @param int                             $id         メモタグID (required)
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTagAsync($id, $tag_params = null)
     {
@@ -1866,9 +1862,9 @@ class TagsApi
      * @param int                             $id         メモタグID (required)
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTagAsyncWithHttpInfo($id, $tag_params = null)
     {
@@ -1914,9 +1910,9 @@ class TagsApi
      * @param int                             $id         メモタグID (required)
      * @param \OpenAPI\Client\Model\TagParams $tag_params メモタグの更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateTagRequest($id, $tag_params = null)
     {
@@ -1937,7 +1933,6 @@ class TagsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2019,9 +2014,9 @@ class TagsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

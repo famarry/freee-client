@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class ExpenseApplicationsApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationCreateParams $expense_application_create_params 経費申請の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createExpenseApplication($expense_application_create_params = null)
     {
-        list($response) = $this->createExpenseApplicationWithHttpInfo($expense_application_create_params);
+        [$response] = $this->createExpenseApplicationWithHttpInfo($expense_application_create_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class ExpenseApplicationsApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationCreateParams $expense_application_create_params 経費申請の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createExpenseApplicationWithHttpInfo($expense_application_create_params = null)
     {
@@ -186,7 +187,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class ExpenseApplicationsApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationCreateParams $expense_application_create_params 経費申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationAsync($expense_application_create_params = null)
     {
@@ -336,9 +337,9 @@ class ExpenseApplicationsApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationCreateParams $expense_application_create_params 経費申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationAsyncWithHttpInfo($expense_application_create_params = null)
     {
@@ -383,9 +384,9 @@ class ExpenseApplicationsApi
      *
      * @param \OpenAPI\Client\Model\ExpenseApplicationCreateParams $expense_application_create_params 経費申請の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createExpenseApplicationRequest($expense_application_create_params = null)
     {
@@ -395,9 +396,6 @@ class ExpenseApplicationsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -474,10 +472,10 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyExpenseApplication($id, $company_id)
     {
@@ -492,10 +490,10 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyExpenseApplicationWithHttpInfo($id, $company_id)
     {
@@ -592,9 +590,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationAsync($id, $company_id)
     {
@@ -614,9 +612,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationAsyncWithHttpInfo($id, $company_id)
     {
@@ -652,9 +650,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyExpenseApplicationRequest($id, $company_id)
     {
@@ -776,14 +774,14 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplication($id, $company_id)
     {
-        list($response) = $this->getExpenseApplicationWithHttpInfo($id, $company_id);
+        [$response] = $this->getExpenseApplicationWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -796,10 +794,10 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getExpenseApplicationWithHttpInfo($id, $company_id)
     {
@@ -840,7 +838,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -990,9 +988,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationAsync($id, $company_id)
     {
@@ -1012,9 +1010,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationAsyncWithHttpInfo($id, $company_id)
     {
@@ -1060,9 +1058,9 @@ class ExpenseApplicationsApi
      * @param int $id         経費申請ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationRequest($id, $company_id)
     {
@@ -1197,14 +1195,14 @@ class ExpenseApplicationsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
+     * @return \OpenAPI\Client\Model\ExpenseApplicationsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\ExpenseApplicationsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getExpenseApplications($company_id, $status = null, $payroll_attached = null, $start_transaction_date = null, $end_transaction_date = null, $application_number = null, $title = null, $start_issue_date = null, $end_issue_date = null, $applicant_id = null, $approver_id = null, $min_amount = null, $max_amount = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getExpenseApplicationsWithHttpInfo($company_id, $status, $payroll_attached, $start_transaction_date, $end_transaction_date, $application_number, $title, $start_issue_date, $end_issue_date, $applicant_id, $approver_id, $min_amount, $max_amount, $offset, $limit);
+        [$response] = $this->getExpenseApplicationsWithHttpInfo($company_id, $status, $payroll_attached, $start_transaction_date, $end_transaction_date, $application_number, $title, $start_issue_date, $end_issue_date, $applicant_id, $approver_id, $min_amount, $max_amount, $offset, $limit);
 
         return $response;
     }
@@ -1230,10 +1228,10 @@ class ExpenseApplicationsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\ExpenseApplicationsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\ExpenseApplicationsIndexResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExpenseApplicationsWithHttpInfo($company_id, $status = null, $payroll_attached = null, $start_transaction_date = null, $end_transaction_date = null, $application_number = null, $title = null, $start_issue_date = null, $end_issue_date = null, $applicant_id = null, $approver_id = null, $min_amount = null, $max_amount = null, $offset = null, $limit = null)
     {
@@ -1274,7 +1272,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationsIndexResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1417,9 +1415,9 @@ class ExpenseApplicationsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationsAsync($company_id, $status = null, $payroll_attached = null, $start_transaction_date = null, $end_transaction_date = null, $application_number = null, $title = null, $start_issue_date = null, $end_issue_date = null, $applicant_id = null, $approver_id = null, $min_amount = null, $max_amount = null, $offset = null, $limit = null)
     {
@@ -1452,9 +1450,9 @@ class ExpenseApplicationsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationsAsyncWithHttpInfo($company_id, $status = null, $payroll_attached = null, $start_transaction_date = null, $end_transaction_date = null, $application_number = null, $title = null, $start_issue_date = null, $end_issue_date = null, $applicant_id = null, $approver_id = null, $min_amount = null, $max_amount = null, $offset = null, $limit = null)
     {
@@ -1513,9 +1511,9 @@ class ExpenseApplicationsApi
      * @param int    $offset                 取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit                  取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 500) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getExpenseApplicationsRequest($company_id, $status = null, $payroll_attached = null, $start_transaction_date = null, $end_transaction_date = null, $application_number = null, $title = null, $start_issue_date = null, $end_issue_date = null, $applicant_id = null, $approver_id = null, $min_amount = null, $max_amount = null, $offset = null, $limit = null)
     {
@@ -1733,8 +1731,6 @@ class ExpenseApplicationsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1803,14 +1799,14 @@ class ExpenseApplicationsApi
      * @param int                                                  $id                                経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationUpdateParams $expense_application_update_params 経費申請の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplication($id, $expense_application_update_params = null)
     {
-        list($response) = $this->updateExpenseApplicationWithHttpInfo($id, $expense_application_update_params);
+        [$response] = $this->updateExpenseApplicationWithHttpInfo($id, $expense_application_update_params);
 
         return $response;
     }
@@ -1823,10 +1819,10 @@ class ExpenseApplicationsApi
      * @param int                                                  $id                                経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationUpdateParams $expense_application_update_params 経費申請の更新 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationWithHttpInfo($id, $expense_application_update_params = null)
     {
@@ -1867,7 +1863,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2017,9 +2013,9 @@ class ExpenseApplicationsApi
      * @param int                                                  $id                                経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationUpdateParams $expense_application_update_params 経費申請の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationAsync($id, $expense_application_update_params = null)
     {
@@ -2039,9 +2035,9 @@ class ExpenseApplicationsApi
      * @param int                                                  $id                                経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationUpdateParams $expense_application_update_params 経費申請の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationAsyncWithHttpInfo($id, $expense_application_update_params = null)
     {
@@ -2087,9 +2083,9 @@ class ExpenseApplicationsApi
      * @param int                                                  $id                                経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationUpdateParams $expense_application_update_params 経費申請の更新 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationRequest($id, $expense_application_update_params = null)
     {
@@ -2110,7 +2106,6 @@ class ExpenseApplicationsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2197,14 +2192,14 @@ class ExpenseApplicationsApi
      * @param int                                                        $id                                       経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationActionCreateParams $expense_application_action_create_params 経費申請の承認操作 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationAction($id, $expense_application_action_create_params)
     {
-        list($response) = $this->updateExpenseApplicationActionWithHttpInfo($id, $expense_application_action_create_params);
+        [$response] = $this->updateExpenseApplicationActionWithHttpInfo($id, $expense_application_action_create_params);
 
         return $response;
     }
@@ -2217,10 +2212,10 @@ class ExpenseApplicationsApi
      * @param int                                                        $id                                       経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationActionCreateParams $expense_application_action_create_params 経費申請の承認操作 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationActionWithHttpInfo($id, $expense_application_action_create_params)
     {
@@ -2261,7 +2256,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2411,9 +2406,9 @@ class ExpenseApplicationsApi
      * @param int                                                        $id                                       経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationActionCreateParams $expense_application_action_create_params 経費申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationActionAsync($id, $expense_application_action_create_params)
     {
@@ -2433,9 +2428,9 @@ class ExpenseApplicationsApi
      * @param int                                                        $id                                       経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationActionCreateParams $expense_application_action_create_params 経費申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationActionAsyncWithHttpInfo($id, $expense_application_action_create_params)
     {
@@ -2481,9 +2476,9 @@ class ExpenseApplicationsApi
      * @param int                                                        $id                                       経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationActionCreateParams $expense_application_action_create_params 経費申請の承認操作 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationActionRequest($id, $expense_application_action_create_params)
     {
@@ -2510,7 +2505,6 @@ class ExpenseApplicationsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2597,14 +2591,14 @@ class ExpenseApplicationsApi
      * @param int                                                                         $id                                                          経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationParentApprovableRequestUpdateParams $expense_application_parent_approvable_request_update_params 経費申請に関連付ける各種申請の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationParentApprovableRequests($id, $expense_application_parent_approvable_request_update_params)
     {
-        list($response) = $this->updateExpenseApplicationParentApprovableRequestsWithHttpInfo($id, $expense_application_parent_approvable_request_update_params);
+        [$response] = $this->updateExpenseApplicationParentApprovableRequestsWithHttpInfo($id, $expense_application_parent_approvable_request_update_params);
 
         return $response;
     }
@@ -2617,10 +2611,10 @@ class ExpenseApplicationsApi
      * @param int                                                                         $id                                                          経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationParentApprovableRequestUpdateParams $expense_application_parent_approvable_request_update_params 経費申請に関連付ける各種申請の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\ExpenseApplicationResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateExpenseApplicationParentApprovableRequestsWithHttpInfo($id, $expense_application_parent_approvable_request_update_params)
     {
@@ -2661,7 +2655,7 @@ class ExpenseApplicationsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\ExpenseApplicationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2811,9 +2805,9 @@ class ExpenseApplicationsApi
      * @param int                                                                         $id                                                          経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationParentApprovableRequestUpdateParams $expense_application_parent_approvable_request_update_params 経費申請に関連付ける各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationParentApprovableRequestsAsync($id, $expense_application_parent_approvable_request_update_params)
     {
@@ -2833,9 +2827,9 @@ class ExpenseApplicationsApi
      * @param int                                                                         $id                                                          経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationParentApprovableRequestUpdateParams $expense_application_parent_approvable_request_update_params 経費申請に関連付ける各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationParentApprovableRequestsAsyncWithHttpInfo($id, $expense_application_parent_approvable_request_update_params)
     {
@@ -2881,9 +2875,9 @@ class ExpenseApplicationsApi
      * @param int                                                                         $id                                                          経費申請ID (required)
      * @param \OpenAPI\Client\Model\ExpenseApplicationParentApprovableRequestUpdateParams $expense_application_parent_approvable_request_update_params 経費申請に関連付ける各種申請の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateExpenseApplicationParentApprovableRequestsRequest($id, $expense_application_parent_approvable_request_update_params)
     {
@@ -2910,7 +2904,6 @@ class ExpenseApplicationsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -2992,9 +2985,9 @@ class ExpenseApplicationsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

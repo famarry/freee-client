@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExpenseApplicationUpdateParamsExpenseApplicationLines.
  *
@@ -362,6 +363,7 @@ class ExpenseApplicationUpdateParamsExpenseApplicationLines implements ModelInte
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

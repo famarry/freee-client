@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WalletTxnsApi
  * PHP version 7.3.
@@ -123,14 +124,14 @@ class WalletTxnsApi
      *
      * @param \OpenAPI\Client\Model\WalletTxnParams $wallet_txn_params 口座明細の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\WalletTxnResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createWalletTxn($wallet_txn_params = null)
     {
-        list($response) = $this->createWalletTxnWithHttpInfo($wallet_txn_params);
+        [$response] = $this->createWalletTxnWithHttpInfo($wallet_txn_params);
 
         return $response;
     }
@@ -142,10 +143,10 @@ class WalletTxnsApi
      *
      * @param \OpenAPI\Client\Model\WalletTxnParams $wallet_txn_params 口座明細の作成 (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\WalletTxnResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createWalletTxnWithHttpInfo($wallet_txn_params = null)
     {
@@ -186,7 +187,7 @@ class WalletTxnsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\WalletTxnResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -315,9 +316,9 @@ class WalletTxnsApi
      *
      * @param \OpenAPI\Client\Model\WalletTxnParams $wallet_txn_params 口座明細の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletTxnAsync($wallet_txn_params = null)
     {
@@ -336,9 +337,9 @@ class WalletTxnsApi
      *
      * @param \OpenAPI\Client\Model\WalletTxnParams $wallet_txn_params 口座明細の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletTxnAsyncWithHttpInfo($wallet_txn_params = null)
     {
@@ -383,9 +384,9 @@ class WalletTxnsApi
      *
      * @param \OpenAPI\Client\Model\WalletTxnParams $wallet_txn_params 口座明細の作成 (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createWalletTxnRequest($wallet_txn_params = null)
     {
@@ -395,9 +396,6 @@ class WalletTxnsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
-
-
 
 
         if ($multipart) {
@@ -474,10 +472,10 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyWalletTxn($id, $company_id)
     {
@@ -492,10 +490,10 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyWalletTxnWithHttpInfo($id, $company_id)
     {
@@ -592,9 +590,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletTxnAsync($id, $company_id)
     {
@@ -614,9 +612,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletTxnAsyncWithHttpInfo($id, $company_id)
     {
@@ -652,9 +650,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyWalletTxnRequest($id, $company_id)
     {
@@ -776,14 +774,14 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\WalletTxnResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletTxn($id, $company_id)
     {
-        list($response) = $this->getWalletTxnWithHttpInfo($id, $company_id);
+        [$response] = $this->getWalletTxnWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -796,10 +794,10 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\WalletTxnResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getWalletTxnWithHttpInfo($id, $company_id)
     {
@@ -840,7 +838,7 @@ class WalletTxnsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\WalletTxnResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -990,9 +988,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnAsync($id, $company_id)
     {
@@ -1012,9 +1010,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnAsyncWithHttpInfo($id, $company_id)
     {
@@ -1060,9 +1058,9 @@ class WalletTxnsApi
      * @param int $id         明細ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnRequest($id, $company_id)
     {
@@ -1190,14 +1188,14 @@ class WalletTxnsApi
      * @param int    $offset          取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit           取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
+     * @return \OpenAPI\Client\Model\InlineResponse20014|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\InlineResponse20014|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getWalletTxns($company_id, $walletable_type = null, $walletable_id = null, $start_date = null, $end_date = null, $entry_side = null, $offset = null, $limit = null)
     {
-        list($response) = $this->getWalletTxnsWithHttpInfo($company_id, $walletable_type, $walletable_id, $start_date, $end_date, $entry_side, $offset, $limit);
+        [$response] = $this->getWalletTxnsWithHttpInfo($company_id, $walletable_type, $walletable_id, $start_date, $end_date, $entry_side, $offset, $limit);
 
         return $response;
     }
@@ -1216,10 +1214,10 @@ class WalletTxnsApi
      * @param int    $offset          取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit           取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\InlineResponse20014|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\InlineResponse20014|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWalletTxnsWithHttpInfo($company_id, $walletable_type = null, $walletable_id = null, $start_date = null, $end_date = null, $entry_side = null, $offset = null, $limit = null)
     {
@@ -1260,7 +1258,7 @@ class WalletTxnsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\InlineResponse20014' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1396,9 +1394,9 @@ class WalletTxnsApi
      * @param int    $offset          取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit           取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnsAsync($company_id, $walletable_type = null, $walletable_id = null, $start_date = null, $end_date = null, $entry_side = null, $offset = null, $limit = null)
     {
@@ -1424,9 +1422,9 @@ class WalletTxnsApi
      * @param int    $offset          取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit           取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnsAsyncWithHttpInfo($company_id, $walletable_type = null, $walletable_id = null, $start_date = null, $end_date = null, $entry_side = null, $offset = null, $limit = null)
     {
@@ -1478,9 +1476,9 @@ class WalletTxnsApi
      * @param int    $offset          取得レコードのオフセット (デフォルト: 0) (optional)
      * @param int    $limit           取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 100) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getWalletTxnsRequest($company_id, $walletable_type = null, $walletable_id = null, $start_date = null, $end_date = null, $entry_side = null, $offset = null, $limit = null)
     {
@@ -1602,8 +1600,6 @@ class WalletTxnsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1667,9 +1663,9 @@ class WalletTxnsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentRequestCreateParams.
  *
@@ -1229,6 +1230,7 @@ class PaymentRequestCreateParams implements ModelInterface, ArrayAccess, \JsonSe
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

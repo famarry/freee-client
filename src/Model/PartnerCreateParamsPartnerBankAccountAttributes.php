@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnerCreateParamsPartnerBankAccountAttributes.
  *
@@ -503,6 +504,7 @@ class PartnerCreateParamsPartnerBankAccountAttributes implements ModelInterface,
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

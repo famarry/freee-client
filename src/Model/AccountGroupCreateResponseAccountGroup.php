@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AccountGroupCreateResponseAccountGroup.
  *
@@ -402,6 +403,7 @@ class AccountGroupCreateResponseAccountGroup implements ModelInterface, ArrayAcc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

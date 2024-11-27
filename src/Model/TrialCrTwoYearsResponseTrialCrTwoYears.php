@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialCrTwoYearsResponseTrialCrTwoYears.
  *
@@ -954,6 +955,7 @@ class TrialCrTwoYearsResponseTrialCrTwoYears implements ModelInterface, ArrayAcc
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

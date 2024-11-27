@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApprovalRequestsIndexResponseRequestItems.
  *
@@ -361,6 +362,7 @@ class ApprovalRequestsIndexResponseRequestItems implements ModelInterface, Array
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialCrSegment3TagsResponse.
  *
@@ -300,6 +301,7 @@ class TrialCrSegment3TagsResponse implements ModelInterface, ArrayAccess, \JsonS
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

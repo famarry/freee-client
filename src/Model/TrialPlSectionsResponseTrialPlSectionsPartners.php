@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialPlSectionsResponseTrialPlSectionsPartners.
  *
@@ -304,6 +305,7 @@ class TrialPlSectionsResponseTrialPlSectionsPartners implements ModelInterface, 
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

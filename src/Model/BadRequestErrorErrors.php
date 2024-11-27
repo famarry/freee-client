@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BadRequestErrorErrors.
  *
@@ -305,6 +306,7 @@ class BadRequestErrorErrors implements ModelInterface, ArrayAccess, \JsonSeriali
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

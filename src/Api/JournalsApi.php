@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JournalsApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class JournalsApi
      * @param int $id         受け付けID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return string|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function downloadJournal($id, $company_id)
     {
-        list($response) = $this->downloadJournalWithHttpInfo($id, $company_id);
+        [$response] = $this->downloadJournalWithHttpInfo($id, $company_id);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class JournalsApi
      * @param int $id         受け付けID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of string|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function downloadJournalWithHttpInfo($id, $company_id)
     {
@@ -188,7 +189,7 @@ class JournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -338,9 +339,9 @@ class JournalsApi
      * @param int $id         受け付けID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadJournalAsync($id, $company_id)
     {
@@ -360,9 +361,9 @@ class JournalsApi
      * @param int $id         受け付けID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadJournalAsyncWithHttpInfo($id, $company_id)
     {
@@ -408,9 +409,9 @@ class JournalsApi
      * @param int $id         受け付けID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function downloadJournalRequest($id, $company_id)
     {
@@ -532,14 +533,14 @@ class JournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         受け付けID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\JournalStatusResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getJournalStatus($company_id, $id)
     {
-        list($response) = $this->getJournalStatusWithHttpInfo($company_id, $id);
+        [$response] = $this->getJournalStatusWithHttpInfo($company_id, $id);
 
         return $response;
     }
@@ -552,10 +553,10 @@ class JournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         受け付けID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\JournalStatusResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function getJournalStatusWithHttpInfo($company_id, $id)
     {
@@ -596,7 +597,7 @@ class JournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\JournalStatusResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -746,9 +747,9 @@ class JournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         受け付けID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalStatusAsync($company_id, $id)
     {
@@ -768,9 +769,9 @@ class JournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         受け付けID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalStatusAsyncWithHttpInfo($company_id, $id)
     {
@@ -816,9 +817,9 @@ class JournalsApi
      * @param int $company_id 事業所ID (required)
      * @param int $id         受け付けID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalStatusRequest($company_id, $id)
     {
@@ -945,14 +946,14 @@ class JournalsApi
      * @param string   $start_date    取得開始日 (yyyy-mm-dd) (optional)
      * @param string   $end_date      取得終了日 (yyyy-mm-dd) (optional)
      *
+     * @return \OpenAPI\Client\Model\JournalsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \OpenAPI\Client\Model\JournalsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError
      */
     public function getJournals($download_type, $company_id, $encoding = null, $visible_tags = null, $visible_ids = null, $start_date = null, $end_date = null)
     {
-        list($response) = $this->getJournalsWithHttpInfo($download_type, $company_id, $encoding, $visible_tags, $visible_ids, $start_date, $end_date);
+        [$response] = $this->getJournalsWithHttpInfo($download_type, $company_id, $encoding, $visible_tags, $visible_ids, $start_date, $end_date);
 
         return $response;
     }
@@ -970,10 +971,10 @@ class JournalsApi
      * @param string   $start_date    取得開始日 (yyyy-mm-dd) (optional)
      * @param string   $end_date      取得終了日 (yyyy-mm-dd) (optional)
      *
+     * @return array of \OpenAPI\Client\Model\JournalsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return array of \OpenAPI\Client\Model\JournalsResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getJournalsWithHttpInfo($download_type, $company_id, $encoding = null, $visible_tags = null, $visible_ids = null, $start_date = null, $end_date = null)
     {
@@ -1014,7 +1015,7 @@ class JournalsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 202:
                     if ('\OpenAPI\Client\Model\JournalsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1149,9 +1150,9 @@ class JournalsApi
      * @param string   $start_date    取得開始日 (yyyy-mm-dd) (optional)
      * @param string   $end_date      取得終了日 (yyyy-mm-dd) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalsAsync($download_type, $company_id, $encoding = null, $visible_tags = null, $visible_ids = null, $start_date = null, $end_date = null)
     {
@@ -1176,9 +1177,9 @@ class JournalsApi
      * @param string   $start_date    取得開始日 (yyyy-mm-dd) (optional)
      * @param string   $end_date      取得終了日 (yyyy-mm-dd) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalsAsyncWithHttpInfo($download_type, $company_id, $encoding = null, $visible_tags = null, $visible_ids = null, $start_date = null, $end_date = null)
     {
@@ -1229,9 +1230,9 @@ class JournalsApi
      * @param string   $start_date    取得開始日 (yyyy-mm-dd) (optional)
      * @param string   $end_date      取得終了日 (yyyy-mm-dd) (optional)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function getJournalsRequest($download_type, $company_id, $encoding = null, $visible_tags = null, $visible_ids = null, $start_date = null, $end_date = null)
     {
@@ -1331,8 +1332,6 @@ class JournalsApi
         }
 
 
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1396,9 +1395,9 @@ class JournalsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

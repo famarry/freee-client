@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CompanyIndexResponseCompanies.
  *
@@ -449,6 +450,7 @@ class CompanyIndexResponseCompanies implements ModelInterface, ArrayAccess, \Jso
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

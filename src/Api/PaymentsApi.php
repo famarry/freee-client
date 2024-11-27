@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PaymentsApi
  * PHP version 7.3.
@@ -124,14 +125,14 @@ class PaymentsApi
      * @param int                                 $id             取引ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDealPayment($id, $payment_params)
     {
-        list($response) = $this->createDealPaymentWithHttpInfo($id, $payment_params);
+        [$response] = $this->createDealPaymentWithHttpInfo($id, $payment_params);
 
         return $response;
     }
@@ -144,10 +145,10 @@ class PaymentsApi
      * @param int                                 $id             取引ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の作成 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function createDealPaymentWithHttpInfo($id, $payment_params)
     {
@@ -188,7 +189,7 @@ class PaymentsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -338,9 +339,9 @@ class PaymentsApi
      * @param int                                 $id             取引ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealPaymentAsync($id, $payment_params)
     {
@@ -360,9 +361,9 @@ class PaymentsApi
      * @param int                                 $id             取引ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealPaymentAsyncWithHttpInfo($id, $payment_params)
     {
@@ -408,9 +409,9 @@ class PaymentsApi
      * @param int                                 $id             取引ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の作成 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function createDealPaymentRequest($id, $payment_params)
     {
@@ -437,7 +438,6 @@ class PaymentsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -525,10 +525,10 @@ class PaymentsApi
      * @param int $payment_id 決済ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyDealPayment($id, $payment_id, $company_id)
     {
@@ -544,10 +544,10 @@ class PaymentsApi
      * @param int $payment_id 決済ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function destroyDealPaymentWithHttpInfo($id, $payment_id, $company_id)
     {
@@ -645,9 +645,9 @@ class PaymentsApi
      * @param int $payment_id 決済ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealPaymentAsync($id, $payment_id, $company_id)
     {
@@ -668,9 +668,9 @@ class PaymentsApi
      * @param int $payment_id 決済ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealPaymentAsyncWithHttpInfo($id, $payment_id, $company_id)
     {
@@ -707,9 +707,9 @@ class PaymentsApi
      * @param int $payment_id 決済ID (required)
      * @param int $company_id 事業所ID (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function destroyDealPaymentRequest($id, $payment_id, $company_id)
     {
@@ -850,14 +850,14 @@ class PaymentsApi
      * @param int                                 $payment_id     決済ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDealPayment($id, $payment_id, $payment_params)
     {
-        list($response) = $this->updateDealPaymentWithHttpInfo($id, $payment_id, $payment_params);
+        [$response] = $this->updateDealPaymentWithHttpInfo($id, $payment_id, $payment_params);
 
         return $response;
     }
@@ -871,10 +871,10 @@ class PaymentsApi
      * @param int                                 $payment_id     決済ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の更新 (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     *
      * @return array of \OpenAPI\Client\Model\DealResponse|\OpenAPI\Client\Model\BadRequestError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\ForbiddenError|\OpenAPI\Client\Model\BadRequestNotFoundError|\OpenAPI\Client\Model\InternalServerError, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws \InvalidArgumentException
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
      */
     public function updateDealPaymentWithHttpInfo($id, $payment_id, $payment_params)
     {
@@ -915,7 +915,7 @@ class PaymentsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\OpenAPI\Client\Model\DealResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1066,9 +1066,9 @@ class PaymentsApi
      * @param int                                 $payment_id     決済ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealPaymentAsync($id, $payment_id, $payment_params)
     {
@@ -1089,9 +1089,9 @@ class PaymentsApi
      * @param int                                 $payment_id     決済ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealPaymentAsyncWithHttpInfo($id, $payment_id, $payment_params)
     {
@@ -1138,9 +1138,9 @@ class PaymentsApi
      * @param int                                 $payment_id     決済ID (required)
      * @param \OpenAPI\Client\Model\PaymentParams $payment_params 取引（収入・支出）の支払行の更新 (required)
      *
-     * @throws \InvalidArgumentException
-     *
      * @return \GuzzleHttp\Psr7\Request
+     *
+     * @throws \InvalidArgumentException
      */
     public function updateDealPaymentRequest($id, $payment_id, $payment_params)
     {
@@ -1177,7 +1177,6 @@ class PaymentsApi
         $headerParams = [];
         $httpBody     = '';
         $multipart    = false;
-
 
 
         // path params
@@ -1267,9 +1266,9 @@ class PaymentsApi
     /**
      * Create http client option.
      *
-     * @throws \RuntimeException on file opening failure
-     *
      * @return array of http client options
+     *
+     * @throws \RuntimeException on file opening failure
      */
     protected function createHttpClientOption()
     {

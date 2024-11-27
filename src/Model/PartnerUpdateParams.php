@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnerUpdateParams.
  *
@@ -1065,6 +1066,7 @@ class PartnerUpdateParams implements ModelInterface, ArrayAccess, \JsonSerializa
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

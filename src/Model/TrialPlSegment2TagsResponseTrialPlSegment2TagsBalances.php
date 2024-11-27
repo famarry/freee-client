@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TrialPlSegment2TagsResponseTrialPlSegment2TagsBalances.
  *
@@ -481,6 +482,7 @@ class TrialPlSegment2TagsResponseTrialPlSegment2TagsBalances implements ModelInt
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

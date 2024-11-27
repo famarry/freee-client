@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PartnerCreateParamsPaymentTermAttributes.
  *
@@ -338,6 +339,7 @@ class PartnerCreateParamsPaymentTermAttributes implements ModelInterface, ArrayA
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
